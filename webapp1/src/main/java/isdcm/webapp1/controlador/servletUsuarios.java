@@ -6,13 +6,19 @@
 package isdcm.webapp1.controlador;
 
 import isdcm.webapp1.modelo.Usuario;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
 
 /**
  *
@@ -47,27 +53,38 @@ public class servletUsuarios extends HttpServlet {
         }
     }
     
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response, String type, boolean correct)
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response, boolean correct)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        switch (type){
+        switch (request.getMethod()){
             case "GET":
                 if (!correct){
-                    try (PrintWriter out = response.getWriter()) {
-                        /* TODO output your page here. You may use following sample code. */
-                        out.println("<!DOCTYPE html>");
-                        out.println("<html>");
-                        out.println("<head>");
-                        out.println("<title>Servlet servletUsuarios</title>");            
-                        out.println("</head>");
-                        out.println("<body>");
-                        out.println("<h1>Servlet servletUsuarios at " + request.getContextPath() + "</h1>");
-                        out.println("</body>");
-                        out.println("</html>");
+                    try{
+                        File inputFile = new File(getServletContext().getRealPath("/jsp/login.jsp"));
+                        Document document;
+                        document = Jsoup.parse(inputFile, "UTF-8");
+                        document.body().getElementById("errorMessage").removeClass("hidden").attr("class", "visible");
+                        PrintWriter out = response.getWriter();
+                        out.print(document.outerHtml());
+                    } catch (Exception e){
+                        e.printStackTrace();
                     }
+                } else {
+                    request.getRequestDispatcher("/servletListadoVid").forward(request, response);
                 }
                 break;
             case "POST":
+                if (correct) {
+                    try{
+                        File inputFile = new File(getServletContext().getRealPath("/jsp/login.jsp"));
+                        Document document;
+                        document = Jsoup.parse(inputFile, "UTF-8");
+                        PrintWriter out = response.getWriter();
+                        out.print(document.outerHtml());
+                    } catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
                 break;
             default:
                 
@@ -91,7 +108,7 @@ public class servletUsuarios extends HttpServlet {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             Usuario u = new Usuario(username, password);
-            processRequest(request, response, "GET", u.loginUser());
+            processRequest(request, response, u.loginUser());
         } else {
             System.out.println("El button no ha llegado");
         }
@@ -108,7 +125,18 @@ public class servletUsuarios extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        if (request.getParameter("registro") != null) {
+            System.out.println("He venido del registro");
+            String nombre = request.getParameter("nombre");
+            String apellidos = request.getParameter("apellidos");
+            String email = request.getParameter("email");
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+            Usuario u = new Usuario(nombre, apellidos, email, username, password);
+            processRequest(request, response, u.registerUser());
+        } else {
+            System.out.println("El button no ha llegado");
+        }
     }
 
     /**

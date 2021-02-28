@@ -5,6 +5,7 @@
  */
 package isdcm.webapp1.modelo;
 
+import java.sql.Clob;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -28,7 +29,7 @@ public class DatabaseService {
     private DatabaseService() {
         this.db_URL = "jdbc:derby://localhost:1527/webapp1";
         try {
-            connection = DriverManager.getConnection(db_URL);
+            connection = DriverManager.getConnection(db_URL, "ruroz", "admin");
             System.out.println("Connected to DB");
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseService.class.getName()).log(Level.SEVERE, null, ex);
@@ -53,18 +54,35 @@ public class DatabaseService {
         return result;
     }
     
+    int insertSQLQuery(String sql) {
+        int rows = 0;
+        try {
+            Statement statement = connection.createStatement();
+            rows = statement.executeUpdate(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseService.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(DatabaseService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return rows;
+    }
+    
     private JSONArray convertToJSONArray(ResultSet resultSet) throws Exception {
         JSONArray jsonArray = new JSONArray();
         while (resultSet.next()) {
-        JSONObject obj = new JSONObject();
+            JSONObject obj = new JSONObject();
             int total_rows = resultSet.getMetaData().getColumnCount();
             for (int i = 0; i < total_rows; i++) {
-                obj.put(resultSet.getMetaData().getColumnLabel(i + 1)
-                        .toLowerCase(), resultSet.getObject(i + 1));
-
+                Object value = resultSet.getObject(i + 1);
+                if (value.getClass().getName().equals("org.apache.derby.client.am.ClientClob")){
+                    Clob value_clob = (Clob)value;
+                    value = value_clob.getSubString(1, (int) value_clob.length());
+                }
+                String label = resultSet.getMetaData().getColumnLabel(i + 1).toLowerCase();
+                obj.put(label, value);
             }
             jsonArray.put(obj);
-            }
+        }
         return jsonArray;
     }
     

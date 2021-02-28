@@ -5,6 +5,8 @@
  */
 package isdcm.webapp1.controlador;
 
+import isdcm.webapp1.modelo.Video;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +14,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 /**
  *
@@ -32,17 +36,24 @@ public class servletRegistroVid extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet servletRegistroVid</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet servletRegistroVid at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        switch (request.getMethod()){
+            case "GET":
+                break;
+            case "POST":
+                if ((boolean)request.getAttribute("correct")){
+                    //TODO: redirect to listVideos + message video registered
+                } else {
+                    //Add error message
+                    File inputFile = new File(getServletContext().getRealPath("/jsp/registroVid.jsp"));
+                    Document document;
+                    document = Jsoup.parse(inputFile, "UTF-8");
+                    document.body().getElementById("errorMessage").append("Video could not be inserted, please try again");
+                    PrintWriter out = response.getWriter();
+                    out.print(document.outerHtml());
+                }
+                break;
+            default:
+                
         }
     }
 
@@ -60,7 +71,7 @@ public class servletRegistroVid extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
+    
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -72,7 +83,21 @@ public class servletRegistroVid extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        if (request.getParameter("registroVideo") != null) {
+            System.out.println("He venido del registro de video");
+            String titulo = request.getParameter("titulo");
+            String autor = request.getParameter("autor");
+            String duracion = request.getParameter("duracion");
+            String descripcion = request.getParameter("descripcion");
+            String formato = request.getParameter("formato");
+            String url = request.getParameter("url");
+            Video v = new Video(titulo, autor, duracion, descripcion, formato, url);
+            request.setAttribute("correct", v.registerVideo());
+            processRequest(request, response);
+        } else {
+            System.out.println("El button no ha llegado");
+        }
+        //processRequest(request, response);
     }
 
     /**

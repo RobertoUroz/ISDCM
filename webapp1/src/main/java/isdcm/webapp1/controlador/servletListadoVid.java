@@ -7,6 +7,9 @@ package isdcm.webapp1.controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -58,7 +61,14 @@ public class servletListadoVid extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        List<String> habitList=new ArrayList<String>();
+        habitList.add("Painting");
+        habitList.add("Programming");
+        habitList.add("Eating");
+        request.setAttribute("habits",habitList);
+        RequestDispatcher view=request.getRequestDispatcher("listadoVid.jsp");
+        view.forward(request,response);
     }
 
     /**

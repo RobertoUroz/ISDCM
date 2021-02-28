@@ -24,6 +24,14 @@ public class Usuario {
         this.password = password;
     }
     
+    public Usuario(String nombre, String apellidos, String email, String username, String password) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+    }
+    
     /**
      * @return the nombre
      */
@@ -98,17 +106,43 @@ public class Usuario {
         
         JSONObject user_json = null;
         DatabaseService db = DatabaseService.getInstance();
-        user_json = db.getSQLQuery("SELECT * FROM USUARIOS WHERE USERNAME=" + this.getUsername());
+        user_json = db.getSQLQuery("SELECT * FROM USUARIOS WHERE USERNAME='" + this.getUsername() + "'");
         String password_tmp = "null";
-        if (user_json.getInt("count") > 0)
+        if (user_json.getInt("count") > 0){
+            System.out.println(user_json.toString());
             password_tmp = user_json.getJSONArray("items").getJSONObject(0).getString("password");
+        }
         return this.getPassword().equals(password_tmp);
         
     }
     
     public boolean registerUser(){
-        
-        return true;
+        JSONObject user_json = null;
+        DatabaseService db = DatabaseService.getInstance();
+        user_json = db.getSQLQuery("SELECT * FROM USUARIOS WHERE USERNAME='" + this.getUsername() + "'");
+        if (user_json.getInt("count") > 0) {
+            return false;
+        }
+        int rows = db.insertSQLQuery("INSERT INTO USUARIOS VALUES('"
+                + this.nombre 
+                + "','"
+                + this.apellidos
+                + "','"
+                + this.email
+                + "','"
+                + this.username
+                + "','"
+                + this.password
+                + "')");
+        switch (rows){
+            case 1:
+                return true;
+            case 0:
+                return false;
+            default:
+                System.out.println("USUARIO::registerUser()  :  There has been another number instead of 1 or 0 : " + rows);
+                return false;
+        }
     }
     
 }
