@@ -18,15 +18,15 @@ and open the template in the editor.
         <link rel="stylesheet" href="/webapp1/css/style.css" >
     </head>
     <body>
-        <center> <h1> Login </h1> </center>   
+        <h1>Login</h1>
         <form action="/webapp1/servletUsuarios" method="post">  
             <div class="container">   
                 <label>Nombre usuario:</label>   
-                <input type="text" placeholder="Introduzca Usuario" name="username" required title="Por favor, introduzca un valor">  
+                <input type="text" placeholder="Introduzca Usuario" name="username" required>  
                 <label>Password:</label>   
                 <input type="password" placeholder="Introduzca Password" name="password" required>  
-                <button type="submit" name="button" value="login">Login</button>
-                <a href="/webapp1/jsp/registroUsu.jsp"><button type="button">Register</button></a>
+                <button type="submit" name="button" value="login">Iniciar sesi&oacute;n</button>
+                <a href="/webapp1/jsp/registroUsu.jsp"><button type="button">Registro</button></a>
             </div>   
         </form>
         <center> <p id="errorMessage"></p> </center>
