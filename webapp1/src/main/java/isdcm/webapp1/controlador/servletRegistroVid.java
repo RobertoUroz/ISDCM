@@ -40,20 +40,18 @@ public class servletRegistroVid extends HttpServlet {
             case "GET":
                 break;
             case "POST":
+                String url = "";
                 if ((boolean)request.getAttribute("correct")){
-                    //TODO: redirect to listVideos + message video registered
+                    url = "servletListadoVid";
+                    request.setAttribute("vid_insertado", true);
                 } else {
                     //Add error message
-                    File inputFile = new File(getServletContext().getRealPath("/jsp/registroVid.jsp"));
-                    Document document;
-                    document = Jsoup.parse(inputFile, "UTF-8");
-                    document.body().getElementById("errorMessage").append("Video could not be inserted, please try again");
-                    PrintWriter out = response.getWriter();
-                    out.print(document.outerHtml());
+                    url = "jsp/registroVid.jsp";
+                    request.setAttribute("error_registro_vid", true);
                 }
+                request.getRequestDispatcher(url).forward(request, response);
                 break;
             default:
-                
         }
     }
 
@@ -87,11 +85,14 @@ public class servletRegistroVid extends HttpServlet {
             System.out.println("He venido del registro de video");
             String titulo = request.getParameter("titulo");
             String autor = request.getParameter("autor");
-            String duracion = request.getParameter("duracion");
+            int duracionH = Integer.parseInt(request.getParameter("duracionh"));
+            int duracionMin = Integer.parseInt(request.getParameter("duracionmin"));
+            int duracionS = Integer.parseInt(request.getParameter("duracions"));
+            String duracion = duracionH + ":" + duracionMin + ":" + duracionS;
             String descripcion = request.getParameter("descripcion");
             String formato = request.getParameter("formato");
             String url = request.getParameter("url");
-            Video v = new Video(titulo, autor, duracion, descripcion, formato, url);
+            Video v = new Video(titulo, autor, duracionH, duracionMin, duracionS, descripcion, formato, url);
             request.setAttribute("correct", v.registerVideo());
             processRequest(request, response);
         } else {

@@ -19,7 +19,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-
 /**
  *
  * @author ruroz
@@ -28,88 +27,66 @@ import org.jsoup.nodes.Document;
 public class servletUsuarios extends HttpServlet {
 
     // /**
-     // * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     // * methods.
-     // *
-     // * @param request servlet request
-     // * @param response servlet response
-     // * @throws ServletException if a servlet-specific error occurs
-     // * @throws IOException if an I/O error occurs
-     // */
+    // * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+    // * methods.
+    // *
+    // * @param request servlet request
+    // * @param response servlet response
+    // * @throws ServletException if a servlet-specific error occurs
+    // * @throws IOException if an I/O error occurs
+    // */
     // protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            // throws ServletException, IOException {
-        // response.setContentType("text/html;charset=UTF-8");
-        // try (PrintWriter out = response.getWriter()) {
-            // /* TODO output your page here. You may use following sample code. */
-            // out.println("<!DOCTYPE html>");
-            // out.println("<html>");
-            // out.println("<head>");
-            // out.println("<title>Servlet servletUsuarios</title>");            
-            // out.println("</head>");
-            // out.println("<body>");
-            // out.println("<h1>Servlet servletUsuarios at " + request.getContextPath() + "</h1>");
-            // out.println("</body>");
-            // out.println("</html>");
-        // }
+    // throws ServletException, IOException {
+    // response.setContentType("text/html;charset=UTF-8");
+    // try (PrintWriter out = response.getWriter()) {
+    // /* TODO output your page here. You may use following sample code. */
+    // out.println("<!DOCTYPE html>");
+    // out.println("<html>");
+    // out.println("<head>");
+    // out.println("<title>Servlet servletUsuarios</title>");            
+    // out.println("</head>");
+    // out.println("<body>");
+    // out.println("<h1>Servlet servletUsuarios at " + request.getContextPath() + "</h1>");
+    // out.println("</body>");
+    // out.println("</html>");
     // }
-    
+    // }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        switch (request.getMethod()){
+        switch (request.getMethod()) {
             case "GET":
                 break;
             case "POST":
-				boolean correct = (boolean)request.getAttribute("correct");
-				switch (request.getParameter("button")){
-					case "registro":
-						if (correct) {
-							try {
-								File inputFile = new File(getServletContext().getRealPath("/jsp/login.jsp"));
-								Document document;
-								document = Jsoup.parse(inputFile, "UTF-8");
-								PrintWriter out = response.getWriter();
-								out.print(document.outerHtml());
-							} catch (Exception e) {
-								e.printStackTrace();
-							}
-						} else {
-							try {
-								File inputFile = new File(getServletContext().getRealPath("/jsp/registerUser.jsp"));
-								Document document;
-								document = Jsoup.parse(inputFile, "UTF-8");
-								document.body().getElementById("errorMessage").append("Usuario ya registrado, pruebe con otro username");
-								PrintWriter out = response.getWriter();
-								out.print(document.outerHtml());	
-							} catch (Exception e) {
-								e.printStackTrace();
-							}
-						}
-						break;
-					case "login":
-						if (correct) {
-							try {
-								response.sendRedirect(req.getContextPath() + "/servletListadoVid");
-							} catch (Exception e) {
-								e.printStackTrace();
-							}
-						} else {
-							try {
-								File inputFile = new File(getServletContext().getRealPath("/jsp/login.jsp"));
-								Document document;
-								document = Jsoup.parse(inputFile, "UTF-8");
-								document.body().getElementById("errorMessage").append("Usuario no registrado en el sistema");
-								PrintWriter out = response.getWriter();
-								out.print(document.outerHtml());
-							} catch (Exception e) {
-								e.printStackTrace();
-							}
-						}
-						break;
-					default:
-						System.out.println("Case not handled");
-				}
+                boolean correct = (boolean) request.getAttribute("correct");
+                String url = "";
+                switch (request.getParameter("button")) {
+                    case "registro":
+                        if (correct) {
+                            url = "jsp/login.jsp";
+                        } else {
+                            request.setAttribute("error_registro", true);
+                            url = "jsp/registroUsu.jsp";
+                        }
+                        break;
+                    case "login":
+                        if (correct) {
+                            url = "servletListadoVid";
+                        } else {
+                            request.setAttribute("error_login", true);
+                            url = "jsp/login.jsp";
+                        }
+                        break;
+                    default:
+                        System.out.println("Case not handled");
+                }
+                try {
+                    request.getRequestDispatcher(url).forward(request, response); //We can send attributes with forward, with sendRedirect we cannot
+                } catch(IOException e) {
+                    e.printStackTrace();
+                }
                 break;
+
             default:
                 System.out.println("Case not handled");
         }
@@ -127,7 +104,7 @@ public class servletUsuarios extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-			processRequest(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -149,20 +126,18 @@ public class servletUsuarios extends HttpServlet {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             Usuario u = new Usuario(nombre, apellidos, email, username, password);
-			request.setAttribute("correct", u.registerUser());
+            request.setAttribute("correct", u.registerUser());
             processRequest(request, response);
-        } 
-		else if (request.getParameter("button").equals("login")) {
+        } else if (request.getParameter("button").equals("login")) {
             System.out.println("He venido del login");
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             Usuario u = new Usuario(username, password);
-			request.setAttribute("correct", u.loginUser());
+            request.setAttribute("correct", u.loginUser());
             processRequest(request, response);
+        } else {
+            System.out.println("Caso no comprobado");
         }
-		else {
-			System.out.println("Caso no comprobado");
-		}
     }
 
     /**

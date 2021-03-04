@@ -1,3 +1,7 @@
+<%@page import="java.util.Objects"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% Boolean error = !Objects.isNull(request.getAttribute("error_registro")) && ((Boolean) request.getAttribute("error_registro"));%>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -25,6 +29,8 @@
                 <button type="submit" name="button" value="registro">Registrarse</button>
             </div>   
         </form>
-		<center><p id="errorMessage"></p></center>
+        <% if (error) {%>
+            <center> <p id="errorMessage">Usuario ya existe en el sistema</p> </center>
+        <%}%>
     </body>
 </html>

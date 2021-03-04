@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.jsoup.Jsoup;
 
 /**
  *
@@ -35,17 +36,14 @@ public class servletListadoVid extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        try {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet servletListadoVid</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet servletListadoVid at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            
+            List<String> list = new ArrayList<>(); //TODO: list is videos list
+            request.setAttribute("List", list);
+            request.getRequestDispatcher("/jsp/listadoVid.jsp").forward(request, response);
+        } catch (IOException | ServletException e) {
+            e.printStackTrace();
         }
     }
 
@@ -62,13 +60,8 @@ public class servletListadoVid extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        List<String> habitList=new ArrayList<String>();
-        habitList.add("Painting");
-        habitList.add("Programming");
-        habitList.add("Eating");
-        request.setAttribute("habits",habitList);
-        RequestDispatcher view=request.getRequestDispatcher("listadoVid.jsp");
-        view.forward(request,response);
+        System.out.println("Hello from servletListadoVid");
+        processRequest(request, response);
     }
 
     /**

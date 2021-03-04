@@ -1,3 +1,4 @@
+<%@page import="java.util.Objects"%>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -5,6 +6,9 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<% Boolean insertado = !Objects.isNull(request.getAttribute("vid_insertado")) && ((Boolean) request.getAttribute("vid_insertado"));%>
+
 
 <html>
     <head>
@@ -14,7 +18,11 @@ and open the template in the editor.
         <link rel="stylesheet" href="/webapp1/css/style.css" >
     </head>
     <body>
-        <center> <h1> Listado Videos </h1> </center>   
+        <center> <h1> Listado Videos </h1> </center>  
+        <% if (insertado) {%>
+            <center><p>Video insertado con éxito!</p></center>
+            <%request.setAttribute("vid_insertado", false);%>
+        <%}%>
         <div class="container">
             <table>
                 <c:forEach var="habit" items="${habits}">
