@@ -19,16 +19,16 @@ and open the template in the editor.
     </head>
     <body>
         <center> <h1> Login </h1> </center>   
-        <form action="/webapp1/servletUsuarios" method="get">  
+        <form action="/webapp1/servletUsuarios" method="post">  
             <div class="container">   
                 <label>Nombre usuario:</label>   
                 <input type="text" placeholder="Introduzca Usuario" name="username" required title="Por favor, introduzca un valor">  
                 <label>Password:</label>   
                 <input type="password" placeholder="Introduzca Password" name="password" required>  
-                <button type="submit" name="login" value="loginV">Login</button>
+                <button type="submit" name="button" value="login">Login</button>
                 <a href="/webapp1/jsp/registroUsu.jsp"><button type="button">Register</button></a>
             </div>   
         </form>
-        <center> <p id="errorMessage" class="hidden"> User is not registered </p> </center>
+        <center> <p id="errorMessage"></p> </center>
 </body>     
 </html>
