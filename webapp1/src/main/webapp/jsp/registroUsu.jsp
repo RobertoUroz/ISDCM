@@ -22,8 +22,9 @@
                 <input type="password" placeholder="Introduzca Password" name="password" required>  
                 <label>Repetir Password: </label>   
                 <input type="password" placeholder="Introduzca Repetir Password" name="rPassword" required>  
-                <button type="submit" name="registro" value="registroV">Registrarse</button>
+                <button type="submit" name="button" value="registro">Registrarse</button>
             </div>   
         </form>
+		<center><p id="errorMessage"></p></center>
     </body>
 </html>
