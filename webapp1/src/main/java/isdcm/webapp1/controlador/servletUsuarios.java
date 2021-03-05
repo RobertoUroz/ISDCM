@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -89,7 +90,9 @@ public class servletUsuarios extends HttpServlet {
 					case "login":
 						if (correct) {
 							try {
-								response.sendRedirect(req.getContextPath() + "/servletListadoVid");
+								HttpSession session = request.getSession();
+								session.setAttribute("user",request.getParameter("username"));
+								response.sendRedirect(request.getContextPath() + "/servletListadoVid");
 							} catch (Exception e) {
 								e.printStackTrace();
 							}
