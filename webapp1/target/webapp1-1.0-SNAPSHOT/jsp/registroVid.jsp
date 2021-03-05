@@ -1,3 +1,7 @@
+<%@page import="java.util.Objects"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% Boolean error = !Objects.isNull(request.getAttribute("error_registro_vid")) && ((Boolean) request.getAttribute("error_registro_vid"));%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -26,6 +30,9 @@
                 <button type="submit" name="registroVideo" value="registroV">Registrar</button>
             </div>   
         </form>
-        <center><p id="errorMessage"></p></center>
+        <% if (error) {%>
+            <center><p id="errorMessage">Video no ha podido ser insertado, por favor, inténtelo de nuevo</p></center>
+            <%request.setAttribute("error_registro_vid", false);%>
+         <%}%>
     </body>
 </html>
