@@ -1,4 +1,6 @@
 *.class
 *.war
 webapp1/target/maven-status/maven-compiler-plugin
+webapp2/target/*
+webappWSApplication/target/*
 gfv5ee8.dpf
