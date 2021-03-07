@@ -69,7 +69,7 @@ public class servletUsuarios extends HttpServlet {
                         break;
                     case "login":
                         if (correct) {
-                            url = "servletListadoVid";
+                            url = "jsp/listadoVid.jsp";
                         } else {
                             request.setAttribute("error_login", true);
                             url = "jsp/login.jsp";

@@ -8,11 +8,11 @@
         <title>Registro Video</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/style.css" >
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" >
     </head>
     <body>
         <h1> Registro Video </h1>
-        <form action="servletRegistroVid" method="post">  
+        <form action="../servletRegistroVid" method="post">  
             <div class="container">   
                 <label>Titulo</label>   
                 <input type="text" placeholder="Introduzca Titulo" name="titulo" required>  

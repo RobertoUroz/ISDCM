@@ -15,7 +15,7 @@ and open the template in the editor.
         <title>Listado Videos</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/style.css" >
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" >
     </head>
     <body>
         <center> <h1> Listado Videos </h1> </center>  
@@ -33,6 +33,7 @@ and open the template in the editor.
             </table>
         </div>   
         <center> <a href="jsp/registroVid.jsp"><button type="button">Registrar Video</button></a> </center>    
+        <center> <a href="jsp/busqueda.jsp"><button type="button">&#128270;</button></a> </center>    
         <center> <button type="button" action="servletListadoVid" method="get">Mis videos</button></a> </center>    
     </body>
 </html>

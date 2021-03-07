@@ -10,6 +10,7 @@ import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.ejb.Stateless;
+import org.json.JSONObject;
 
 /**
  *
@@ -52,5 +53,10 @@ public class BusquedaWS {
     public String busquedaPorFechaDeCreacion(@WebParam(name = "day") Integer dia, @WebParam(name = "month") Integer mes, @WebParam(name = "year") int year) {
         Video v = new Video();
         return v.searchByFechaCreacion(dia, mes, year).toString();
+    }
+
+    public String busquedaVideo(String titulo, String autor, String year, String mes, String dia) {
+        Video v = new Video();
+        return v.searchVideo(titulo, autor, year, mes, dia).toString();
     }
 }

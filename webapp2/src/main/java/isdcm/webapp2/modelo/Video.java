@@ -247,6 +247,25 @@ public class Video {
         System.out.println(sql);
         return db.getSQLQuery(sql);
     }
+    
+    public JSONObject searchVideo(String titulo, String autor, String year, String mes, String dia) {
+        DatabaseService db = DatabaseService.getInstance();
+        String sql = "SELECT * FROM VIDEOS WHERE ";
+        if (autor != "")
+            sql += "AUTOR = '" + autor + "' AND ";
+        if (titulo != "")
+            sql += "TITULO = '" + titulo + "' AND ";
+        if (year != ""){
+            String[] dates;
+            dates = getDates(Integer.parseInt(dia), Integer.parseInt(mes), Integer.parseInt(year));
+            if (dates[1] != null)
+                sql += "FECHACREACION >= " + dates[0] + " AND FECHACREACION < " + dates[1];
+            else
+                sql += "FECHACREACION = " + dates[0];
+        }
+        System.out.println(sql);
+        return db.getSQLQuery(sql);
+    }
 
     private String[] getDates(Integer dia, Integer mes, int year) {
         String first_date = null;

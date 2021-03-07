@@ -59,7 +59,7 @@ public class servletListadoVid extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        System.out.println("Hello from servletListadoVid");
+        System.out.println("Hello from servletListadoVid::Get");
         processRequest(request, response);
     }
 
@@ -74,6 +74,7 @@ public class servletListadoVid extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println("Hello from servletListadoVid::Post");
         processRequest(request, response);
     }
 

@@ -18,7 +18,7 @@ and open the template in the editor.
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name='viewport' content='width=device-width, initial-scale=1.0'>
         <title>Login Page</title>
-        <link rel="stylesheet" href="css/style.css" >
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" >
     </head>
     <body>
         <h1>Login</h1>
@@ -29,7 +29,7 @@ and open the template in the editor.
                 <label>Password:</label>   
                 <input type="password" placeholder="Introduzca Password" name="password" required>  
                 <button type="submit" name="button" value="login">Iniciar sesi&oacute;n</button>
-                <a href="/webapp1/jsp/registroUsu.jsp"><button type="button">Registro</button></a>
+                <a href="jsp/registroUsu.jsp"><button type="button">Registro</button></a>
             </div>   
         </form>
         <%  if (error) {%>

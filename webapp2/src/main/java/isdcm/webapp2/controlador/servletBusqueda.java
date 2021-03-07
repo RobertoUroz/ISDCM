@@ -5,12 +5,16 @@
  */
 package isdcm.webapp2.controlador;
 
+import isdcm.webapp2.services.BusquedaWS;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.ws.WebServiceRef;
+import org.json.JSONObject;
+
 
 /**
  *
@@ -56,7 +60,20 @@ public class servletBusqueda extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String videos = null;
+        switch (request.getParameter("button")){
+            case "busquedaVideo":
+                //list videos
+                System.out.println("HOLA");
+                //call to web service busquedaVideo
+                break;
+
+            default:
+        }
+        System.out.println(videos);
+        JSONObject videos_parsed = new JSONObject(videos);
+        System.out.println(videos_parsed.toString());
+        //processRequest(request, response);
         
     }
 

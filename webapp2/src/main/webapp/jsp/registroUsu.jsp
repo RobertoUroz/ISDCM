@@ -8,11 +8,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name='viewport' content='width=device-width, initial-scale=1.0'>
         <title>Registro usuarios</title>
-        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" >
     </head>
     <body>
         <h1>Registro usuarios</h1>
-        <form action="servletUsuarios" method="post">  
+        <form action="../servletUsuarios" method="post">  
             <div class="container">   
                 <label>Nombre: </label>   
                 <input type="text" placeholder="Introduzca Nombre" name="nombre" required>  
