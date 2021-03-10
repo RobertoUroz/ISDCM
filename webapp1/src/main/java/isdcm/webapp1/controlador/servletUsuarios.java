@@ -16,9 +16,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 
 /**
  *
@@ -72,8 +69,6 @@ public class servletUsuarios extends HttpServlet {
                         break;
                     case "login":
                         if (correct) {
-							HttpSession session = request.getSession();
-							session.setAttribute("user",request.getParameter("username"));
                             url = "servletListadoVid";
                         } else {
                             request.setAttribute("error_login", true);

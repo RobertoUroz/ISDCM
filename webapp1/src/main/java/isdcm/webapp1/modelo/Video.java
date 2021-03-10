@@ -25,8 +25,14 @@ public class Video {
     private String descripcion;
     private String formato;
     private String url;
+    private String date; //fecha creacion
+    private String duracionString;
+    private int id;
+    private int reproducciones;
     
-    private String date; //TODO: Change to date time format
+    public Video() {
+        
+    }
     
     public Video(String titulo, String autor, int duracionH, int duracionMin, int duracionS, String descripcion, String formato, String url) {
         this.titulo = titulo;
@@ -37,6 +43,19 @@ public class Video {
         this.descripcion = descripcion;
         this.formato = formato;
         this.url = url;
+    }
+
+    public Video(JSONObject item) {
+        System.out.println(item.toString());
+        this.id = item.getInt("id");
+        this.titulo = item.getString("titulo");
+        this.autor = item.getString("autor");
+        this.date = item.get("fechacreacion").toString();
+        this.duracionString = item.get("duracion").toString();
+        this.reproducciones = item.getInt("reproducciones");
+        this.descripcion = item.getString("descripcion");
+        this.formato = item.getString("formato");
+        this.url = item.getString("url");
     }
     
     /**
@@ -109,10 +128,13 @@ public class Video {
         this.url = url;
     }
     
+    public JSONObject getAllVideos() {
+        DatabaseService db = DatabaseService.getInstance();
+        return db.getSQLQuery("SELECT * FROM VIDEOS");
+    }
+    
     public boolean registerVideo() {
         DatabaseService db = DatabaseService.getInstance();
-        //DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
-        //LocalDateTime now = LocalDateTime.now();
         JSONObject id = db.getSQLQuery("VALUES NEXT VALUE FOR VIDEOS_SEQ");
         int int_id = id.getJSONArray("items").getJSONObject(0).getInt("1");
         //Time
@@ -163,5 +185,47 @@ public class Video {
      */
     public void setDate(String date) {
         this.date = date;
+    }
+
+    /**
+     * @return the duracionString
+     */
+    public String getDuracionString() {
+        return duracionString;
+    }
+
+    /**
+     * @param duracionString the duracionString to set
+     */
+    public void setDuracionString(String duracionString) {
+        this.duracionString = duracionString;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the reproducciones
+     */
+    public int getReproducciones() {
+        return reproducciones;
+    }
+
+    /**
+     * @param reproducciones the reproducciones to set
+     */
+    public void setReproducciones(int reproducciones) {
+        this.reproducciones = reproducciones;
     }
 }
