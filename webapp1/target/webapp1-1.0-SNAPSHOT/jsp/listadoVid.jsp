@@ -22,7 +22,7 @@ and open the template in the editor.
         <%
             String usuario = (String) session.getAttribute("user");
         %>
-        <p>Usuario: <%= usuario %></p>
+        <p>Usuario: <%= usuario %>. <form action="/webapp1/servletUsuario" method="post"><button type="submit" name="button" value="logout">Cerrar sesi&oacute;n</button></form></p>
         <% if (insertado) {%>
             <center><p>¡Vídeo insertado con éxito!</p></center>
             <%request.setAttribute("vid_insertado", false);%>
