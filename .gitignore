@@ -4,3 +4,5 @@ webapp1/target/maven-status/maven-compiler-plugin
 webapp2/target/*
 webappWSApplication/target/*
 gfv5ee8.dpf
+/webapp2/cliente - copia/target/
+/webapp2/backup/target/
