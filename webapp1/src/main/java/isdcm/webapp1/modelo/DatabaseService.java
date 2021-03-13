@@ -6,11 +6,14 @@
 package isdcm.webapp1.modelo;
 
 import java.sql.Clob;
+import java.sql.Date;
+import java.sql.Time;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.json.JSONArray;
@@ -27,7 +30,7 @@ public class DatabaseService {
     private Connection connection = null;
     
     private DatabaseService() {
-        this.db_URL = "jdbc:derby://localhost:1527/isdcm_db";
+        this.db_URL = "jdbc:derby://localhost:1527/webapp1"; //isdcm_db";
         try {
             connection = DriverManager.getConnection(db_URL, "ruroz", "admin");
             System.out.println("Connected to DB");
@@ -54,11 +57,69 @@ public class DatabaseService {
         return result;
     }
     
+    
+    public JSONObject getPSQLQuery(String sql, Object... params) {
+        JSONObject result = new JSONObject();
+        result.put("items", new JSONArray());
+        result.put("count", 0);
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            for (int i=0; i<params.length; ++i) {
+                if (params[i] instanceof String) {
+                statement.setString(i, (String) params[i]);
+                } else if (params[i] instanceof Time) {
+                statement.setTime(i, (Time) params[i]);
+                } else if (params[i] instanceof Date) {
+                statement.setDate(i, (Date) params[i]);
+                } else if (params[i] instanceof Clob) {
+                statement.setClob(i, (Clob) params[i]);
+                } else {
+                statement.setInt(i, (int) params[i]);
+                }
+            }
+            ResultSet rows = statement.executeQuery();
+            JSONArray rows_array = convertToJSONArray(rows);
+            result.put("items", rows_array);
+            result.put("count", rows_array.length());
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseService.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(DatabaseService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+    }
+    
     int insertSQLQuery(String sql) {
         int rows = 0;
         try {
             Statement statement = connection.createStatement();
             rows = statement.executeUpdate(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseService.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(DatabaseService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return rows;
+    }
+    
+    int insertPSQLQuery(String sql, Object... params) {
+        int rows = 0;
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            for (int i=0; i<params.length; ++i) {
+                if (params[i] instanceof String) {
+                statement.setString(i, (String) params[i]);
+                } else if (params[i] instanceof Time) {
+                statement.setTime(i, (Time) params[i]);
+                } else if (params[i] instanceof Date) {
+                statement.setDate(i, (Date) params[i]);
+                } else if (params[i] instanceof Clob) {
+                statement.setClob(i, (Clob) params[i]);
+                } else {
+                statement.setInt(i, (int) params[i]);
+                }
+            }
+            rows = statement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseService.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {

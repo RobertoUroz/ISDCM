@@ -22,18 +22,18 @@ and open the template in the editor.
     </head>
     <body>
         <h1>Login</h1>
+        <p><a href="/webapp1/jsp/registroUsu.jsp">Registro</a></p>
         <form action="/webapp1/servletUsuarios" method="post">  
-            <div class="container">   
-                <label>Nombre usuario:</label>   
+            <div class="container">
+                <label>Nombre de usuario:</label>   
                 <input type="text" placeholder="Introduzca Usuario" name="username" required>  
                 <label>Password:</label>   
                 <input type="password" placeholder="Introduzca Password" name="password" required>  
                 <button type="submit" name="button" value="login">Iniciar sesi&oacute;n</button>
-                <a href="/webapp1/jsp/registroUsu.jsp"><button type="button">Registro</button></a>
             </div>   
         </form>
         <%  if (error) {%>
-                <center> <p id="errorMessage">Usuario no registrado en el sistema</p> </center>
+                <center> <p id="errorMessage">Usuario no registrado en el sistema.</p> </center>
                 <%request.setAttribute("error_login", false);%>
         <%}%>
 </body>     

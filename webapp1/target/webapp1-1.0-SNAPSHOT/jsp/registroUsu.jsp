@@ -12,6 +12,7 @@
     </head>
     <body>
         <h1>Registro usuarios</h1>
+        <p><a href="/webapp1/jsp/login.jsp">Inicio de sesi&oacute;n</a></p>
         <form action="/webapp1/servletUsuarios" method="post">  
             <div class="container">   
                 <label>Nombre: </label>   

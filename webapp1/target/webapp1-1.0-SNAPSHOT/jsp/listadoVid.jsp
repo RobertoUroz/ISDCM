@@ -18,11 +18,11 @@ and open the template in the editor.
         <link rel="stylesheet" href="/webapp1/css/style.css" >
     </head>
     <body>
-    <h1> Listado Videos </h1>
         <%
             String usuario = (String) session.getAttribute("user");
         %>
-        <p>Usuario: <%= usuario %>. <form action="/webapp1/servletUsuario" method="post"><button type="submit" name="button" value="logout">Cerrar sesi&oacute;n</button></form></p>
+        <div class="user">Usuario: <%= usuario %>. <form action="/webapp1/servletUsuarios" method="post"><button type="submit" name="button" value="logout">Cerrar sesi&oacute;n</button></form></div>
+        <h1> Listado Videos </h1>
         <% if (insertado) {%>
             <center><p>¡Vídeo insertado con éxito!</p></center>
             <%request.setAttribute("vid_insertado", false);%>

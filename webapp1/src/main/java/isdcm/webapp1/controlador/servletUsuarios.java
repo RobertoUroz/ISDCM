@@ -81,8 +81,8 @@ public class servletUsuarios extends HttpServlet {
                         }
                         break;
                     case "logout":
+                        HttpSession session = request.getSession();
                         if (correct) {
-                            HttpSession session = request.getSession();
                             session.removeAttribute("user");
                             session.invalidate();
                             url = "jsp/login.php";

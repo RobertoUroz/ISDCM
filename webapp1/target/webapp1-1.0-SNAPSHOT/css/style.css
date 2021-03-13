@@ -10,8 +10,31 @@ and open the template in the editor.
 
 Body {  
     font-family: Calibri, Helvetica, sans-serif;  
-    background-color: pink;  
+    background-color: #f1f1f1;
 }  
+
+.user {
+    text-align: right;
+    border-bottom: 1px #000000 solid;
+    padding-bottom: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.user form {
+    border: none;
+    display: inline;
+}
+
+.user button {
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    text-decoration: underline;
+    width: auto;
+    background: none;
+    color: #4CAF50;
+}
 
 h1 {
     text-align: center;
@@ -19,12 +42,15 @@ h1 {
 
 button {   
     background-color: #4CAF50;   
-    width: 100%;  
+    /*width: 100%;  
     color: orange;   
     padding: 15px;   
-    margin: 10px 0px;   
+    margin: 10px 0px;*/
+    margin: 8px 0;
+    padding: 5px;
     border: none;   
-    cursor: pointer;   
+    cursor: pointer;
+    font-size: 120%;
 }   
         
 form {   
@@ -37,15 +63,16 @@ form {
 
 input[type=text], input[type=password], input[type=email] {   
     width: 100%;   
-    margin: 8px 0;  
-    padding: 12px 20px;   
+    margin: 8px 0;
+    padding: 5px 3px;
+    font-size: 120%;
     display: inline-block;   
     border: 2px solid green;   
     box-sizing: border-box;   
 }  
 
 .duration input {
-    width: 4em;
+    width: 2.5em;
 }
     
 button:hover {   

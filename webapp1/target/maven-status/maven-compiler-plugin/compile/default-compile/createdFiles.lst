@@ -1,0 +1,8 @@
+isdcm/webapp1/controlador/servletRegistroVid.class
+isdcm/webapp1/modelo/Usuario.class
+isdcm/webapp1/controlador/servletListadoVid.class
+isdcm/webapp1/JAXRSConfiguration.class
+isdcm/webapp1/modelo/Video.class
+isdcm/webapp1/resources/JavaEE8Resource.class
+isdcm/webapp1/modelo/DatabaseService.class
+isdcm/webapp1/controlador/servletUsuarios.class

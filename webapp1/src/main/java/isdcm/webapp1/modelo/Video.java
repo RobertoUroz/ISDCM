@@ -140,6 +140,16 @@ public class Video {
                 + "')";
         System.out.println(sql);
         int rows = db.insertSQLQuery(sql);
+        /*int rows = db.insertPSQLQuery("INSERT INTO VIDEOS VALUES(?,?,?,?,?,?,?,?,?);",
+                int_id,
+                this.titulo,
+                this.autor,
+                sqlDate,
+                sqlTime,
+                0,
+                this.descripcion,
+                this.formato,
+                this.url); */
         switch (rows){
             case 1:
                 return true;
