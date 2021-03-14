@@ -36,7 +36,7 @@ public class DatabaseService {
         }
     }
     
-    public JSONObject getSQLQuery(String sql) {
+    protected JSONObject getSQLQuery(String sql) {
         JSONObject result = new JSONObject();
         result.put("items", new JSONArray());
         result.put("count", 0);
@@ -54,7 +54,7 @@ public class DatabaseService {
         return result;
     }
     
-    int insertSQLQuery(String sql) {
+    protected int insertSQLQuery(String sql) {
         int rows = 0;
         try {
             Statement statement = connection.createStatement();
@@ -86,7 +86,7 @@ public class DatabaseService {
         return jsonArray;
     }
     
-    public static DatabaseService getInstance() {
+    protected static DatabaseService getInstance() {
         if (SINGLE_INSTANCE == null) {  
           synchronized(DatabaseService.class) {
           SINGLE_INSTANCE = new DatabaseService();

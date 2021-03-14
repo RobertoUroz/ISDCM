@@ -9,6 +9,12 @@ and open the template in the editor.
 
 <% Boolean insertado = !Objects.isNull(request.getAttribute("vid_insertado")) && ((Boolean) request.getAttribute("vid_insertado"));%>
 
+<% 
+    if (Objects.isNull(request.getAttribute("listVideos"))) {
+            System.out.println("jsp");
+            request.getRequestDispatcher("/servletListadoVid").forward(request, response);
+    }
+%>
 
 <html>
     <head>
@@ -25,15 +31,21 @@ and open the template in the editor.
         <%}%>
         <div class="container">
             <table>
-                <c:forEach var="habit" items="${habits}">
+                <c:forEach var="video" items="${listVideos}">
                     <tr>
-                    <td>Habit : ${habit}</td>
+                    <td>Id : ${video.id}</td>
+                    <td>Titulo : ${video.titulo}</td>
+                    <td>Autor : ${video.autor}</td>
+                    <td>Descripcion : ${video.descripcion}</td>
+                    <td>Fecha Creacion : ${video.date}</td>
+                    <td>Duracion : ${video.duracionString}</td>
+                    <td>Reproducciones : ${video.reproducciones}</td>
                     </tr>
                 </c:forEach>
             </table>
-        </div>   
+        </div>
         <center> <a href="jsp/registroVid.jsp"><button type="button">Registrar Video</button></a> </center>    
         <center> <a href="jsp/busqueda.jsp"><button type="button">&#128270;</button></a> </center>    
-        <center> <button type="button" action="servletListadoVid" method="get">Mis videos</button></a> </center>    
+        <center> <button type="button" action="servletListadoVid" method="get" name="myVideos" value="true">Mis videos</button></a> </center>    
     </body>
 </html>

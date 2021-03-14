@@ -5,6 +5,7 @@
  */
 package isdcm.webapp2.controlador;
 
+import isdcm.webapp2.modelo.Video;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.JSONObject;
 
 /**
  *
@@ -60,6 +62,20 @@ public class servletListadoVid extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         System.out.println("Hello from servletListadoVid::Get");
+		List<Video> listVideos = new ArrayList<>();
+		switch (request.getParameter("button")) {
+			case "myVideos":
+				//search for My Videos
+				Video v = new Video();
+				JSONObject jsonVideos = v.searchMyVideos("asdf"); //TODO: change hardcoded username to the one from session
+				for (int i = 0; i < jsonVideos.getJSONArray("items").length(); i++){
+						JSONObject item = jsonVideos.getJSONArray("items").getJSONObject(i);
+						listVideos.add(new Video(item));
+					}
+				break;
+			default:
+		}
+        request.setAttribute("listVideos", listVideos);
         processRequest(request, response);
     }
 
@@ -75,6 +91,15 @@ public class servletListadoVid extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         System.out.println("Hello from servletListadoVid::Post");
+		Video v = new Video();
+		JSONObject jsonVideos = v.getAllVideos(); //TODO: change hardcoded username to the one from session
+		List<Video> listVideos = new ArrayList<>();
+		for (int i = 0; i < jsonVideos.getJSONArray("items").length(); i++){
+				JSONObject item = jsonVideos.getJSONArray("items").getJSONObject(i);
+				listVideos.add(new Video(item));
+		}
+		request.setAttribute("listVideos", listVideos);
+	
         processRequest(request, response);
     }
 

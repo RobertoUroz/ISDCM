@@ -28,6 +28,7 @@ public class Video {
     private String formato;
     private String url;
     private int id;
+    private String username;
     
     private String date; //TODO: Change to date time format
     
@@ -42,7 +43,7 @@ public class Video {
      * @param formato
      * @param url
      */
-    public Video(String titulo, String autor, int duracionH, int duracionMin, int duracionS, String descripcion, String formato, String url) {
+    public Video(String titulo, String autor, int duracionH, int duracionMin, int duracionS, String descripcion, String formato, String url, String username) {
         this.titulo = titulo;
         this.autor = autor;
         this.duracionH = duracionH;
@@ -51,6 +52,7 @@ public class Video {
         this.descripcion = descripcion;
         this.formato = formato;
         this.url = url;
+        this.username = username;
     }
 
     /**
@@ -181,6 +183,8 @@ public class Video {
                 + this.formato
                 + "','"
                 + this.url
+                + "','"
+                + this.username
                 + "')";
         System.out.println(sql);
         int rows = db.insertSQLQuery(sql);
@@ -205,6 +209,11 @@ public class Video {
         if (video_json.getString("count") != "1")
             throw new RuntimeException("Error in video::gettingURLFromVideo() : video selected is not unique or does not exist");
         return video_json.getJSONArray("items").getJSONObject(0).getString("URL");
+    }
+    
+    public JSONObject searchMyVideos(String username){
+        DatabaseService db = DatabaseService.getInstance();
+        return db.getSQLQuery("SELECT * FROM VIDEOS WHERE USERNAME='" + username + "'");
     }
     
     /**

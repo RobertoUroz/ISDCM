@@ -58,4 +58,13 @@ public class BusquedaWS {
         Video v = new Video();
         return v.searchVideo(titulo, autor, year, mes, dia).toString();
     }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "searchMyVideos")
+    public String searchMyVideos(@WebParam(name = "username") String username) {
+        Video v = new Video();
+        return v.searchMyVideos(username).toString();
+    }
 }

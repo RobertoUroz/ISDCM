@@ -30,6 +30,9 @@ public class Video {
     private int id;
     
     private String date; //TODO: Change to date time format
+    private String duracionString;
+    private int reproducciones;
+    private String username;
     
     /**
      *
@@ -51,6 +54,20 @@ public class Video {
         this.descripcion = descripcion;
         this.formato = formato;
         this.url = url;
+    }
+    
+    public Video(JSONObject item) {
+        System.out.println(item.toString());
+        this.id = item.getInt("id");
+        this.titulo = item.getString("titulo");
+        this.autor = item.getString("autor");
+        this.date = item.get("fechacreacion").toString();
+        this.duracionString = item.get("duracion").toString();
+        this.reproducciones = item.getInt("reproducciones");
+        this.descripcion = item.getString("descripcion");
+        this.formato = item.getString("formato");
+        this.url = item.getString("url");
+        this.username = item.getString("username");
     }
 
     /**
@@ -181,6 +198,8 @@ public class Video {
                 + this.formato
                 + "','"
                 + this.url
+                + "','"
+                + "asdf"
                 + "')";
         System.out.println(sql);
         int rows = db.insertSQLQuery(sql);
@@ -209,6 +228,16 @@ public class Video {
         } else {
             return this.url;
         }
+    }
+    
+    public JSONObject searchMyVideos(String username){
+        DatabaseService db = DatabaseService.getInstance();
+        return db.getSQLQuery("SELECT * FROM VIDEOS WHERE USERNAME='" + username + "'");
+    }
+
+    public JSONObject getAllVideos() {
+        DatabaseService db = DatabaseService.getInstance();
+        return db.getSQLQuery("SELECT * FROM VIDEOS");
     }
     
 }
