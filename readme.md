@@ -14,7 +14,7 @@ create table "RUROZ".USUARIOS
 	EMAIL CLOB,
 	USERNAME VARCHAR(256) not null primary key,
 	PASSWORD CLOB
-)
+);
 
 create table "RUROZ".VIDEOS
 (
@@ -26,7 +26,11 @@ create table "RUROZ".VIDEOS
 	REPRODUCCIONES NUMERIC(5) default 0 not null,
 	DESCRIPCION VARCHAR(255) not null,
 	FORMATO VARCHAR(5) not null,
-	URL CLOB
-)
+	URL CLOB,
+	USERNAME VARCHAR(256),
+	CONSTRAINT fk_myVideos
+        FOREIGN KEY (username)
+        REFERENCES usuarios (username)
+);
 
 CREATE SEQUENCE VIDEOS_SEQ INCREMENT BY 1 START WITH 0;
