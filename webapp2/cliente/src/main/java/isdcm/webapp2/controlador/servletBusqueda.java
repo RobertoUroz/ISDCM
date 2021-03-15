@@ -3,29 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package isdcm.webapp1.controlador;
+package isdcm.webapp2.controlador;
 
-import isdcm.webapp1.modelo.Video;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import org.json.JSONObject;
-import org.jsoup.Jsoup;
+
 
 /**
  *
  * @author ruroz
  */
-@WebServlet(name = "servletListadoVid", urlPatterns = {"/servletListadoVid"})
-public class servletListadoVid extends HttpServlet {
+public class servletBusqueda extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +32,17 @@ public class servletListadoVid extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try {
-            request.getRequestDispatcher("jsp/listadoVid.jsp").forward(request, response);
-        } catch (IOException | ServletException e) {
-            e.printStackTrace();
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet servletBusqueda</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet servletBusqueda at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
@@ -58,7 +58,22 @@ public class servletListadoVid extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String videos = null;
+        switch (request.getParameter("button")){
+            case "busquedaVideo":
+                //list videos
+                System.out.println("HOLA");
+                //TODO: Crear WSDL para conectarse con el server
+                //call to web service busquedaVideo (se necesita WSDL con conexión al server IMPORTANTE)
+                break;
+
+            default:
+        }
+        System.out.println(videos);
+        JSONObject videos_parsed = new JSONObject(videos);
+        System.out.println(videos_parsed.toString());
         //processRequest(request, response);
+        
     }
 
     /**
@@ -72,16 +87,6 @@ public class servletListadoVid extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        System.out.println("HELLO");
-        Video v = new Video();
-        JSONObject jsonVideos = v.getAllVideos();
-        List<Video> listVideos = new ArrayList<>();
-        for (int i = 0; i < jsonVideos.getJSONArray("items").length(); i++){
-                JSONObject item = jsonVideos.getJSONArray("items").getJSONObject(i);
-                listVideos.add(new Video(item));
-            }
-        request.setAttribute("listVideos", listVideos);
         processRequest(request, response);
     }
 

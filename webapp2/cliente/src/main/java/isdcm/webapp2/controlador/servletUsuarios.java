@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package isdcm.webapp1.controlador;
+package isdcm.webapp2.controlador;
 
-import isdcm.webapp1.modelo.Usuario;
+import isdcm.webapp2.modelo.Usuario;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -69,25 +69,10 @@ public class servletUsuarios extends HttpServlet {
                         break;
                     case "login":
                         if (correct) {
-                            HttpSession session = request.getSession();
-                            session.setAttribute("user",request.getParameter("username"));
-                            url = "servletListadoVid";
+                            url = "jsp/listadoVid.jsp";
                         } else {
                             request.setAttribute("error_login", true);
                             url = "jsp/login.jsp";
-                        }
-                        break;
-                    case "logout":
-                        HttpSession session = request.getSession();
-                        if (correct) {
-                            session.removeAttribute("user");
-                            session.invalidate();
-                            url = "jsp/login.php";
-                        } else if (session.getAttribute("user") == null) {
-                            request.setAttribute("error_login", true);
-                            url = "jsp/login.jsp";
-                        } else {
-                            url = "servletListadoVid";
                         }
                         break;
                     default:

@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package isdcm.webapp1.modelo;
+package isdcm.webapp2.modelo;
 
 import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
@@ -25,15 +27,24 @@ public class Video {
     private String descripcion;
     private String formato;
     private String url;
-    private String date; //fecha creacion
-    private String duracionString;
     private int id;
+    
+    private String date; //TODO: Change to date time format
+    private String duracionString;
     private int reproducciones;
+    private String username;
     
-    public Video() {
-        
-    }
-    
+    /**
+     *
+     * @param titulo
+     * @param autor
+     * @param duracionH
+     * @param duracionMin
+     * @param duracionS
+     * @param descripcion
+     * @param formato
+     * @param url
+     */
     public Video(String titulo, String autor, int duracionH, int duracionMin, int duracionS, String descripcion, String formato, String url) {
         this.titulo = titulo;
         this.autor = autor;
@@ -44,7 +55,7 @@ public class Video {
         this.formato = formato;
         this.url = url;
     }
-
+    
     public Video(JSONObject item) {
         System.out.println(item.toString());
         this.id = item.getInt("id");
@@ -56,6 +67,21 @@ public class Video {
         this.descripcion = item.getString("descripcion");
         this.formato = item.getString("formato");
         this.url = item.getString("url");
+        this.username = item.getString("username");
+    }
+
+    /**
+     *
+     */
+    public Video() {
+    }
+    
+    /**
+     *
+     * @param id
+     */
+    public Video(int id){
+        this.id = id;
     }
     
     /**
@@ -128,11 +154,24 @@ public class Video {
         this.url = url;
     }
     
-    public JSONObject getAllVideos() {
-        DatabaseService db = DatabaseService.getInstance();
-        return db.getSQLQuery("SELECT * FROM VIDEOS");
+    /**
+     * @return the date
+     */
+    public String getDate() {
+        return date;
+    }
+
+    /**
+     * @param date the date to set
+     */
+    public void setDate(String date) {
+        this.date = date;
     }
     
+    /**
+     *
+     * @return
+     */
     public boolean registerVideo() {
         DatabaseService db = DatabaseService.getInstance();
         JSONObject id = db.getSQLQuery("VALUES NEXT VALUE FOR VIDEOS_SEQ");
@@ -159,19 +198,11 @@ public class Video {
                 + this.formato
                 + "','"
                 + this.url
-                + "','a')";
+                + "','"
+                + "asdf"
+                + "')";
         System.out.println(sql);
         int rows = db.insertSQLQuery(sql);
-        /*int rows = db.insertPSQLQuery("INSERT INTO VIDEOS VALUES(?,?,?,?,?,?,?,?,?);",
-                int_id,
-                this.titulo,
-                this.autor,
-                sqlDate,
-                sqlTime,
-                0,
-                this.descripcion,
-                this.formato,
-                this.url); */
         switch (rows){
             case 1:
                 return true;
@@ -182,60 +213,31 @@ public class Video {
                 return false;
         }
     }
-
+    
     /**
-     * @return the date
+     *
+     * @return
      */
-    public String getDate() {
-        return date;
+    public String getURLFromVideo() {
+        if (this.url == null){
+            DatabaseService db = DatabaseService.getInstance();
+            JSONObject video_json = db.getSQLQuery("SELECT URL FROM VIDEOS WHERE ID='" + this.id + "'");
+            if (video_json.getString("count") != "1")
+                throw new RuntimeException("Error in video::gettingURLFromVideo() : video selected is not unique or does not exist");
+            return video_json.getJSONArray("items").getJSONObject(0).getString("URL");
+        } else {
+            return this.url;
+        }
+    }
+    
+    public JSONObject searchMyVideos(String username){
+        DatabaseService db = DatabaseService.getInstance();
+        return db.getSQLQuery("SELECT * FROM VIDEOS WHERE USERNAME='" + username + "'");
     }
 
-    /**
-     * @param date the date to set
-     */
-    public void setDate(String date) {
-        this.date = date;
+    public JSONObject getAllVideos() {
+        DatabaseService db = DatabaseService.getInstance();
+        return db.getSQLQuery("SELECT * FROM VIDEOS");
     }
-
-    /**
-     * @return the duracionString
-     */
-    public String getDuracionString() {
-        return duracionString;
-    }
-
-    /**
-     * @param duracionString the duracionString to set
-     */
-    public void setDuracionString(String duracionString) {
-        this.duracionString = duracionString;
-    }
-
-    /**
-     * @return the id
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    /**
-     * @return the reproducciones
-     */
-    public int getReproducciones() {
-        return reproducciones;
-    }
-
-    /**
-     * @param reproducciones the reproducciones to set
-     */
-    public void setReproducciones(int reproducciones) {
-        this.reproducciones = reproducciones;
-    }
+    
 }
