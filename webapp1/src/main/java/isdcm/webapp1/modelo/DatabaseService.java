@@ -30,7 +30,7 @@ public class DatabaseService {
     private Connection connection = null;
     
     private DatabaseService() {
-        this.db_URL = "jdbc:derby://localhost:1527/webapp1"; //isdcm_db";
+        this.db_URL = "jdbc:derby://localhost:1527/isdcm_db";
         try {
             connection = DriverManager.getConnection(db_URL, "ruroz", "admin");
             System.out.println("Connected to DB");

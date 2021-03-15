@@ -34,8 +34,8 @@
                 --></div>
                 <label>Descripcion</label>   
                 <input type="text" placeholder="Introduzca Descripcion" name="descripcion" required>
-                <label>Formato</label>   
-                <input type="text" placeholder="Introduzca Formato" <!--pattern="(video|application)/[a-zA-Z0-9.-]+"--> maxlength="5" name="formato" required>  
+                <label>Formato</label>    <!--pattern="(video|application)/[a-zA-Z0-9.-]+"-->
+                <input type="text" placeholder="Introduzca Formato" maxlength="5" name="formato" required>  
                 <label>URL</label>   
                 <input type="text" placeholder="Introduzca URL" name="url" required>    
                 <button type="submit" name="registroVideo" value="registroV">Registrar</button>

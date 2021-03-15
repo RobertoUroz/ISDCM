@@ -137,7 +137,7 @@ public class Video {
                 + this.formato
                 + "','"
                 + this.url
-                + "')";
+                + "','a')";
         System.out.println(sql);
         int rows = db.insertSQLQuery(sql);
         /*int rows = db.insertPSQLQuery("INSERT INTO VIDEOS VALUES(?,?,?,?,?,?,?,?,?);",
