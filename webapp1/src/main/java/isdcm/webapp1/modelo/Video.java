@@ -25,6 +25,7 @@ public class Video {
     private String descripcion;
     private String formato;
     private String url;
+    private String username;
     private String date; //fecha creacion
     private String duracionString;
     private int id;
@@ -34,7 +35,7 @@ public class Video {
         
     }
     
-    public Video(String titulo, String autor, int duracionH, int duracionMin, int duracionS, String descripcion, String formato, String url) {
+    public Video(String titulo, String autor, int duracionH, int duracionMin, int duracionS, String descripcion, String formato, String url, String username) {
         this.titulo = titulo;
         this.autor = autor;
         this.duracionH = duracionH;
@@ -43,6 +44,7 @@ public class Video {
         this.descripcion = descripcion;
         this.formato = formato;
         this.url = url;
+        this.username = username;
     }
 
     public Video(JSONObject item) {
@@ -56,6 +58,7 @@ public class Video {
         this.descripcion = item.getString("descripcion");
         this.formato = item.getString("formato");
         this.url = item.getString("url");
+        this.username = item.getString("username");
     }
     
     /**
@@ -135,13 +138,13 @@ public class Video {
     
     public boolean registerVideo() {
         DatabaseService db = DatabaseService.getInstance();
-        JSONObject id = db.getSQLQuery("VALUES NEXT VALUE FOR VIDEOS_SEQ");
-        int int_id = id.getJSONArray("items").getJSONObject(0).getInt("1");
+        JSONObject ni_id = db.getSQLQuery("VALUES NEXT VALUE FOR VIDEOS_SEQ");
+        int int_id = ni_id.getJSONArray("items").getJSONObject(0).getInt("1");
         //Time
         Time sqlTime = new Time(this.duracionH, this.duracionMin, this.duracionS);
         //Date
         Date sqlDate = new Date(System.currentTimeMillis());
-        String sql = "INSERT INTO VIDEOS VALUES("
+        /*String sql = "INSERT INTO VIDEOS VALUES("
                 + int_id
                 + ",'"
                 + this.titulo
@@ -159,10 +162,11 @@ public class Video {
                 + this.formato
                 + "','"
                 + this.url
-                + "','a')";
+                + "','"
+        + this.username + "')";
         System.out.println(sql);
-        int rows = db.insertSQLQuery(sql);
-        /*int rows = db.insertPSQLQuery("INSERT INTO VIDEOS VALUES(?,?,?,?,?,?,?,?,?);",
+        int rows = db.insertSQLQuery(sql);*/
+        int rows = db.insertPSQLQuery("INSERT INTO VIDEOS VALUES(?,?,?,?,?,?,?,?,?,?)",
                 int_id,
                 this.titulo,
                 this.autor,
@@ -171,7 +175,8 @@ public class Video {
                 0,
                 this.descripcion,
                 this.formato,
-                this.url); */
+                this.url,
+                this.username);
         switch (rows){
             case 1:
                 return true;
@@ -182,7 +187,15 @@ public class Video {
                 return false;
         }
     }
+    
+    public String getUsuario() {
+        return username;
+    }
 
+    public void setUsuario(String username) {
+        this.username = username;
+    }
+    
     /**
      * @return the date
      */

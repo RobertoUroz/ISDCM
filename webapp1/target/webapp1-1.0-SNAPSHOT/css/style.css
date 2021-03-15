@@ -89,8 +89,38 @@ button:hover {
 .container {   
        padding: 25px;   
        background-color: lightblue;  
-}  
-    
+}
+
+.notice {
+    padding: 3px 5px;
+    margin-bottom: 0.5em;
+}
+
+.goodnotice {
+    border: 1px #4CAF50 solid;
+    background: #8cef90;
+}
+
+.badnotice {
+}
+
+.datatable {
+    border-bottom:1px black solid;
+    border-right:1px black solid;
+    border-spacing:0;
+}
+
+.datatable th, .datatable td {
+    border-top:1px black solid;
+    border-left:1px black solid;
+    border-spacing:0;
+    padding:3px 5px;
+}
+
+.datatable th {
+    text-align:left;
+}
+
 .hidden {
     visibility: hidden;
 }

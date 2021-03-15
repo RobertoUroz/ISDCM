@@ -92,7 +92,8 @@ public class servletRegistroVid extends HttpServlet {
             String descripcion = request.getParameter("descripcion");
             String formato = request.getParameter("formato");
             String url = request.getParameter("url");
-            Video v = new Video(titulo, autor, duracionH, duracionMin, duracionS, descripcion, formato, url);
+            String username = request.getParameter("username");
+            Video v = new Video(titulo, autor, duracionH, duracionMin, duracionS, descripcion, formato, url, username);
             request.setAttribute("correct", v.registerVideo());
             processRequest(request, response);
         } else {

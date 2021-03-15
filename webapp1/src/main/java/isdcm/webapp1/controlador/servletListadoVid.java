@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 
@@ -59,6 +60,8 @@ public class servletListadoVid extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
+        mostrarlistado(request);
+        processRequest(request, response);
     }
 
     /**
@@ -73,16 +76,20 @@ public class servletListadoVid extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
+        mostrarlistado(request);
+        processRequest(request, response);
+    }
+
+    private void mostrarlistado(HttpServletRequest request) throws JSONException {
         System.out.println("HELLO");
         Video v = new Video();
         JSONObject jsonVideos = v.getAllVideos();
         List<Video> listVideos = new ArrayList<>();
         for (int i = 0; i < jsonVideos.getJSONArray("items").length(); i++){
-                JSONObject item = jsonVideos.getJSONArray("items").getJSONObject(i);
-                listVideos.add(new Video(item));
-            }
+            JSONObject item = jsonVideos.getJSONArray("items").getJSONObject(i);
+            listVideos.add(new Video(item));
+        }
         request.setAttribute("listVideos", listVideos);
-        processRequest(request, response);
     }
 
     /**

@@ -38,6 +38,7 @@
                 <input type="text" placeholder="Introduzca Formato" maxlength="5" name="formato" required>  
                 <label>URL</label>   
                 <input type="text" placeholder="Introduzca URL" name="url" required>    
+                <input type="hidden" name="username" value="<%= usuario %>" />
                 <button type="submit" name="registroVideo" value="registroV">Registrar</button>
             </div>   
         </form>

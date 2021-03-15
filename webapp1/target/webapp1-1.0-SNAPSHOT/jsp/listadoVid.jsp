@@ -28,26 +28,36 @@ and open the template in the editor.
         %>
         <div class="user">Usuario: <%= usuario %>. <form action="/webapp1/servletUsuarios" method="post"><button type="submit" name="button" value="logout">Cerrar sesi&oacute;n</button></form></div>
         <h1> Listado Videos </h1>
+        <center> <a href="/webapp1/jsp/registroVid.jsp"><button type="button">Registrar Video</button></a> </center>    
+        
         <% if (insertado) {%>
-            <center><p>¡Vídeo insertado con éxito!</p></center>
+            <div class="notice goodnotice">¡Vídeo insertado con éxito!</div>
             <%request.setAttribute("vid_insertado", false);%>
         <%}%>
         <div class="container">
-            <table>
+            <table class="datatable">
+                <tr>
+                    <th>Id</th>
+                    <th>T&iacute;tulo</th>
+                    <th>Autor</th>
+                    <th>Descripci&oacute;n</th>
+                    <th>Fecha Creaci&oacute;n</th>
+                    <th>Duraci&oacute;n</th>
+                    <th>Reproducciones</th>
+                </tr>
                 <c:forEach var="video" items="${listVideos}">
                     <tr>
-                    <td>Id : ${video.id}</td>
-                    <td>Titulo : ${video.titulo}</td>
-                    <td>Autor : ${video.autor}</td>
-                    <td>Descripcion : ${video.descripcion}</td>
-                    <td>Fecha Creacion : ${video.date}</td>
-                    <td>Duracion : ${video.duracionString}</td>
-                    <td>Reproducciones : ${video.reproducciones}</td>
+                    <td>${video.id}</td>
+                    <td>${video.titulo}</td>
+                    <td>${video.autor}</td>
+                    <td>${video.descripcion}</td>
+                    <td>${video.date}</td>
+                    <td>${video.duracionString}</td>
+                    <td>${video.reproducciones}</td>
                     </tr>
                 </c:forEach>
             </table>
         </div>   
-        <center> <a href="/webapp1/jsp/registroVid.jsp"><button type="button">Registrar Video</button></a> </center>    
         <center> <button type="button" action="/webapp1/servletListadoVid" method="get">Mis videos</button></a> </center>    
     </body>
 </html>

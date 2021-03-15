@@ -64,19 +64,7 @@ public class DatabaseService {
         result.put("count", 0);
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
-            for (int i=0; i<params.length; ++i) {
-                if (params[i] instanceof String) {
-                statement.setString(i, (String) params[i]);
-                } else if (params[i] instanceof Time) {
-                statement.setTime(i, (Time) params[i]);
-                } else if (params[i] instanceof Date) {
-                statement.setDate(i, (Date) params[i]);
-                } else if (params[i] instanceof Clob) {
-                statement.setClob(i, (Clob) params[i]);
-                } else {
-                statement.setInt(i, (int) params[i]);
-                }
-            }
+            parametros_en_sentencia(params, statement);
             ResultSet rows = statement.executeQuery();
             JSONArray rows_array = convertToJSONArray(rows);
             result.put("items", rows_array);
@@ -87,6 +75,26 @@ public class DatabaseService {
             Logger.getLogger(DatabaseService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;
+    }
+
+    private void parametros_en_sentencia(Object[] params, PreparedStatement statement) throws SQLException {
+        for (int i=0; i<params.length; ++i) {
+            if (params[i] instanceof String) {
+                statement.setString(i+1, (String) params[i]);
+            } else if (params[i] instanceof Time) {
+                statement.setTime(i+1, (Time) params[i]);
+            } else if (params[i] instanceof Date) {
+                statement.setDate(i+1, (Date) params[i]);
+            } else if (params[i] instanceof Clob) {
+                statement.setClob(i+1, (Clob) params[i]);
+            } else {
+                try {
+                    statement.setInt(i+1, (int) params[i]);
+                } catch (NullPointerException e) {
+                    System.out.print(params[i].getClass().getName());
+                }
+            }
+        }
     }
     
     int insertSQLQuery(String sql) {
@@ -106,19 +114,7 @@ public class DatabaseService {
         int rows = 0;
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
-            for (int i=0; i<params.length; ++i) {
-                if (params[i] instanceof String) {
-                statement.setString(i, (String) params[i]);
-                } else if (params[i] instanceof Time) {
-                statement.setTime(i, (Time) params[i]);
-                } else if (params[i] instanceof Date) {
-                statement.setDate(i, (Date) params[i]);
-                } else if (params[i] instanceof Clob) {
-                statement.setClob(i, (Clob) params[i]);
-                } else {
-                statement.setInt(i, (int) params[i]);
-                }
-            }
+            parametros_en_sentencia(params, statement);
             rows = statement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseService.class.getName()).log(Level.SEVERE, null, ex);
