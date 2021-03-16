@@ -58,6 +58,6 @@ and open the template in the editor.
                 </c:forEach>
             </table>
         </div>   
-        <center> <button type="button" action="/webapp1/servletListadoVid" method="get">Mis videos</button></a> </center>    
+        <!--<center> <button type="button" action="/webapp1/servletListadoVid" method="get">Mis videos</button></a> </center>    -->
     </body>
 </html>

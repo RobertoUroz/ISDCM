@@ -84,7 +84,7 @@ public class servletUsuarios extends HttpServlet {
                         if (correct) {
                             session.removeAttribute("user");
                             session.invalidate();
-                            url = "jsp/login.php";
+                            url = "jsp/login.jsp";
                         } else if (session.getAttribute("user") == null) {
                             request.setAttribute("error_login", true);
                             url = "jsp/login.jsp";
@@ -149,6 +149,10 @@ public class servletUsuarios extends HttpServlet {
             String password = request.getParameter("password");
             Usuario u = new Usuario(username, password);
             request.setAttribute("correct", u.loginUser());
+            processRequest(request, response);
+        } else if (request.getParameter("button").equals("logout")) {
+            System.out.println("He venido del logout button");
+            request.setAttribute("correct", true);
             processRequest(request, response);
         } else {
             System.out.println("Caso no comprobado");
