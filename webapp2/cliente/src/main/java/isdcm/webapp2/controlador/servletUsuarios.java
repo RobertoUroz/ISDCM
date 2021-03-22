@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -69,12 +70,27 @@ public class servletUsuarios extends HttpServlet {
                         break;
                     case "login":
                         if (correct) {
-                            url = "jsp/listadoVid.jsp";
+                            HttpSession session = request.getSession();
+                            session.setAttribute("user",request.getParameter("username"));
+                            url = "servletListadoVid";	
                         } else {
                             request.setAttribute("error_login", true);
                             url = "jsp/login.jsp";
                         }
                         break;
+                    case "logout":			  
+                        HttpSession session = request.getSession();
+                        if (correct) {
+                            session.removeAttribute("user");
+                            session.invalidate();
+                            url = "jsp/login.jsp";
+                        } else if (session.getAttribute("user") == null) {
+                            request.setAttribute("error_login", true);
+                            url = "jsp/login.jsp";
+                        } else {
+                            url = "servletListadoVid";
+                        }
+                        break;											   
                     default:
                         System.out.println("Case not handled");
                 }
@@ -132,6 +148,10 @@ public class servletUsuarios extends HttpServlet {
             String password = request.getParameter("password");
             Usuario u = new Usuario(username, password);
             request.setAttribute("correct", u.loginUser());
+            processRequest(request, response);
+	} else if (request.getParameter("button").equals("logout")) {
+            System.out.println("He venido del logout button");
+            request.setAttribute("correct", true);
             processRequest(request, response);
         } else {
             System.out.println("Caso no comprobado");

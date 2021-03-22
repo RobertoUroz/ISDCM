@@ -22,6 +22,7 @@ and open the template in the editor.
     </head>
     <body>
         <h1>Login</h1>
+		<p><a href="jsp/registroUsu.jsp">Registro</a></p>														  
         <form action="servletUsuarios" method="post">  
             <div class="container">   
                 <label>Nombre usuario:</label>   
@@ -29,7 +30,6 @@ and open the template in the editor.
                 <label>Password:</label>   
                 <input type="password" placeholder="Introduzca Password" name="password" required>  
                 <button type="submit" name="button" value="login">Iniciar sesi&oacute;n</button>
-                <a href="jsp/registroUsu.jsp"><button type="button">Registro</button></a>
             </div>   
         </form>
         <%  if (error) {%>

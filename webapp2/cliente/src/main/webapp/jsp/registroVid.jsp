@@ -11,7 +11,13 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" >
     </head>
     <body>
-        <h1> Registro Video </h1>
+        <%
+            String usuario = (String) session.getAttribute("user");
+        %>
+        <div class="user">Usuario: <%= usuario %>. <form action="../servletUsuarios" method="post"><button type="submit" name="button" value="logout">Cerrar sesi&oacute;n</button></form></div>
+
+        <a href="${pageContext.request.contextPath}/servletListadoVid">&laquo; Listado de vídeos</a>
+		<h1> Registro Video </h1>
         <form action="../servletRegistroVid" method="post">  
             <div class="container">   
                 <label>Titulo</label>   
@@ -20,19 +26,25 @@
                 <input type="text" placeholder="Introduzca Autor" name="autor" required>  
                 <label>Duracion</label>   
                 <!--<input type="text" placeholder="Introduzca Duracion" name="duracion" required>-->
-                <div class="inputgroup duration"><input type="" placeholder="hh" min="0" max="99" name="duracionh" />:<input tnumberype="number" placeholder="mm" min="0" max="59" name="duracionmin" />:<input type="number" placeholder="ss" min="0" max="59" name="duracions" /></div>
-                <label>Descripcion</label>   
+                <div class="inputgroup duration"><!--
+                    --><input type="text" placeholder="hh" pattern="[0-9][0-9]?" name="duracionh" id="duracionh" />:<!--
+                    --><input type="text" placeholder="mm" pattern="[0-5]?[0-9]" name="duracionmin" id="duracionmin" />:<!--
+                    --><input type="text" placeholder="ss" pattern="[0-5]?[0-9]" name="duracions" id="duracions" /><!--
+                --></div>
+				<label>Descripcion</label>   
                 <input type="text" placeholder="Introduzca Descripcion" name="descripcion" required>
-                <label>Formato</label>   
-                <input type="text" placeholder="Introduzca Formato" name="formato" required>  
+			    <label>Formato</label>    <!--pattern="(video|application)/[a-zA-Z0-9.-]+"-->
+                <input type="text" placeholder="Introduzca Formato" maxlength="5" name="formato" required>  
                 <label>URL</label>   
                 <input type="text" placeholder="Introduzca URL" name="url" required>    
+				<input type="hidden" name="username" value="<%= usuario %>" />
                 <button type="submit" name="registroVideo" value="registroV">Registrar</button>
             </div>   
         </form>
         <% if (error) {%>
             <center><p id="errorMessage">Video no ha podido ser insertado, por favor, inténtelo de nuevo</p></center>
             <%request.setAttribute("error_registro_vid", false);%>
-         <%}%>
+        <%}%>
+        <script src="../js/entradatiempo.js"></script>											
     </body>
 </html>

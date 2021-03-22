@@ -14,6 +14,12 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" >
     </head>
     <body>
+        
+        <%
+            String usuario = (String) session.getAttribute("user");
+        %>
+        <div class="user">Usuario: <%= usuario %>. <form action="${pageContext.request.contextPath}/servletUsuarios" method="post"><button type="submit" name="button" value="logout">Cerrar sesi&oacute;n</button></form></div>
+        
         <center> <h1> Búsqueda Videos </h1> </center>  
 
         <div class="container" title="Buscar Videos">
@@ -36,13 +42,28 @@
         </div>
 
         <div class="container">
-            <table>
-                <c:forEach var="habit" items="${habits}">
+            <table class="datatable">
+                <tr>
+                    <th>Id</th>
+                    <th>T&iacute;tulo</th>
+                    <th>Autor</th>
+                    <th>Descripci&oacute;n</th>
+                    <th>Fecha Creaci&oacute;n</th>
+                    <th>Duraci&oacute;n</th>
+                    <th>Reproducciones</th>
+                </tr>
+                <c:forEach var="video" items="${listVideos}">
                     <tr>
-                        <td>Habit : ${habit}</td>
+                    <td>${video.id}</td>
+                    <td>${video.titulo}</td>
+                    <td>${video.autor}</td>
+                    <td>${video.descripcion}</td>
+                    <td>${video.date}</td>
+                    <td>${video.duracionString}</td>
+                    <td>${video.reproducciones}</td>
                     </tr>
                 </c:forEach>
             </table>
-        </div>
+        </div>   
     </body>
 </html>

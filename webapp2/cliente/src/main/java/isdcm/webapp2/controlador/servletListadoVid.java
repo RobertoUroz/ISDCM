@@ -10,12 +10,15 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.json.JSONException;								  
 import org.json.JSONObject;
 
 /**
@@ -38,10 +41,6 @@ public class servletListadoVid extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try {
-            /* TODO output your page here. You may use following sample code. */
-            
-            List<String> list = new ArrayList<>(); //TODO: list is videos list
-            request.setAttribute("List", list);
             request.getRequestDispatcher("jsp/listadoVid.jsp").forward(request, response);
         } catch (IOException | ServletException e) {
             e.printStackTrace();
@@ -61,21 +60,7 @@ public class servletListadoVid extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        System.out.println("Hello from servletListadoVid::Get");
-		List<Video> listVideos = new ArrayList<>();
-		switch (request.getParameter("button")) {
-			case "myVideos":
-				//search for My Videos
-				Video v = new Video();
-				JSONObject jsonVideos = v.searchMyVideos("asdf"); //TODO: change hardcoded username to the one from session
-				for (int i = 0; i < jsonVideos.getJSONArray("items").length(); i++){
-						JSONObject item = jsonVideos.getJSONArray("items").getJSONObject(i);
-						listVideos.add(new Video(item));
-					}
-				break;
-			default:
-		}
-        request.setAttribute("listVideos", listVideos);
+        mostrarlistado(request);
         processRequest(request, response);
     }
 
@@ -90,20 +75,41 @@ public class servletListadoVid extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("Hello from servletListadoVid::Post");
-		Video v = new Video();
-		JSONObject jsonVideos = v.getAllVideos(); //TODO: change hardcoded username to the one from session
-		List<Video> listVideos = new ArrayList<>();
-		for (int i = 0; i < jsonVideos.getJSONArray("items").length(); i++){
-				JSONObject item = jsonVideos.getJSONArray("items").getJSONObject(i);
-				listVideos.add(new Video(item));
-		}
-		request.setAttribute("listVideos", listVideos);
-	
+        mostrarlistado(request);
         processRequest(request, response);
     }
 
-    /**
+    private void mostrarlistado(HttpServletRequest request) throws JSONException {
+        List<Video> listVideos = new ArrayList<>();
+        Video v = new Video();
+        JSONObject jsonVideos;
+        if (Objects.isNull(request.getParameter("button"))) {
+            jsonVideos = v.getAllVideos();
+            for (int i = 0; i < jsonVideos.getJSONArray("items").length(); i++){
+                JSONObject item = jsonVideos.getJSONArray("items").getJSONObject(i);
+                listVideos.add(new Video(item));
+            }   
+        }
+        else if (request.getParameter("button").equals("myVideos")){
+            //search for My Videos
+            System.out.println("USER : " + request.getSession().getAttribute("user"));
+            jsonVideos = v.searchMyVideos((String)request.getSession().getAttribute("user")); //TODO: change hardcoded username to the one from session
+            for (int i = 0; i < jsonVideos.getJSONArray("items").length(); i++){
+                JSONObject item = jsonVideos.getJSONArray("items").getJSONObject(i);
+                listVideos.add(new Video(item));
+            }
+        }
+        else {
+            jsonVideos = v.getAllVideos();
+            for (int i = 0; i < jsonVideos.getJSONArray("items").length(); i++){
+                JSONObject item = jsonVideos.getJSONArray("items").getJSONObject(i);
+                listVideos.add(new Video(item));
+            }
+        }
+        request.setAttribute("listVideos", listVideos);
+    }
+	
+	/**
      * Returns a short description of the servlet.
      *
      * @return a String containing servlet description
