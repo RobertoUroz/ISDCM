@@ -63,6 +63,7 @@ public class servletBusqueda extends HttpServlet {
             case "busquedaVideo":
                 //list videos
                 System.out.println("HOLA");
+                videos = "{}";
                 //TODO: Crear WSDL para conectarse con el server
                 //call to web service busquedaVideo (se necesita WSDL con conexión al server IMPORTANTE)
                 break;
@@ -72,7 +73,7 @@ public class servletBusqueda extends HttpServlet {
         System.out.println(videos);
         JSONObject videos_parsed = new JSONObject(videos);
         System.out.println(videos_parsed.toString());
-        //processRequest(request, response);
+        processRequest(request, response);
         
     }
 

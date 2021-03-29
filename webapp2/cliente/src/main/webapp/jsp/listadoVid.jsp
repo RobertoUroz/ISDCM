@@ -10,9 +10,13 @@ and open the template in the editor.
 <!DOCTYPE html>	   
 <% Boolean insertado = !Objects.isNull(request.getAttribute("vid_insertado")) && ((Boolean) request.getAttribute("vid_insertado"));%>
 
+<% if (Objects.isNull(session.getAttribute("user")))
+    response.sendRedirect("/cliente/");
+%>
+
 <% 
     if (Objects.isNull(request.getAttribute("listVideos"))) {
-		request.getRequestDispatcher("servletListadoVid").forward(request, response);
+        request.getRequestDispatcher("servletListadoVid").forward(request, response);
     }
 %>
 

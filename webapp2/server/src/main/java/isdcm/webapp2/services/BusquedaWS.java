@@ -53,7 +53,17 @@ public class BusquedaWS {
         Video v = new Video();
         return v.searchByFechaCreacion(dia, mes, year).toString();
     }
-
+    
+    /**
+     * Web service operation
+     * @param titulo
+     * @param autor
+     * @param year
+     * @param mes
+     * @param dia
+     * @return 
+     */
+    @WebMethod(operationName = "busquedaVideo")
     public String busquedaVideo(String titulo, String autor, String year, String mes, String dia) {
         Video v = new Video();
         return v.searchVideo(titulo, autor, year, mes, dia).toString();

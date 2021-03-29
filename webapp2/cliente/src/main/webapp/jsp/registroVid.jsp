@@ -1,6 +1,9 @@
 <%@page import="java.util.Objects"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% Boolean error = !Objects.isNull(request.getAttribute("error_registro_vid")) && ((Boolean) request.getAttribute("error_registro_vid"));%>
+<% if (Objects.isNull(session.getAttribute("user")))
+    response.sendRedirect("/cliente/");
+%>
 
 <!DOCTYPE html>
 <html>

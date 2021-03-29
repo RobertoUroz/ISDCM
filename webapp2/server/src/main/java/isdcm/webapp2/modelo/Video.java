@@ -259,19 +259,28 @@ public class Video {
     
     public JSONObject searchVideo(String titulo, String autor, String year, String mes, String dia) {
         DatabaseService db = DatabaseService.getInstance();
-        String sql = "SELECT * FROM VIDEOS WHERE ";
-        if (autor != "")
-            sql += "AUTOR = '" + autor + "' AND ";
-        if (titulo != "")
-            sql += "TITULO = '" + titulo + "' AND ";
-        if (year != ""){
+        String sql = "SELECT * FROM VIDEOS";
+        String where_sql = "";
+        if (autor != null)
+            where_sql += "AUTOR = '" + autor + "' AND ";
+        if (titulo != null)
+            where_sql += "TITULO = '" + titulo + "' AND ";
+        if (year != null){
             String[] dates;
-            dates = getDates(Integer.parseInt(dia), Integer.parseInt(mes), Integer.parseInt(year));
+            Integer I_dia = null, I_mes = null;
+            int i_year = Integer.parseInt(year);
+            if (dia != null)
+                I_dia = Integer.valueOf(dia);
+            if (mes != null)
+                I_mes = Integer.valueOf(mes);
+            dates = getDates(I_dia, I_mes, i_year);
             if (dates[1] != null)
-                sql += "FECHACREACION >= " + dates[0] + " AND FECHACREACION < " + dates[1];
+                where_sql += "FECHACREACION >= " + dates[0] + " AND FECHACREACION < " + dates[1];
             else
-                sql += "FECHACREACION = " + dates[0];
+                where_sql += "FECHACREACION = " + dates[0];
         }
+        if (where_sql != "")
+            sql += " WHERE " + where_sql;
         System.out.println(sql);
         return db.getSQLQuery(sql);
     }

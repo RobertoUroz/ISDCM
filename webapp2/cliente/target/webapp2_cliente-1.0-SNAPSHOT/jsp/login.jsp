@@ -18,14 +18,14 @@ and open the template in the editor.
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name='viewport' content='width=device-width, initial-scale=1.0'>
         <title>Login Page</title>
-        <link rel="stylesheet" href="/webapp1/css/style.css" >
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" >
     </head>
     <body>
         <h1>Login</h1>
-        <p><a href="/webapp1/jsp/registroUsu.jsp">Registro</a></p>
-        <form action="/webapp1/servletUsuarios" method="post">  
-            <div class="container">
-                <label>Nombre de usuario:</label>   
+		<p><a href="jsp/registroUsu.jsp">Registro</a></p>														  
+        <form action="servletUsuarios" method="post">  
+            <div class="container">   
+                <label>Nombre usuario:</label>   
                 <input type="text" placeholder="Introduzca Usuario" name="username" required>  
                 <label>Password:</label>   
                 <input type="password" placeholder="Introduzca Password" name="password" required>  
@@ -33,7 +33,7 @@ and open the template in the editor.
             </div>   
         </form>
         <%  if (error) {%>
-                <center> <p id="errorMessage">Usuario no registrado en el sistema.</p> </center>
+                <center> <p id="errorMessage">Usuario no registrado en el sistema</p> </center>
                 <%request.setAttribute("error_login", false);%>
         <%}%>
 </body>     
