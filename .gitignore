@@ -4,5 +4,7 @@ webapp1/target/*
 webapp2/target/*
 webappWSApplication/target/*
 gfv5ee8.dpf
-/webapp2/cliente - copia/target/
-/webapp2/backup/target/
+webapp2/cliente - copia/target/
+webapp2/backup/target/
+webapp2/server/target/
+webapp2/cliente/target/

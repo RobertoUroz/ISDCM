@@ -4,6 +4,7 @@
     Author     : ruroz
 --%>
 
+<%@page import="java.util.Objects"%>
 <% if (Objects.isNull(session.getAttribute("user")))
     response.sendRedirect("/cliente/");
 %>
@@ -34,12 +35,20 @@
                 <input type="text" placeholder="Introduzca título" name="titulo">  
                 <label>Autor</label>   
                 <input type="text" placeholder="Introduzca Autor" name="autor">  
+                <!--
                 <label>Año</label>   
-                <input type="number" min="1914" max="2030" placeholder="Introduzca Año" name="year">  
+                <input type="text" min="1914" max="2030" placeholder="Introduzca Año" name="year">  
                 <label>Mes</label>    
-                <input type="number" min="1" max="12" placeholder="Introduzca Mes" name="mes">  
+                <input type="text" min="1" max="12" placeholder="Introduzca Mes" name="mes">  
                 <label>Dia</label>   
-                <input type="number" min="1" max="31" placeholder="Introduzca Dia" name="dia">  
+                <input type="text" min="1" max="31" placeholder="Introduzca Dia" name="dia">  
+                -->
+                <label>Fecha</label>
+                <div class="inputgroup duration"><!--
+                    --><input type="text" placeholder="yyyy" pattern="(19[1-9][0-9]|20[0-3][0-9])" name="fechay" id="fechay" class="year" />-<!--
+                    --><input type="text" placeholder="mm" pattern="(0?[1-9]|1[012])" name="fecham" id="fecham" />-<!--
+                    --><input type="text" placeholder="dd" pattern="(0?[1-9]|[12][0-9]|3[01])" name="fechad" id="fechad" /><!--
+                --></div>
                 <button type="submit" name="button" value="busquedaVideo">Buscar</button>
             </div>   
         </form>
@@ -68,6 +77,7 @@
                     </tr>
                 </c:forEach>
             </table>
-        </div>   
+        </div>
+                            <script src="../js/entradatiempo.js"></script>
     </body>
 </html>

@@ -74,6 +74,10 @@ input[type=text], input[type=password], input[type=email] {
 .duration input {
     width: 2.5em;
 }
+
+.duration input.year {
+    width: 3.5em;
+}
     
 button:hover {   
     opacity: 0.7;   
