@@ -5,9 +5,11 @@
  */
 package isdcm.webapp2.controlador;
 
+import isdcm.webapp2.modelo.Video;
 import isdcm.webapp2.services.BusquedaWS_Service;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +24,7 @@ import org.json.JSONObject;
  */
 public class servletBusqueda extends HttpServlet {
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/BusquedaWS/BusquedaWS.wsdl")
+    @WebServiceRef(wsdlLocation = "/cliente/WEB-INF/wsdl/localhost_8080/BusquedaWS/BusquedaWS.wsdl")
     private BusquedaWS_Service service;
 
     /**
@@ -56,12 +58,10 @@ public class servletBusqueda extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String videos = null;
+        List<Video> videos = null;
         switch (request.getParameter("button")){
             case "busquedaVideo":
                 //list videos
-                System.out.println("HOLA");
-                videos = "{}";
                 //TODO: Crear WSDL para conectarse con el server
                 //call to web service busquedaVideo (se necesita WSDL con conexión al server IMPORTANTE)
                 
@@ -80,23 +80,14 @@ public class servletBusqueda extends HttpServlet {
                     if (arg4.equals("")) arg4 = null;
 
                     videos = port.busquedaVideo(arg0, arg1, arg2, arg3, arg4);
-                    //request.setAttribute("listVideos",videos);
+                    request.setAttribute("listVideos",videos);
                 } catch (Exception ex) {
                     // TODO handle custom exceptions here
                 }
-
-
-break;
-
+                break;
             default:
         }
-        System.out.println("videos: "+videos);
-        JSONObject videos_parsed = new JSONObject(videos);
-        //System.out.println("videos_parsed: "+videos_parsed.toString());
-        request.setAttribute("listVideos",videos_parsed);
-        System.out.println("listVideos: "+request.getAttribute("listVideos"));
         processRequest(request, response);
-        
     }
 
     /**

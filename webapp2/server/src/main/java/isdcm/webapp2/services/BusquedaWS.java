@@ -6,6 +6,7 @@
 package isdcm.webapp2.services;
 
 import isdcm.webapp2.modelo.Video;
+import java.util.List;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -64,14 +65,14 @@ public class BusquedaWS {
      * @return 
      */
     @WebMethod(operationName = "busquedaVideo")
-    public String busquedaVideo(@WebParam(name = "titulo") String titulo,
+    public List<Video> busquedaVideo(@WebParam(name = "titulo") String titulo,
             @WebParam(name = "autor") String autor,
             @WebParam(name = "year") String year,
             @WebParam(name = "month") String mes,
             @WebParam(name = "day") String dia) {
         Video v = new Video();
         System.out.print("Búsqueda vídeo "+ titulo+","+ autor+","+ year+","+mes+","+dia);
-        return v.searchVideo(titulo, autor, year, mes, dia).toString();
+        return v.searchVideo(titulo, autor, year, mes, dia);
     }
 
     /**

@@ -9,7 +9,9 @@ import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -31,6 +33,8 @@ public class Video {
     private String username;
     
     private String date; //TODO: Change to date time format
+    private String duracionString;
+    private int reproducciones;
     
     /**
      *
@@ -67,6 +71,20 @@ public class Video {
      */
     public Video(int id){
         this.id = id;
+    }
+    
+    public Video(JSONObject item) {
+        System.out.println(item.toString());
+        this.id = item.getInt("id");
+        this.titulo = item.getString("titulo");
+        this.autor = item.getString("autor");
+        this.date = item.get("fechacreacion").toString();
+        this.duracionString = item.get("duracion").toString();
+        this.reproducciones = item.getInt("reproducciones");
+        this.descripcion = item.getString("descripcion");
+        this.formato = item.getString("formato");
+        this.url = item.getString("url");
+        this.username = item.getString("username");
     }
     
     /**
@@ -154,6 +172,104 @@ public class Video {
     }
     
     /**
+     * @return the duracionH
+     */
+    public int getDuracionH() {
+        return duracionH;
+    }
+
+    /**
+     * @param duracionH the duracionH to set
+     */
+    public void setDuracionH(int duracionH) {
+        this.duracionH = duracionH;
+    }
+
+    /**
+     * @return the duracionMin
+     */
+    public int getDuracionMin() {
+        return duracionMin;
+    }
+
+    /**
+     * @param duracionMin the duracionMin to set
+     */
+    public void setDuracionMin(int duracionMin) {
+        this.duracionMin = duracionMin;
+    }
+
+    /**
+     * @return the duracionS
+     */
+    public int getDuracionS() {
+        return duracionS;
+    }
+
+    /**
+     * @param duracionS the duracionS to set
+     */
+    public void setDuracionS(int duracionS) {
+        this.duracionS = duracionS;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the username
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username the username to set
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    /**
+     * @return the duracionString
+     */
+    public String getDuracionString() {
+        return duracionString;
+    }
+
+    /**
+     * @param duracionString the duracionString to set
+     */
+    public void setDuracionString(String duracionString) {
+        this.duracionString = duracionString;
+    }
+
+    /**
+     * @return the reproducciones
+     */
+    public int getReproducciones() {
+        return reproducciones;
+    }
+
+    /**
+     * @param reproducciones the reproducciones to set
+     */
+    public void setReproducciones(int reproducciones) {
+        this.reproducciones = reproducciones;
+    }
+    
+    /**
      *
      * @return
      */
@@ -162,7 +278,7 @@ public class Video {
         JSONObject id = db.getSQLQuery("VALUES NEXT VALUE FOR VIDEOS_SEQ");
         int int_id = id.getJSONArray("items").getJSONObject(0).getInt("1");
         //Time
-        Time sqlTime = new Time(this.duracionH, this.duracionMin, this.duracionS);
+        Time sqlTime = new Time(this.getDuracionH(), this.getDuracionMin(), this.getDuracionS());
         //Date
         Date sqlDate = new Date(System.currentTimeMillis());
         String sql = "INSERT INTO VIDEOS VALUES("
@@ -184,7 +300,7 @@ public class Video {
                 + "','"
                 + this.url
                 + "','"
-                + this.username
+                + this.getUsername()
                 + "')";
         System.out.println(sql);
         int rows = db.insertSQLQuery(sql);
@@ -205,7 +321,7 @@ public class Video {
      */
     public String getURLFromVideo() {
         DatabaseService db = DatabaseService.getInstance();
-        JSONObject video_json = db.getSQLQuery("SELECT URL FROM VIDEOS WHERE ID='" + this.id + "'");
+        JSONObject video_json = db.getSQLQuery("SELECT URL FROM VIDEOS WHERE ID='" + this.getId() + "'");
         if (video_json.getString("count") != "1")
             throw new RuntimeException("Error in video::gettingURLFromVideo() : video selected is not unique or does not exist");
         return video_json.getJSONArray("items").getJSONObject(0).getString("URL");
@@ -257,14 +373,14 @@ public class Video {
         return db.getSQLQuery(sql);
     }
     
-    public JSONObject searchVideo(String titulo, String autor, String year, String mes, String dia) {
+    public List<Video> searchVideo(String titulo, String autor, String year, String mes, String dia) {
         DatabaseService db = DatabaseService.getInstance();
         String sql = "SELECT * FROM VIDEOS";
-        String where_sql = "";
+        List<String> where_sql = new ArrayList<>();
         if (autor != null)
-            where_sql += "AUTOR = '" + autor + "' AND ";
+            where_sql.add("AUTOR = '" + autor + "'");
         if (titulo != null)
-            where_sql += "TITULO = '" + titulo + "' AND ";
+            where_sql.add("TITULO = '" + titulo + "'");
         if (year != null){
             String[] dates;
             Integer I_dia = null, I_mes = null;
@@ -275,14 +391,21 @@ public class Video {
                 I_mes = Integer.valueOf(mes);
             dates = getDates(I_dia, I_mes, i_year);
             if (dates[1] != null)
-                where_sql += "FECHACREACION >= " + dates[0] + " AND FECHACREACION < " + dates[1];
+                where_sql.add("FECHACREACION >= " + dates[0] + " AND FECHACREACION < " + dates[1]);
             else
-                where_sql += "FECHACREACION = " + dates[0];
+                where_sql.add("FECHACREACION = " + dates[0]);
         }
-        if (where_sql != "")
-            sql += " WHERE " + where_sql;
+        if (!where_sql.isEmpty()){
+         sql += " WHERE ";
+         for (int i = 0; i < where_sql.size(); i++){
+             sql += where_sql.get(i);
+             if (i != where_sql.size() - 1)
+                 sql += " AND ";
+         }   
+        }
         System.out.println(sql);
-        return db.getSQLQuery(sql);
+        JSONObject videos_db = db.getSQLQuery(sql);
+        return transformJSONToListVideos(videos_db);
     }
 
     private String[] getDates(Integer dia, Integer mes, int year) {
@@ -310,5 +433,14 @@ public class Video {
         }
         String[] dates = {first_date, second_date};
         return dates;
+    }
+
+    private List<Video> transformJSONToListVideos(JSONObject videos_db) {
+        JSONArray videos_array = videos_db.getJSONArray("items");
+        List<Video> result = new ArrayList<>();
+        for (int i = 0; i < videos_array.length(); i++){
+            result.add(new Video(videos_array.getJSONObject(i)));
+        }
+        return result;
     }
 }
