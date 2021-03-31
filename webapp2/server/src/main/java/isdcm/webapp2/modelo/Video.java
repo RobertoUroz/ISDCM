@@ -327,9 +327,10 @@ public class Video {
         return video_json.getJSONArray("items").getJSONObject(0).getString("URL");
     }
     
-    public JSONObject searchMyVideos(String username){
+    public List<Video> searchMyVideos(String username){
         DatabaseService db = DatabaseService.getInstance();
-        return db.getSQLQuery("SELECT * FROM VIDEOS WHERE USERNAME='" + username + "'");
+        JSONObject videos_obj = db.getSQLQuery("SELECT * FROM VIDEOS WHERE USERNAME='" + username + "'");
+        return transformJSONToListVideos(videos_obj);
     }
     
     /**

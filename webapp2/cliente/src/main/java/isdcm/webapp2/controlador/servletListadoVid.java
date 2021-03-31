@@ -6,6 +6,7 @@
 package isdcm.webapp2.controlador;
 
 import isdcm.webapp2.modelo.Video;
+import isdcm.webapp2.services.BusquedaWS_Service;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.ws.WebServiceRef;
 import org.json.JSONException;								  
 import org.json.JSONObject;
 
@@ -27,7 +29,10 @@ import org.json.JSONObject;
  */
 @WebServlet(name = "servletListadoVid", urlPatterns = {"/servletListadoVid"})
 public class servletListadoVid extends HttpServlet {
-
+    
+    @WebServiceRef(wsdlLocation = "/cliente/WEB-INF/wsdl/localhost_8080/BusquedaWS/BusquedaWS.wsdl")
+    private BusquedaWS_Service service;
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -92,12 +97,12 @@ public class servletListadoVid extends HttpServlet {
         }
         else if (request.getParameter("button").equals("myVideos")){
             //search for My Videos
-            System.out.println("USER : " + request.getSession().getAttribute("user"));
-            jsonVideos = v.searchMyVideos((String)request.getSession().getAttribute("user")); //TODO: change hardcoded username to the one from session
-            for (int i = 0; i < jsonVideos.getJSONArray("items").length(); i++){
-                JSONObject item = jsonVideos.getJSONArray("items").getJSONObject(i);
-                listVideos.add(new Video(item));
-            }
+            try { // Call Web Service Operation
+                    isdcm.webapp2.services.BusquedaWS port = service.getBusquedaWSPort();
+                    listVideos = port.searchMyVideos((String)request.getSession().getAttribute("user"));
+                } catch (Exception ex) {
+                    // TODO handle custom exceptions here
+                }
         }
         else {
             jsonVideos = v.getAllVideos();

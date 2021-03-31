@@ -77,10 +77,11 @@ public class BusquedaWS {
 
     /**
      * Web service operation
+     * @param username
      */
     @WebMethod(operationName = "searchMyVideos")
-    public String searchMyVideos(@WebParam(name = "username") String username) {
+    public List<Video> searchMyVideos(@WebParam(name = "username") String username) {
         Video v = new Video();
-        return v.searchMyVideos(username).toString();
+        return v.searchMyVideos(username);
     }
 }
