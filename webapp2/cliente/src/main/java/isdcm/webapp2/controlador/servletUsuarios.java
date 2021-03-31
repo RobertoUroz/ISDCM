@@ -95,7 +95,10 @@ public class servletUsuarios extends HttpServlet {
                         System.out.println("Case not handled");
                 }
                 try {
-                    request.getRequestDispatcher(url).forward(request, response); //We can send attributes with forward, with sendRedirect we cannot
+                    if (url.equals("servletListadoVid"))
+                        response.sendRedirect(url);
+                    else
+                        request.getRequestDispatcher(url).forward(request, response); //We can send attributes with forward, with sendRedirect we cannot
                 } catch(IOException e) {
                     e.printStackTrace();
                 }

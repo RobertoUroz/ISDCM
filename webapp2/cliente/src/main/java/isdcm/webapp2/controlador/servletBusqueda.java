@@ -5,7 +5,7 @@
  */
 package isdcm.webapp2.controlador;
 
-import isdcm.webapp2.modelo.Video;
+import isdcm.webapp2.services.Video;
 import isdcm.webapp2.services.BusquedaWS_Service;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -24,7 +24,7 @@ import org.json.JSONObject;
  */
 public class servletBusqueda extends HttpServlet {
 
-    @WebServiceRef(wsdlLocation = "/cliente/WEB-INF/wsdl/localhost_8080/BusquedaWS/BusquedaWS.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/BusquedaWS/BusquedaWS.wsdl")
     private BusquedaWS_Service service;
 
     /**

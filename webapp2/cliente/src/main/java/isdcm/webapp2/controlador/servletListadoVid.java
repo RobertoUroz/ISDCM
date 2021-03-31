@@ -5,7 +5,7 @@
  */
 package isdcm.webapp2.controlador;
 
-import isdcm.webapp2.modelo.Video;
+import isdcm.webapp2.services.Video;
 import isdcm.webapp2.services.BusquedaWS_Service;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -30,7 +30,7 @@ import org.json.JSONObject;
 @WebServlet(name = "servletListadoVid", urlPatterns = {"/servletListadoVid"})
 public class servletListadoVid extends HttpServlet {
     
-    @WebServiceRef(wsdlLocation = "/cliente/WEB-INF/wsdl/localhost_8080/BusquedaWS/BusquedaWS.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/BusquedaWS/BusquedaWS.wsdl")
     private BusquedaWS_Service service;
     
     /**
@@ -89,11 +89,19 @@ public class servletListadoVid extends HttpServlet {
         Video v = new Video();
         JSONObject jsonVideos;
         if (Objects.isNull(request.getParameter("button"))) {
-            jsonVideos = v.getAllVideos();
+            /*jsonVideos = v.getAllVideos();
+            //jsonVideos = port.busquedaVideo(arg0, arg1, arg2, arg3, arg4);
             for (int i = 0; i < jsonVideos.getJSONArray("items").length(); i++){
                 JSONObject item = jsonVideos.getJSONArray("items").getJSONObject(i);
                 listVideos.add(new Video(item));
-            }   
+            }   */
+            try { // Call Web Service Operation
+                isdcm.webapp2.services.BusquedaWS port = service.getBusquedaWSPort();
+                listVideos = port.busquedaVideo((String)null,(String)null,(String)null,(String)null,(String)null);
+                // TODO handle custom exceptions here
+            } catch (Exception ex) {
+                // TODO handle custom exceptions here
+            }
         }
         else if (request.getParameter("button").equals("myVideos")){
             //search for My Videos
@@ -105,10 +113,12 @@ public class servletListadoVid extends HttpServlet {
                 }
         }
         else {
-            jsonVideos = v.getAllVideos();
-            for (int i = 0; i < jsonVideos.getJSONArray("items").length(); i++){
-                JSONObject item = jsonVideos.getJSONArray("items").getJSONObject(i);
-                listVideos.add(new Video(item));
+            try { // Call Web Service Operation
+                isdcm.webapp2.services.BusquedaWS port = service.getBusquedaWSPort();
+                listVideos = port.busquedaVideo((String)null,(String)null,(String)null,(String)null,(String)null);
+                // TODO handle custom exceptions here
+            } catch (Exception ex) {
+                // TODO handle custom exceptions here
             }
         }
         request.setAttribute("listVideos", listVideos);

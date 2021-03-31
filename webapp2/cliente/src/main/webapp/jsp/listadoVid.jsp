@@ -22,7 +22,7 @@ and open the template in the editor.
 
 <html>
     <head>
-        <title>Listado Videos</title>
+        <title>Listado de vídeos</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" >
@@ -35,7 +35,7 @@ and open the template in the editor.
         <% if (!Objects.isNull(request.getParameter("button"))) { %>
         <a href="${pageContext.request.contextPath}/servletListadoVid">&laquo; Listado de vídeos</a>
         <% } %>
-        <h1> Listado Videos </h1>
+        <h1><% if (!Objects.isNull(request.getParameter("button"))) { %>Mis vídeos<% } else { %>Listado de vídeos<% } %></h1>
         <center> <a href="jsp/registroVid.jsp"><button type="button">Registrar Video</button></a> </center>    
         
         <% if (insertado) {%>

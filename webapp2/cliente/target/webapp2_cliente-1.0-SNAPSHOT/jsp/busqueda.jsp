@@ -27,7 +27,7 @@ if (Objects.isNull(session.getAttribute("user")))
         %>
         <div class="user">Usuario: <%= usuario %>. <form action="${pageContext.request.contextPath}/servletUsuarios" method="post"><button type="submit" name="button" value="logout">Cerrar sesi&oacute;n</button></form></div>
         <a href="${pageContext.request.contextPath}/servletListadoVid">&laquo; Listado de vídeos</a>
-        <center> <h1> Búsqueda Videos </h1> </center>  
+        <h1>Búsqueda de vídeos</h1>
 
         <div class="container" title="Buscar Videos">
             <p>Filtrar por atributos:<br>
@@ -52,7 +52,7 @@ if (Objects.isNull(session.getAttribute("user")))
                     --><input type="text" placeholder="dd" pattern="(0?[1-9]|[12][0-9]|3[01])" name="fechad" id="fechad" /><!--
                 --></div>
                 <button type="submit" name="button" value="busquedaVideo">Buscar</button>
-            </div>   
+            </div>
         </form>
         </div>
         
