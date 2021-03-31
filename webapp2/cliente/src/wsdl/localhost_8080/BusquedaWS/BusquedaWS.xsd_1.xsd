@@ -46,11 +46,11 @@
 
 <xs:complexType name="busquedaVideo">
 <xs:sequence>
-<xs:element name="arg0" type="xs:string" minOccurs="0"/>
-<xs:element name="arg1" type="xs:string" minOccurs="0"/>
-<xs:element name="arg2" type="xs:string" minOccurs="0"/>
-<xs:element name="arg3" type="xs:string" minOccurs="0"/>
-<xs:element name="arg4" type="xs:string" minOccurs="0"/>
+<xs:element name="titulo" type="xs:string" minOccurs="0"/>
+<xs:element name="autor" type="xs:string" minOccurs="0"/>
+<xs:element name="year" type="xs:string" minOccurs="0"/>
+<xs:element name="month" type="xs:string" minOccurs="0"/>
+<xs:element name="day" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 

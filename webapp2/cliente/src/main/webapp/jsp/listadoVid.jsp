@@ -32,6 +32,9 @@ and open the template in the editor.
             String usuario = (String) session.getAttribute("user");
         %>
         <div class="user">Usuario: <%= usuario %>. <form action="${pageContext.request.contextPath}/servletUsuarios" method="post"><button type="submit" name="button" value="logout">Cerrar sesi&oacute;n</button></form></div>
+        <% if (!Objects.isNull(request.getParameter("button"))) { %>
+        <a href="${pageContext.request.contextPath}/servletListadoVid">&laquo; Listado de vídeos</a>
+        <% } %>
         <h1> Listado Videos </h1>
         <center> <a href="jsp/registroVid.jsp"><button type="button">Registrar Video</button></a> </center>    
         

@@ -37,24 +37,10 @@ public class servletBusqueda extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            /*
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet servletBusqueda</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet servletBusqueda at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-            */
-            try {
-                request.getRequestDispatcher("jsp/busqueda.jsp").forward(request, response);
-            } catch (IOException | ServletException e) {
-                e.printStackTrace();
-            }
+        try {
+            request.getRequestDispatcher("jsp/busqueda.jsp").forward(request, response);
+        } catch (IOException | ServletException e) {
+            e.printStackTrace();
         }
     }
 
@@ -87,20 +73,28 @@ public class servletBusqueda extends HttpServlet {
                     java.lang.String arg3 = request.getParameter("fecham");
                     java.lang.String arg4 = request.getParameter("fechad");
                     // TODO process result here
+                    if (arg0.equals("")) arg0 = null;
+                    if (arg1.equals("")) arg1 = null;
+                    if (arg2.equals("")) arg2 = null;
+                    if (arg3.equals("")) arg3 = null;
+                    if (arg4.equals("")) arg4 = null;
+
                     videos = port.busquedaVideo(arg0, arg1, arg2, arg3, arg4);
                     //request.setAttribute("listVideos",videos);
                 } catch (Exception ex) {
                     // TODO handle custom exceptions here
                 }
 
+
 break;
 
             default:
         }
-        System.out.println(videos);
+        System.out.println("videos: "+videos);
         JSONObject videos_parsed = new JSONObject(videos);
-        System.out.println(videos_parsed.toString());
+        //System.out.println("videos_parsed: "+videos_parsed.toString());
         request.setAttribute("listVideos",videos_parsed);
+        System.out.println("listVideos: "+request.getAttribute("listVideos"));
         processRequest(request, response);
         
     }

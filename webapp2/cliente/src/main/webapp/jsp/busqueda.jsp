@@ -4,8 +4,10 @@
     Author     : ruroz
 --%>
 
+<%@page import="org.json.JSONObject"%>
 <%@page import="java.util.Objects"%>
-<% if (Objects.isNull(session.getAttribute("user")))
+<%
+if (Objects.isNull(session.getAttribute("user")))
     response.sendRedirect("/cliente/");
 %>
 
@@ -24,12 +26,12 @@
             String usuario = (String) session.getAttribute("user");
         %>
         <div class="user">Usuario: <%= usuario %>. <form action="${pageContext.request.contextPath}/servletUsuarios" method="post"><button type="submit" name="button" value="logout">Cerrar sesi&oacute;n</button></form></div>
-        
+        <a href="${pageContext.request.contextPath}/servletListadoVid">&laquo; Listado de vídeos</a>
         <center> <h1> Búsqueda Videos </h1> </center>  
 
         <div class="container" title="Buscar Videos">
             <p>Filtrar por atributos:<br>
-            <form action="../servletBusqueda" method="get">  
+            <form action="${pageContext.request.contextPath}/servletBusqueda" method="get">  
             <div class="container">   
                 <label>Titulo</label>   
                 <input type="text" placeholder="Introduzca título" name="titulo">  
@@ -53,7 +55,11 @@
             </div>   
         </form>
         </div>
-
+        
+        <%
+            System.out.println("The listVideos: "+request.getAttribute("listVideos"));
+            Object listVideos = request.getAttribute("listVideos");
+        %>
         <div class="container">
             <table class="datatable">
                 <tr>
@@ -78,6 +84,6 @@
                 </c:forEach>
             </table>
         </div>
-                            <script src="../js/entradatiempo.js"></script>
+        <script src="../js/entradatiempo.js"></script>
     </body>
 </html>

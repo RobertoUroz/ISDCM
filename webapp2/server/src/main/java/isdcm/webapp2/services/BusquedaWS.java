@@ -64,8 +64,13 @@ public class BusquedaWS {
      * @return 
      */
     @WebMethod(operationName = "busquedaVideo")
-    public String busquedaVideo(String titulo, String autor, String year, String mes, String dia) {
+    public String busquedaVideo(@WebParam(name = "titulo") String titulo,
+            @WebParam(name = "autor") String autor,
+            @WebParam(name = "year") String year,
+            @WebParam(name = "month") String mes,
+            @WebParam(name = "day") String dia) {
         Video v = new Video();
+        System.out.print("Búsqueda vídeo "+ titulo+","+ autor+","+ year+","+mes+","+dia);
         return v.searchVideo(titulo, autor, year, mes, dia).toString();
     }
 
