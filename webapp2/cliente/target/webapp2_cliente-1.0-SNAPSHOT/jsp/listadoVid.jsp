@@ -69,6 +69,6 @@ and open the template in the editor.
             </table>
         </div>   
         <center> <a href="jsp/busqueda.jsp"><button type="button">&#128270;</button></a> </center>    
-        <center> <form action="servletListadoVid" method="GET"><button type="submit" name="button" value="myVideos">Mis videos</button></form> </center>
+        <center> <form action="servletListadoVid" method="GET"><button type="submit" name="button" value="myVideos">Mis vídeos</button></form> </center>
     </body>
 </html>

@@ -281,7 +281,7 @@ public class Video {
         Time sqlTime = new Time(this.getDuracionH(), this.getDuracionMin(), this.getDuracionS());
         //Date
         Date sqlDate = new Date(System.currentTimeMillis());
-        String sql = "INSERT INTO VIDEOS VALUES("
+       /*String sql = "INSERT INTO VIDEOS VALUES("
                 + int_id
                 + ",'"
                 + this.titulo
@@ -300,10 +300,21 @@ public class Video {
                 + "','"
                 + this.url
                 + "','"
-                + this.getUsername()
-                + "')";
+        + this.username + "')";
+					   
         System.out.println(sql);
-        int rows = db.insertSQLQuery(sql);
+        int rows = db.insertSQLQuery(sql);*/
+        int rows = db.insertPSQLQuery("INSERT INTO VIDEOS VALUES(?,?,?,?,?,?,?,?,?,?)",
+                int_id,
+                this.titulo,
+                this.autor,
+                sqlDate,
+                sqlTime,
+                0,
+                this.descripcion,
+                this.formato,
+                this.url,
+                this.username);
         switch (rows){
             case 1:
                 return true;
@@ -321,7 +332,7 @@ public class Video {
      */
     public String getURLFromVideo() {
         DatabaseService db = DatabaseService.getInstance();
-        JSONObject video_json = db.getSQLQuery("SELECT URL FROM VIDEOS WHERE ID='" + this.getId() + "'");
+        JSONObject video_json = db.getPSQLQuery("SELECT URL FROM VIDEOS WHERE ID=?", this.getId());
         if (video_json.getString("count") != "1")
             throw new RuntimeException("Error in video::gettingURLFromVideo() : video selected is not unique or does not exist");
         return video_json.getJSONArray("items").getJSONObject(0).getString("URL");
@@ -329,7 +340,7 @@ public class Video {
     
     public List<Video> searchMyVideos(String username){
         DatabaseService db = DatabaseService.getInstance();
-        JSONObject videos_obj = db.getSQLQuery("SELECT * FROM VIDEOS WHERE USERNAME='" + username + "'");
+        JSONObject videos_obj = db.getPSQLQuery("SELECT * FROM VIDEOS WHERE USERNAME=?",username);
         return transformJSONToListVideos(videos_obj);
     }
     
@@ -340,7 +351,7 @@ public class Video {
      */
     public JSONObject searchByName(String titulo) {
         DatabaseService db = DatabaseService.getInstance();
-        return db.getSQLQuery("SELECT * FROM VIDEOS WHERE TITULO='" + titulo + "'");
+        return db.getPSQLQuery("SELECT * FROM VIDEOS WHERE TITULO=?",titulo);
     }
 
     /**
@@ -350,7 +361,7 @@ public class Video {
      */
     public JSONObject searchByAutor(String autor) {
         DatabaseService db = DatabaseService.getInstance();
-        return db.getSQLQuery("SELECT * FROM VIDEOS WHERE AUTOR='" + autor + "'");
+        return db.getPSQLQuery("SELECT * FROM VIDEOS WHERE AUTOR=?", autor);
     }
 
     /**
@@ -363,25 +374,35 @@ public class Video {
     public JSONObject searchByFechaCreacion(Integer dia, Integer mes, int year) {
         DatabaseService db = DatabaseService.getInstance();
         String sql;
+        List<Object> datos_sql = new ArrayList<>();
         String [] dates;
         dates = getDates(dia, mes, year);
-        if (dates[1] != null)
-            sql = "SELECT * FROM VIDEOS WHERE FECHACREACION >= " + dates[0] + " AND FECHACREACION < " + dates[1];
-        else
-            sql = "SELECT * FROM VIDEOS WHERE FECHACREACION = " + dates[0];
+        if (dates[1] != null) {
+            sql = "SELECT * FROM VIDEOS WHERE FECHACREACION >= ? AND FECHACREACION < ?";
+            datos_sql.add(java.sql.Date.valueOf(dates[0]));
+            datos_sql.add(java.sql.Date.valueOf(dates[1]));
+        } else {
+            sql = "SELECT * FROM VIDEOS WHERE FECHACREACION = ?";
+            datos_sql.add(java.sql.Date.valueOf(dates[0]));
+        }
         System.out.println("DATES : " + dates[0] + " : " + dates[1]);
         System.out.println(sql);
-        return db.getSQLQuery(sql);
+        return db.getPSQLQuery(sql,datos_sql.toArray());
     }
     
     public List<Video> searchVideo(String titulo, String autor, String year, String mes, String dia) {
         DatabaseService db = DatabaseService.getInstance();
         String sql = "SELECT * FROM VIDEOS";
         List<String> where_sql = new ArrayList<>();
-        if (autor != null)
-            where_sql.add("AUTOR = '" + autor + "'");
-        if (titulo != null)
-            where_sql.add("TITULO = '" + titulo + "'");
+        List<Object> datos_sql = new ArrayList<>();
+        if (autor != null) {
+            where_sql.add("AUTOR = ?");
+            datos_sql.add(autor);
+        }
+        if (titulo != null) {
+            where_sql.add("TITULO = ?");
+            datos_sql.add(titulo);
+        }
         if (year != null){
             String[] dates;
             Integer I_dia = null, I_mes = null;
@@ -391,10 +412,14 @@ public class Video {
             if (mes != null)
                 I_mes = Integer.valueOf(mes);
             dates = getDates(I_dia, I_mes, i_year);
-            if (dates[1] != null)
-                where_sql.add("FECHACREACION >= " + dates[0] + " AND FECHACREACION < " + dates[1]);
-            else
-                where_sql.add("FECHACREACION = " + dates[0]);
+            if (dates[1] != null) {
+                where_sql.add("FECHACREACION >= ? AND FECHACREACION < ?");
+                datos_sql.add(java.sql.Date.valueOf(dates[0]));
+                datos_sql.add(java.sql.Date.valueOf(dates[1]));
+            } else {
+                where_sql.add("FECHACREACION = ?");
+                datos_sql.add(java.sql.Date.valueOf(dates[0]));
+            }
         }
         if (!where_sql.isEmpty()){
          sql += " WHERE ";
@@ -405,7 +430,7 @@ public class Video {
          }   
         }
         System.out.println(sql);
-        JSONObject videos_db = db.getSQLQuery(sql);
+        JSONObject videos_db = db.getPSQLQuery(sql,datos_sql.toArray());
         return transformJSONToListVideos(videos_db);
     }
 
@@ -413,23 +438,23 @@ public class Video {
         String first_date = null;
         String second_date = null;
         if (mes == null){
-            first_date = "'" + year + "-01-01'";
-            second_date = "'" + (year+1) + "-01-01'";
+            first_date = year + "-01-01";
+            second_date = (year+1) + "-01-01";
         } else {
             String mes_correct = mes < 10 ? "0" + mes : mes.toString();
             if (dia == null){
-                first_date = "'" + year + "-" + mes_correct + "-01'";
+                first_date = year + "-" + mes_correct + "-01";
                 if (mes == 12) {
-                    second_date = "'" + (year+1) + "-" + "01" + "-01'";
+                    second_date = (year+1) + "-" + "01" + "-01";
                 } else {
                     Integer mes_t = mes + 1;
                     System.out.println(mes + " : " + mes_t);
                     mes_correct = mes_t < 10 ? "0" + mes_t : mes_t.toString();
-                    second_date = "'" + year + "-" + mes_correct + "-01'";
+                    second_date = year + "-" + mes_correct + "-01";
                 }
             } else {
                 String dia_correct = dia < 10 ? "0" + dia : dia.toString();
-                first_date = "'" + year + "-" + mes_correct + "-" + dia_correct + "'";
+                first_date = year + "-" + mes_correct + "-" + dia_correct;
             } 
         }
         String[] dates = {first_date, second_date};

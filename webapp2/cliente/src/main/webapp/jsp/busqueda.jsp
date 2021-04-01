@@ -57,10 +57,6 @@ if (Objects.isNull(session.getAttribute("user")))
         </form>
         </div>
         
-        <%
-            System.out.println("The listVideos: "+request.getAttribute("listVideos"));
-            Object listVideos = request.getAttribute("listVideos");
-        %>
         <div class="container">
             <table class="datatable">
                 <tr>
@@ -85,6 +81,6 @@ if (Objects.isNull(session.getAttribute("user")))
                 </c:forEach>
             </table>
         </div>
-        <script src="../js/entradatiempo.js"></script>
+        <script src="${pageContext.request.contextPath}/js/entradatiempo.js"></script>
     </body>
 </html>
