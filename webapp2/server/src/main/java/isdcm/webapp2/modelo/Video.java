@@ -422,12 +422,12 @@ public class Video {
             }
         }
         if (!where_sql.isEmpty()){
-         sql += " WHERE ";
-         for (int i = 0; i < where_sql.size(); i++){
-             sql += where_sql.get(i);
-             if (i != where_sql.size() - 1)
-                 sql += " AND ";
-         }   
+            sql += " WHERE ";
+            for (int i = 0; i < where_sql.size(); i++){
+                sql += where_sql.get(i);
+                if (i != where_sql.size() - 1)
+                    sql += " AND ";
+            }   
         }
         System.out.println(sql);
         JSONObject videos_db = db.getPSQLQuery(sql,datos_sql.toArray());
