@@ -11,23 +11,28 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.xml.ws.WebServiceRef;
+import org.json.JSONException;								  
 import org.json.JSONObject;
-
 
 /**
  *
  * @author ruroz
  */
-public class servletBusqueda extends HttpServlet {
-
+@WebServlet(name = "servletListadoVid", urlPatterns = {"/servletListadoVid"})
+public class servletListadoVid extends HttpServlet {
+    
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/BusquedaWS/BusquedaWS.wsdl")
     private BusquedaWS_Service service;
-
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -41,7 +46,7 @@ public class servletBusqueda extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try {
-            request.getRequestDispatcher("jsp/busqueda.jsp").forward(request, response);
+            request.getRequestDispatcher("jsp/listadoVid.jsp").forward(request, response);
         } catch (IOException | ServletException e) {
             e.printStackTrace();
         }
@@ -59,35 +64,8 @@ public class servletBusqueda extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Video> listVideos = new ArrayList<>();
-        switch (request.getParameter("button")){
-            case "busquedaVideo":
-                //list videos
-                //TODO: Crear WSDL para conectarse con el server
-                //call to web service busquedaVideo (se necesita WSDL con conexión al server IMPORTANTE)
-                
-                try { // Call Web Service Operation
-                    isdcm.webapp2.services.BusquedaWS port = service.getBusquedaWSPort();
-                    java.lang.String arg0 = request.getParameter("titulo");
-                    java.lang.String arg1 = request.getParameter("autor");
-                    java.lang.String arg2 = request.getParameter("fechay");
-                    java.lang.String arg3 = request.getParameter("fecham");
-                    java.lang.String arg4 = request.getParameter("fechad");
-                    // TODO process result here
-                    if (arg0.equals("")) arg0 = null;
-                    if (arg1.equals("")) arg1 = null;
-                    if (arg2.equals("")) arg2 = null;
-                    if (arg3.equals("")) arg3 = null;
-                    if (arg4.equals("")) arg4 = null;
-
-                    listVideos = port.busquedaVideo(arg0, arg1, arg2, arg3, arg4);
-                    request.setAttribute("listVideos",listVideos);
-                } catch (Exception ex) {
-                    // TODO handle custom exceptions here
-                }
-                break;
-            default:
-        }
+        //processRequest(request, response);
+        mostrarlistado(request);
         processRequest(request, response);
     }
 
@@ -102,10 +80,51 @@ public class servletBusqueda extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        mostrarlistado(request);
         processRequest(request, response);
     }
 
-    /**
+    private void mostrarlistado(HttpServletRequest request) throws JSONException {
+        List<Video> listVideos = new ArrayList<>();
+        Video v = new Video();
+        JSONObject jsonVideos;
+        if (Objects.isNull(request.getParameter("button"))) {
+            /*jsonVideos = v.getAllVideos();
+            //jsonVideos = port.busquedaVideo(arg0, arg1, arg2, arg3, arg4);
+            for (int i = 0; i < jsonVideos.getJSONArray("items").length(); i++){
+                JSONObject item = jsonVideos.getJSONArray("items").getJSONObject(i);
+                listVideos.add(new Video(item));
+            }   */
+            try { // Call Web Service Operation
+                isdcm.webapp2.services.BusquedaWS port = service.getBusquedaWSPort();
+                listVideos = port.busquedaVideo((String)null,(String)null,(String)null,(String)null,(String)null);
+                // TODO handle custom exceptions here
+            } catch (Exception ex) {
+                // TODO handle custom exceptions here
+            }
+        }
+        else if (request.getParameter("button").equals("myVideos")){
+            //search for My Videos
+            try { // Call Web Service Operation
+                    isdcm.webapp2.services.BusquedaWS port = service.getBusquedaWSPort();
+                    listVideos = port.searchMyVideos((String)request.getSession().getAttribute("user"));
+                } catch (Exception ex) {
+                    // TODO handle custom exceptions here
+                }
+        }
+        else {
+            try { // Call Web Service Operation
+                isdcm.webapp2.services.BusquedaWS port = service.getBusquedaWSPort();
+                listVideos = port.busquedaVideo((String)null,(String)null,(String)null,(String)null,(String)null);
+                // TODO handle custom exceptions here
+            } catch (Exception ex) {
+                // TODO handle custom exceptions here
+            }
+        }
+        request.setAttribute("listVideos", listVideos);
+    }
+	
+	/**
      * Returns a short description of the servlet.
      *
      * @return a String containing servlet description

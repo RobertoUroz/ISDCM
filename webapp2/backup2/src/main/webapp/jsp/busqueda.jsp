@@ -4,13 +4,14 @@
     Author     : ruroz
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="isdcm.webapp2.services.Video"%>
 <%@page import="org.json.JSONObject"%>
 <%@page import="java.util.Objects"%>
 <%
 if (Objects.isNull(session.getAttribute("user")))
     response.sendRedirect("/cliente/");
 %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -59,7 +60,11 @@ if (Objects.isNull(session.getAttribute("user")))
         
         <%
             System.out.println("The listVideos: "+request.getAttribute("listVideos"));
-            Object listVideos = request.getAttribute("listVideos");
+  
+            if (!Objects.isNull(request.getAttribute("listVideos"))) {
+                for (Video v : (List<Video>)request.getAttribute("listVideos"))
+                    System.out.println(v.getId());
+            }
         %>
         <div class="container">
             <table class="datatable">
@@ -71,16 +76,18 @@ if (Objects.isNull(session.getAttribute("user")))
                     <th>Fecha Creaci&oacute;n</th>
                     <th>Duraci&oacute;n</th>
                     <th>Reproducciones</th>
+                    <th>Usuario</th>
                 </tr>
                 <c:forEach var="video" items="${listVideos}">
                     <tr>
-                    <td>${video.id}</td>
-                    <td>${video.titulo}</td>
-                    <td>${video.autor}</td>
-                    <td>${video.descripcion}</td>
-                    <td>${video.date}</td>
-                    <td>${video.duracionString}</td>
-                    <td>${video.reproducciones}</td>
+                        <td>${video.id}</td>
+                        <td>${video.titulo}</td>
+                        <td>${video.autor}</td>
+                        <td>${video.descripcion}</td>
+                        <td>${video.date}</td>
+                        <td>${video.duracionString}</td>
+                        <td>${video.reproducciones}</td>
+                        <td>${video.username}</td>
                     </tr>
                 </c:forEach>
             </table>

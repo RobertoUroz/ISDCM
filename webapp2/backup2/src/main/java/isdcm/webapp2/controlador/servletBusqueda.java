@@ -9,7 +9,6 @@ import isdcm.webapp2.services.Video;
 import isdcm.webapp2.services.BusquedaWS_Service;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -59,13 +58,9 @@ public class servletBusqueda extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Video> listVideos = new ArrayList<>();
+        List<Video> videos = null;
         switch (request.getParameter("button")){
             case "busquedaVideo":
-                //list videos
-                //TODO: Crear WSDL para conectarse con el server
-                //call to web service busquedaVideo (se necesita WSDL con conexión al server IMPORTANTE)
-                
                 try { // Call Web Service Operation
                     isdcm.webapp2.services.BusquedaWS port = service.getBusquedaWSPort();
                     java.lang.String arg0 = request.getParameter("titulo");
@@ -80,8 +75,8 @@ public class servletBusqueda extends HttpServlet {
                     if (arg3.equals("")) arg3 = null;
                     if (arg4.equals("")) arg4 = null;
 
-                    listVideos = port.busquedaVideo(arg0, arg1, arg2, arg3, arg4);
-                    request.setAttribute("listVideos",listVideos);
+                    videos = port.busquedaVideo(arg0, arg1, arg2, arg3, arg4);
+                    request.setAttribute("listVideos",videos);
                 } catch (Exception ex) {
                     // TODO handle custom exceptions here
                 }

@@ -5,28 +5,22 @@
  */
 package isdcm.webapp2.controlador;
 
-import isdcm.webapp2.services.Video;
-import isdcm.webapp2.services.BusquedaWS_Service;
+import isdcm.webapp2.modelo.Video;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.ws.WebServiceRef;
-import org.json.JSONObject;
-
 
 /**
  *
  * @author ruroz
  */
-public class servletBusqueda extends HttpServlet {
-
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/BusquedaWS/BusquedaWS.wsdl")
-    private BusquedaWS_Service service;
+@WebServlet(name = "servletRegistroVid", urlPatterns = {"/servletRegistroVid"})
+public class servletRegistroVid extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +34,22 @@ public class servletBusqueda extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try {
-            request.getRequestDispatcher("jsp/busqueda.jsp").forward(request, response);
-        } catch (IOException | ServletException e) {
-            e.printStackTrace();
+        switch (request.getMethod()){
+            case "GET":
+                break;
+            case "POST":
+                String url = "";
+                if ((boolean)request.getAttribute("correct")){
+                    url = "servletListadoVid";
+                    request.setAttribute("vid_insertado", true);
+                } else {
+                    //Add error message
+                    url = "jsp/registroVid.jsp";
+                    request.setAttribute("error_registro_vid", true);
+                }
+                request.getRequestDispatcher(url).forward(request, response);
+                break;
+            default:
         }
     }
 
@@ -59,38 +65,9 @@ public class servletBusqueda extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Video> listVideos = new ArrayList<>();
-        switch (request.getParameter("button")){
-            case "busquedaVideo":
-                //list videos
-                //TODO: Crear WSDL para conectarse con el server
-                //call to web service busquedaVideo (se necesita WSDL con conexión al server IMPORTANTE)
-                
-                try { // Call Web Service Operation
-                    isdcm.webapp2.services.BusquedaWS port = service.getBusquedaWSPort();
-                    java.lang.String arg0 = request.getParameter("titulo");
-                    java.lang.String arg1 = request.getParameter("autor");
-                    java.lang.String arg2 = request.getParameter("fechay");
-                    java.lang.String arg3 = request.getParameter("fecham");
-                    java.lang.String arg4 = request.getParameter("fechad");
-                    // TODO process result here
-                    if (arg0.equals("")) arg0 = null;
-                    if (arg1.equals("")) arg1 = null;
-                    if (arg2.equals("")) arg2 = null;
-                    if (arg3.equals("")) arg3 = null;
-                    if (arg4.equals("")) arg4 = null;
-
-                    listVideos = port.busquedaVideo(arg0, arg1, arg2, arg3, arg4);
-                    request.setAttribute("listVideos",listVideos);
-                } catch (Exception ex) {
-                    // TODO handle custom exceptions here
-                }
-                break;
-            default:
-        }
         processRequest(request, response);
     }
-
+    
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -102,7 +79,25 @@ public class servletBusqueda extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        if (request.getParameter("registroVideo") != null) {
+            System.out.println("He venido del registro de video");
+            String titulo = request.getParameter("titulo");
+            String autor = request.getParameter("autor");
+            int duracionH = Integer.parseInt(request.getParameter("duracionh"));
+            int duracionMin = Integer.parseInt(request.getParameter("duracionmin"));
+            int duracionS = Integer.parseInt(request.getParameter("duracions"));
+            String duracion = duracionH + ":" + duracionMin + ":" + duracionS;
+            String descripcion = request.getParameter("descripcion");
+            String formato = request.getParameter("formato");
+            String url = request.getParameter("url");
+			String username = request.getParameter("username");												   
+            Video v = new Video(titulo, autor, duracionH, duracionMin, duracionS, descripcion, formato, url, username);
+            request.setAttribute("correct", v.registerVideo());
+            processRequest(request, response);
+        } else {
+            System.out.println("El button no ha llegado");
+        }
+        //processRequest(request, response);
     }
 
     /**

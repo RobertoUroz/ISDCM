@@ -62,7 +62,7 @@ public class servletUsuarios extends HttpServlet {
                 switch (request.getParameter("button")) {
                     case "registro":
                         if (correct) {
-                            url = "";
+                            url = "jsp/login.jsp";
                         } else {
                             request.setAttribute("error_registro", true);
                             url = "jsp/registroUsu.jsp";
@@ -75,7 +75,7 @@ public class servletUsuarios extends HttpServlet {
                             url = "servletListadoVid";	
                         } else {
                             request.setAttribute("error_login", true);
-                            url = "";
+                            url = "jsp/login.jsp";
                         }
                         break;
                     case "logout":			  
@@ -83,10 +83,10 @@ public class servletUsuarios extends HttpServlet {
                         if (correct) {
                             session.removeAttribute("user");
                             session.invalidate();
-                            url = "";
+                            url = "jsp/login.jsp";
                         } else if (session.getAttribute("user") == null) {
                             request.setAttribute("error_login", true);
-                            url = "";
+                            url = "jsp/login.jsp";
                         } else {
                             url = "servletListadoVid";
                         }
