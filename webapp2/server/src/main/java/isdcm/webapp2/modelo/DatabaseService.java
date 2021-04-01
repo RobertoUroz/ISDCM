@@ -33,7 +33,7 @@ public class DatabaseService {
         this.db_URL = "jdbc:derby://localhost:1527/isdcm_db";
         try {
             connection = DriverManager.getConnection(db_URL, "ruroz", "admin");
-            System.out.println("Connected to DB");
+            System.out.println("DatabaseService :: Connected to DB");
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseService.class.getName()).log(Level.SEVERE, null, ex);
         }
