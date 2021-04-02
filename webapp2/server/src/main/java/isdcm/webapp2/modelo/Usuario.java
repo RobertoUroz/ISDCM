@@ -106,7 +106,8 @@ public class Usuario {
         
         JSONObject user_json = null;
         DatabaseService db = DatabaseService.getInstance();
-        user_json = db.getSQLQuery("SELECT * FROM USUARIOS WHERE USERNAME='" + this.getUsername() + "'");
+        user_json = db.getPSQLQuery("SELECT * FROM USUARIOS WHERE USERNAME=?",this.getUsername());
+        //user_json = db.getSQLQuery("SELECT * FROM USUARIOS WHERE USERNAME='"+this.getUsername()+"'");
         String password_tmp = "null";
         if (user_json.getInt("count") > 0){
             System.out.println(user_json.toString());
@@ -119,11 +120,12 @@ public class Usuario {
     public boolean registerUser(){
         JSONObject user_json = null;
         DatabaseService db = DatabaseService.getInstance();
-        user_json = db.getSQLQuery("SELECT * FROM USUARIOS WHERE USERNAME='" + this.getUsername() + "'");
+        user_json = db.getPSQLQuery("SELECT * FROM USUARIOS WHERE USERNAME=?",this.getUsername());
+        //user_json = db.getSQLQuery("SELECT * FROM USUARIOS WHERE USERNAME='"+this.getUsername()+"'");
         if (user_json.getInt("count") > 0) {
             return false;
         }
-        int rows = db.insertSQLQuery("INSERT INTO USUARIOS VALUES('"
+        /*int rows = db.insertSQLQuery("INSERT INTO USUARIOS VALUES('"
                 + this.nombre 
                 + "','"
                 + this.apellidos
@@ -133,7 +135,13 @@ public class Usuario {
                 + this.username
                 + "','"
                 + this.password
-                + "')");
+                + "')");*/
+        int rows = db.insertPSQLQuery("INSERT INTO USUARIOS VALUES(?,?,?,?,?)",
+                this.nombre,
+                this.apellidos,
+                this.email,
+                this.username,
+                this.password);
         switch (rows){
             case 1:
                 return true;

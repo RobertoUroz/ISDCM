@@ -241,18 +241,13 @@ public class Video {
     public String getURLFromVideo() {
         if (this.url == null){
             DatabaseService db = DatabaseService.getInstance();
-            JSONObject video_json = db.getSQLQuery("SELECT URL FROM VIDEOS WHERE ID='" + this.id + "'");
+            JSONObject video_json = db.getPSQLQuery("SELECT URL FROM VIDEOS WHERE ID=?",this.id);
             if (video_json.getString("count") != "1")
                 throw new RuntimeException("Error in video::gettingURLFromVideo() : video selected is not unique or does not exist");
             return video_json.getJSONArray("items").getJSONObject(0).getString("URL");
         } else {
             return this.url;
         }
-    }
-    
-    public JSONObject searchMyVideos(String username){
-        DatabaseService db = DatabaseService.getInstance();
-        return db.getSQLQuery("SELECT * FROM VIDEOS WHERE USERNAME='" + username + "'");
     }
 
     public JSONObject getAllVideos() {

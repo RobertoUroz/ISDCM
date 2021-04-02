@@ -106,7 +106,7 @@ public class Usuario {
         
         JSONObject user_json = null;
         DatabaseService db = DatabaseService.getInstance();
-		user_json = db.getPSQLQuery("SELECT * FROM USUARIOS WHERE USERNAME=?",this.getUsername());
+        user_json = db.getPSQLQuery("SELECT * FROM USUARIOS WHERE USERNAME=?",this.getUsername());
         //user_json = db.getSQLQuery("SELECT * FROM USUARIOS WHERE USERNAME='"+this.getUsername()+"'");
         String password_tmp = "null";
         System.out.print("-->"+user_json.toString());
