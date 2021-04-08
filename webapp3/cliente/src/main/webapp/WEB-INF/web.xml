@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+    <!-- Servlets  -->
+    <servlet>
+        <display-name>servletListadoVid</display-name>
+        <servlet-name>servletListadoVid</servlet-name>
+        <servlet-class>isdcm.webapp.controlador.servletListadoVid</servlet-class>
+    </servlet>
+    <servlet>
+        <display-name>servletBusqueda</display-name>
+        <servlet-name>servletBusqueda</servlet-name>
+        <servlet-class>isdcm.webapp.controlador.servletBusqueda</servlet-class>
+    </servlet>
+    <servlet>
+        <display-name>servletRegistroVid</display-name>
+        <servlet-name>servletRegistroVid</servlet-name>
+        <servlet-class>isdcm.webapp.controlador.servletRegistroVid</servlet-class>
+    </servlet>
+    <servlet>
+        <display-name>servletUsuarios</display-name>
+        <servlet-name>servletUsuarios</servlet-name>
+        <servlet-class>isdcm.webapp.controlador.servletUsuarios</servlet-class>
+    </servlet>
+    <!-- **** -->
+    <welcome-file-list>
+        <welcome-file>jsp/login.jsp</welcome-file>
+    </welcome-file-list>
+    <!-- Servlet-mappings -->
+    <servlet-mapping>
+        <servlet-name>servletBusqueda</servlet-name>
+        <url-pattern>/servletBusqueda</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>servletListadoVid</servlet-name>
+        <url-pattern>/servletListadoVid</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>servletRegistroVid</servlet-name>
+        <url-pattern>/servletRegistroVid</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>servletUsuarios</servlet-name>
+        <url-pattern>/servletUsuarios</url-pattern>
+    </servlet-mapping>
+    <!-- **** -->
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/jsp/errors/error404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/jsp/errors/error500.jsp</location>
+    </error-page>
+</web-app>

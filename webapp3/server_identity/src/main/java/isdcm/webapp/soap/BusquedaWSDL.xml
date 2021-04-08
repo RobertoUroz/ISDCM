@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<wsdl:description name="BusquedaWS"
+    xmlns:wsdl="http://www.w3.org/ns/wsdl"
+    targetNamespace="http://example.com/busquedaws"
+    xmlns:tns="http://example.com/busquedaws"
+    xmlns:wsoap="http://www.w3.org/ns/wsdl/soap">
+    <wsdl:types>
+        <xs:schema
+            targetNamespace="http://example.com/busquedaws"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"> 
+            <xs:element name="SearchbyFechaCreacion">
+            <xs:complexType>
+                    <xs:all>
+                        <xs:element name="year" type="int"/>
+                        <xs:element name="month" type="int" minOccurs="0"/>
+                        <xs:element name="day" type="int" minOccurs="0"/>
+                    </xs:all>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="SearchbyTitle">
+            <xs:complexType>
+                    <xs:all>
+                        <xs:element name="title" type="xs:string"/>
+                    </xs:all>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="SearchbyAuthor">
+            <xs:complexType>
+                    <xs:all>
+                        <xs:element name="author" type="xs:string"/>
+                    </xs:all>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="SearchVideo">
+            <xs:complexType>
+                    <xs:all>
+                        <xs:element name="year" type="int"/>
+                        <xs:element name="month" type="int" minOccurs="0"/>
+                        <xs:element name="day" type="int" minOccurs="0"/>
+                        <xs:element name="title" type="xs:string"/>
+                        <xs:element name="author" type="xs:string"/>
+                    </xs:all>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="SearchMyVideos">
+            <xs:complexType>
+                    <xs:all>
+                        <xs:element name="username" type="xs:string"/>
+                    </xs:all>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="VideoList">
+                <xs:complexType>
+                    <xs:all>
+                        <xs:element name="video" type="Video" minOccurs="0" maxOccurs="unbounded" />
+                    </xs:all>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Video">
+                <xs:complexType>
+                    <xs:all>
+                        <xs:element name="title" type="xs:string"/>
+                        <xs:element name="author" type="xs:string"/>
+                        <xs:element name="duration" type="int"/>
+                        <xs:element name="description" type="xs:string"/>
+                        <xs:element name="format" type="xs:string"/>
+                        <xs:element name="url" type="xs:string"/>
+                        <xs:element name="id" type="int"/>
+                        <xs:element name="username" type="xs:string"/>
+                    </xs:all>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:interface name="SearchbyFechaCreacionInterface">
+        <wsdl:operation name="SearchbyFechaCreacion" pattern="http://www.w3.org/ns/wsdl/in-out">
+            <wsdl:input element="tns:SearchbyFechaCreacion"/>
+            <wsdl:output element="tns:Videos"/>
+        </wsdl:operation>
+    </wsdl:interface>
+    <wsdl:interface name="SearchbyAuthorInterface">
+        <wsdl:operation name="SearchbyAuthor" pattern="http://www.w3.org/ns/wsdl/in-out">
+            <wsdl:input element="tns:SearchbyAuthor"/>
+            <wsdl:output element="tns:Videos"/>
+        </wsdl:operation>
+    </wsdl:interface>
+    <wsdl:interface name="SearchbyTitleInterface">
+        <wsdl:operation name="SearchbyTitle" pattern="http://www.w3.org/ns/wsdl/in-out">
+            <wsdl:input element="tns:SearchbyTitle"/>
+            <wsdl:output element="tns:Videos"/>
+        </wsdl:operation>
+    </wsdl:interface>
+    <wsdl:interface name="SearchMyVideosInterface">
+        <wsdl:operation name="SearchMyVideos" pattern="http://www.w3.org/ns/wsdl/in-out">
+            <wsdl:input element="tns:SearchMyVideos"/>
+            <wsdl:output element="tns:Videos"/>
+        </wsdl:operation>
+    </wsdl:interface>
+    <wsdl:binding name="SearchbyFechaCreacionBinding"
+    interface="tns:SearchbyFechaCreacionInterface" type="http://www.w3.org/ns/wsdl/soap" wsoap:version="1.1"
+    wsoap:protocol="http://www.w3.org/2006/01/soap11/bindings/HTTP/">
+        <wsdl:operation ref="tns:SearchbyFechaCreacion"
+        wsoap:action="http://example.com/SearchbyFechaCreacion"/>
+    </wsdl:binding>
+    <wsdl:binding name="SearchbyAuthorBinding"
+    interface="tns:SearchbyAuthorInterface" type="http://www.w3.org/ns/wsdl/soap" wsoap:version="1.1"
+    wsoap:protocol="http://www.w3.org/2006/01/soap11/bindings/HTTP/">
+        <wsdl:operation ref="tns:SearchbyAuthorCreacion"
+        wsoap:action="http://example.com/SearchbyAuthor"/>
+    </wsdl:binding>
+    <wsdl:binding name="SearchbyTitleBinding"
+    interface="tns:SearchbyTitleInterface" type="http://www.w3.org/ns/wsdl/soap" wsoap:version="1.1"
+    wsoap:protocol="http://www.w3.org/2006/01/soap11/bindings/HTTP/">
+        <wsdl:operation ref="tns:SearchbyTitle"
+        wsoap:action="http://example.com/SearchbyTitle"/>
+    </wsdl:binding>
+    <wsdl:binding name="SearchVideoBinding"
+    interface="tns:SearchMyVideosInterface" type="http://www.w3.org/ns/wsdl/soap" wsoap:version="1.1"
+    wsoap:protocol="http://www.w3.org/2006/01/soap11/bindings/HTTP/">
+        <wsdl:operation ref="tns:SearchVideo"
+        wsoap:action="http://example.com/SearchVideo"/>
+    </wsdl:binding>
+    <wsdl:binding name="SearchMyVideosBinding"
+    interface="tns:SearchMyVideosInterface" type="http://www.w3.org/ns/wsdl/soap" wsoap:version="1.1"
+    wsoap:protocol="http://www.w3.org/2006/01/soap11/bindings/HTTP/">
+        <wsdl:operation ref="tns:SearchMyVideos"
+        wsoap:action="http://example.com/SearchMyVideos"/>
+    </wsdl:binding>
+    <wsdl:service name="SearchbyFechaCreacionService"
+    interface="tns:SearchbyFechaCreacionInterface">
+        <wsdl:documentation>SearchbyFechaCreacion</wsdl:documentation>
+        <wsdl:endpoint name="SearchbyFechaCreacionEndPoint"
+        binding="tns:SearchbyFechaCreacionBinding" address="http://localhost:8080/webapp/wsdl/SearchbyFechaCreacion"/>
+    </wsdl:service>
+    <wsdl:service name="SearchbyAuthorService"
+    interface="tns:SearchbyAuthorInterface">
+        <wsdl:documentation>SearchbyAuthor</wsdl:documentation>
+        <wsdl:endpoint name="SearchbyAuthorEndPoint"
+        binding="tns:SearchbyAuthorBinding" address="http://localhost:8080/webapp/wsdl/SearchbyAuthor"/>
+    </wsdl:service>
+    <wsdl:service name="SearchbyTitleService"
+    interface="tns:SearchbyTitleInterface">
+        <wsdl:documentation>SearchbyTitle</wsdl:documentation>
+        <wsdl:endpoint name="SearchbyTitleEndPoint"
+        binding="tns:SearchbyTitleBinding" address="http://localhost:8080/webapp/wsdl/SearchbyTitle"/>
+    </wsdl:service>
+    <wsdl:service name="SearchVideoService"
+    interface="tns:SearchVideoInterface">
+        <wsdl:documentation>SearchVideo</wsdl:documentation>
+        <wsdl:endpoint name="SearchVideoEndPoint"
+        binding="tns:SearchVideoBinding" address="http://localhost:8080/webapp/wsdl/SearchVideo"/>
+    </wsdl:service>
+    <wsdl:service name="SearchMyVideosService"
+    interface="tns:SearchMyVideosInterface">
+        <wsdl:documentation>SearchMyVideos</wsdl:documentation>
+        <wsdl:endpoint name="SearchMyVideosEndPoint"
+        binding="tns:SearchMyVideosBinding" address="http://localhost:8080/webapp/wsdl/SearchMyVideos"/>
+    </wsdl:service>
+</wsdl:description>
