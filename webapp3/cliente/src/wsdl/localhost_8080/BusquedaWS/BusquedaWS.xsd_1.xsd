@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.4.3 (RELEASE-2.4.3-ad3323c; 2019-01-21T17:46:06+0000) JAXWS-RI/2.3.2 JAXWS-API/2.3.2 JAXB-RI/2.3.2 JAXB-API/2.3.2 git-revision#unknown. --><xs:schema xmlns:tns="http://services.webapp.isdcm/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://services.webapp.isdcm/">
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.4.3 (RELEASE-2.4.3-ad3323c; 2019-01-21T17:46:06+0000) JAXWS-RI/2.3.2 JAXWS-API/2.3.2 JAXB-RI/2.3.2 JAXB-API/2.3.2 git-revision#unknown. --><xs:schema xmlns:tns="http://soap.webapp.isdcm/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://soap.webapp.isdcm/">
 
 <xs:element name="busquedaPorAutor" type="tns:busquedaPorAutor"/>
 
@@ -20,25 +20,43 @@
 
 <xs:element name="searchMyVideosResponse" type="tns:searchMyVideosResponse"/>
 
-<xs:complexType name="busquedaPorTitulo">
+<xs:complexType name="busquedaPorFechaDeCreacion">
 <xs:sequence>
-<xs:element name="titulo" type="xs:string" minOccurs="0"/>
+<xs:element name="day" type="xs:int" minOccurs="0"/>
+<xs:element name="month" type="xs:int" minOccurs="0"/>
+<xs:element name="year" type="xs:int"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="busquedaPorTituloResponse">
+<xs:complexType name="busquedaPorFechaDeCreacionResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="searchMyVideos">
+<xs:complexType name="busquedaPorAutor">
 <xs:sequence>
-<xs:element name="username" type="xs:string" minOccurs="0"/>
+<xs:element name="autor" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="searchMyVideosResponse">
+<xs:complexType name="busquedaPorAutorResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="busquedaVideo">
+<xs:sequence>
+<xs:element name="titulo" type="xs:string" minOccurs="0"/>
+<xs:element name="autor" type="xs:string" minOccurs="0"/>
+<xs:element name="year" type="xs:string" minOccurs="0"/>
+<xs:element name="month" type="xs:string" minOccurs="0"/>
+<xs:element name="day" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="busquedaVideoResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:video" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
@@ -62,43 +80,25 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="busquedaVideo">
+<xs:complexType name="searchMyVideos">
 <xs:sequence>
-<xs:element name="titulo" type="xs:string" minOccurs="0"/>
-<xs:element name="autor" type="xs:string" minOccurs="0"/>
-<xs:element name="year" type="xs:string" minOccurs="0"/>
-<xs:element name="month" type="xs:string" minOccurs="0"/>
-<xs:element name="day" type="xs:string" minOccurs="0"/>
+<xs:element name="username" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="busquedaVideoResponse">
+<xs:complexType name="searchMyVideosResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:video" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="busquedaPorAutor">
+<xs:complexType name="busquedaPorTitulo">
 <xs:sequence>
-<xs:element name="autor" type="xs:string" minOccurs="0"/>
+<xs:element name="titulo" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="busquedaPorAutorResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="busquedaPorFechaDeCreacion">
-<xs:sequence>
-<xs:element name="day" type="xs:int" minOccurs="0"/>
-<xs:element name="month" type="xs:int" minOccurs="0"/>
-<xs:element name="year" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="busquedaPorFechaDeCreacionResponse">
+<xs:complexType name="busquedaPorTituloResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>
