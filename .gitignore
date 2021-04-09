@@ -8,3 +8,7 @@ webapp2/cliente - copia/target/
 webapp2/backup/target/
 webapp2/server/target/
 webapp2/cliente/target/
+/webapp3/server_identity/target/
+/webapp3/cliente/target/
+/webapp3/server_rest/target/
+/webapp3/server_soap/target/

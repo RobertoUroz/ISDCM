@@ -469,4 +469,14 @@ public class Video {
         }
         return result;
     }
+
+    public String searchURL() {
+        DatabaseService db = DatabaseService.getInstance();
+        JSONObject result_json = db.getPSQLQuery("SELECT * FROM VIDEOS WHERE ID=?", this.id);
+        System.out.println(result_json.toString());
+        if (result_json.getInt("count") > 0)
+            return result_json.getJSONArray("items").getJSONObject(0).getString("url");
+        else
+            return "";
+    }
 }

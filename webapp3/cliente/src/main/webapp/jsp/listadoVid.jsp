@@ -56,6 +56,7 @@ and open the template in the editor.
                 </tr>
                 <c:forEach var="video" items="${listVideos}">
                     <tr>
+                        <td><a href="jsp/reproduccion.jsp?id="${video.id}>&#9654</a></td>
                         <td>${video.id}</td>
                         <td>${video.titulo}</td>
                         <td>${video.autor}</td>
@@ -68,7 +69,7 @@ and open the template in the editor.
                 </c:forEach>
             </table>
         </div>   
-        <center> <a href="jsp/busqueda.jsp"><button type="button">&#128270;</button></a> </center>    
+        <center> <a href="jsp/busqueda.jsp"><button type="button">&#128270;</button></a> </center>
         <% if (Objects.isNull(request.getParameter("button"))) { %>
             <center> <form action="servletListadoVid" method="GET"><button type="submit" name="button" value="myVideos">Mis videos</button></form> </center>
         <%}%>
