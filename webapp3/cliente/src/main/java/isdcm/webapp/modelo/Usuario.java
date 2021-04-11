@@ -6,7 +6,6 @@
 package isdcm.webapp.modelo;
 
 import org.json.JSONObject;
-
 /**
  *
  * @author ruroz
