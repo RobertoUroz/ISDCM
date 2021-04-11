@@ -81,25 +81,25 @@ and open the template in the editor.
     <wsdl:interface name="SearchbyFechaCreacionInterface">
         <wsdl:operation name="SearchbyFechaCreacion" pattern="http://www.w3.org/ns/wsdl/in-out">
             <wsdl:input element="tns:SearchbyFechaCreacion"/>
-            <wsdl:output element="tns:Videos"/>
+            <wsdl:output element="tns:VideoList"/>
         </wsdl:operation>
     </wsdl:interface>
     <wsdl:interface name="SearchbyAuthorInterface">
         <wsdl:operation name="SearchbyAuthor" pattern="http://www.w3.org/ns/wsdl/in-out">
             <wsdl:input element="tns:SearchbyAuthor"/>
-            <wsdl:output element="tns:Videos"/>
+            <wsdl:output element="tns:VideoList"/>
         </wsdl:operation>
     </wsdl:interface>
     <wsdl:interface name="SearchbyTitleInterface">
         <wsdl:operation name="SearchbyTitle" pattern="http://www.w3.org/ns/wsdl/in-out">
             <wsdl:input element="tns:SearchbyTitle"/>
-            <wsdl:output element="tns:Videos"/>
+            <wsdl:output element="tns:VideoList"/>
         </wsdl:operation>
     </wsdl:interface>
     <wsdl:interface name="SearchMyVideosInterface">
         <wsdl:operation name="SearchMyVideos" pattern="http://www.w3.org/ns/wsdl/in-out">
             <wsdl:input element="tns:SearchMyVideos"/>
-            <wsdl:output element="tns:Videos"/>
+            <wsdl:output element="tns:VideoList"/>
         </wsdl:operation>
     </wsdl:interface>
     <wsdl:binding name="SearchbyFechaCreacionBinding"
