@@ -5,8 +5,8 @@
  */
 package isdcm.webapp.controlador;
 
-import isdcm.webapp.services.Video;
-import isdcm.webapp.services.BusquedaWS_Service;
+import isdcm.webapp.soap.Video;
+import isdcm.webapp.soap.BusquedaWS_Service;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -96,7 +96,7 @@ public class servletListadoVid extends HttpServlet {
                 listVideos.add(new Video(item));
             }   */
             try { // Call Web Service Operation
-                isdcm.webapp.services.BusquedaWS port = service.getBusquedaWSPort();
+                isdcm.webapp.soap.BusquedaWS port = service.getBusquedaWSPort();
                 listVideos = port.busquedaVideo((String)null,(String)null,(String)null,(String)null,(String)null);
                 // TODO handle custom exceptions here
             } catch (Exception ex) {
@@ -106,7 +106,7 @@ public class servletListadoVid extends HttpServlet {
         else if (request.getParameter("button").equals("myVideos")){
             //search for My Videos
             try { // Call Web Service Operation
-                    isdcm.webapp.services.BusquedaWS port = service.getBusquedaWSPort();
+                    isdcm.webapp.soap.BusquedaWS port = service.getBusquedaWSPort();
                     listVideos = port.searchMyVideos((String)request.getSession().getAttribute("user"));
                 } catch (Exception ex) {
                     // TODO handle custom exceptions here
@@ -114,7 +114,7 @@ public class servletListadoVid extends HttpServlet {
         }
         else {
             try { // Call Web Service Operation
-                isdcm.webapp.services.BusquedaWS port = service.getBusquedaWSPort();
+                isdcm.webapp.soap.BusquedaWS port = service.getBusquedaWSPort();
                 listVideos = port.busquedaVideo((String)null,(String)null,(String)null,(String)null,(String)null);
                 // TODO handle custom exceptions here
             } catch (Exception ex) {

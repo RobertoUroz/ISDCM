@@ -5,8 +5,8 @@
  */
 package isdcm.webapp.controlador;
 
-import isdcm.webapp.services.Video;
-import isdcm.webapp.services.BusquedaWS_Service;
+import isdcm.webapp.soap.Video;
+import isdcm.webapp.soap.BusquedaWS_Service;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -67,7 +67,7 @@ public class servletBusqueda extends HttpServlet {
                 //call to web service busquedaVideo (se necesita WSDL con conexión al server IMPORTANTE)
                 
                 try { // Call Web Service Operation
-                    isdcm.webapp.services.BusquedaWS port = service.getBusquedaWSPort();
+                    isdcm.webapp.soap.BusquedaWS port = service.getBusquedaWSPort();
                     java.lang.String arg0 = request.getParameter("titulo");
                     java.lang.String arg1 = request.getParameter("autor");
                     java.lang.String arg2 = request.getParameter("fechay");

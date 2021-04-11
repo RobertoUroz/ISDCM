@@ -56,7 +56,7 @@ and open the template in the editor.
                 </tr>
                 <c:forEach var="video" items="${listVideos}">
                     <tr>
-                        <td><a href="jsp/reproduccion.jsp?id="${video.id}>&#9654</a></td>
+                        <td><a href="jsp/reproduccion.jsp?id=${video.id}">&#9654</a></td>
                         <td>${video.id}</td>
                         <td>${video.titulo}</td>
                         <td>${video.autor}</td>
