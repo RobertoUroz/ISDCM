@@ -46,13 +46,13 @@ public class Video {
      * @param username
      */
     public Video(String titulo, String autor, int duracionH, int duracionMin, int duracionS, String descripcion, String formato, String url, String username) {
-        this.titulo = titulo;
-        this.autor = autor;
+        this.titulo = titulo.toLowerCase();
+        this.autor = autor.toLowerCase();
         this.duracionH = duracionH;
         this.duracionMin = duracionMin;
         this.duracionS = duracionS;
-        this.descripcion = descripcion;
-        this.formato = formato;
+        this.descripcion = descripcion.toLowerCase();
+        this.formato = formato.toLowerCase();
         this.url = url;
         this.username = username;			   
     }
@@ -60,13 +60,13 @@ public class Video {
     public Video(JSONObject item) {
         System.out.println(item.toString());
         this.id = item.getInt("id");
-        this.titulo = item.getString("titulo");
-        this.autor = item.getString("autor");
+        this.titulo = item.getString("titulo").toLowerCase();
+        this.autor = item.getString("autor").toLowerCase();
         this.date = item.get("fechacreacion").toString();
         this.duracionString = item.get("duracion").toString();
         this.reproducciones = item.getInt("reproducciones");
-        this.descripcion = item.getString("descripcion");
-        this.formato = item.getString("formato");
+        this.descripcion = item.getString("descripcion").toLowerCase();
+        this.formato = item.getString("formato").toLowerCase();
         this.url = item.getString("url");
         this.username = item.getString("username");
     }

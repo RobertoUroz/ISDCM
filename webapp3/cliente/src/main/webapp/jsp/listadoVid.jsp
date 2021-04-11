@@ -45,6 +45,7 @@ and open the template in the editor.
         <div class="container">
             <table class="datatable">
                 <tr>
+                    <th>&#9654</th>
                     <th>Id</th>
                     <th>T&iacute;tulo</th>
                     <th>Autor</th>

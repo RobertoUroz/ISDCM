@@ -24,9 +24,9 @@ public class Usuario {
     }
     
     public Usuario(String nombre, String apellidos, String email, String username, String password) {
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.email = email;
+        this.nombre = nombre.toLowerCase();
+        this.apellidos = apellidos.toLowerCase();
+        this.email = email.toLowerCase();
         this.username = username;
         this.password = password;
     }
@@ -121,21 +121,9 @@ public class Usuario {
         JSONObject user_json = null;
         DatabaseService db = DatabaseService.getInstance();
         user_json = db.getPSQLQuery("SELECT * FROM USUARIOS WHERE USERNAME=?",this.getUsername());
-        //user_json = db.getSQLQuery("SELECT * FROM USUARIOS WHERE USERNAME='" + this.getUsername() + "'");
         if (user_json.getInt("count") > 0) {
             return false;
         }
-        /*int rows = db.insertSQLQuery("INSERT INTO USUARIOS VALUES('"
-                + this.nombre 
-                + "','"
-                + this.apellidos
-                + "','"
-                + this.email
-                + "','"
-                + this.username
-                + "','"
-                + this.password
-                + "')");*/
         int rows = db.insertPSQLQuery("INSERT INTO USUARIOS VALUES(?,?,?,?,?)",
                 this.nombre,
                 this.apellidos,
