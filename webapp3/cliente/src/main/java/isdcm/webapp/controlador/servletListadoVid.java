@@ -9,9 +9,14 @@ import isdcm.webapp.soap.Video;
 import isdcm.webapp.soap.BusquedaWS_Service;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -65,6 +70,14 @@ public class servletListadoVid extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
+        System.out.println("GET QUERYPARAMS: " + request.getQueryString());
+        System.out.println("GET Header : " + request.getHeaderNames().nextElement() + " + " + response.getHeader("Content-Length"));
+        if (request.getQueryString() != null){
+            String[] msg_arr = request.getQueryString().split("&");
+            for (String element : msg_arr){
+                request.setAttribute(element.split("=")[0], decode(element.split("=")[1]));
+            }
+        }
         mostrarlistado(request);
         processRequest(request, response);
     }
@@ -82,6 +95,10 @@ public class servletListadoVid extends HttpServlet {
             throws ServletException, IOException {
         mostrarlistado(request);
         processRequest(request, response);
+    }
+            
+    private String decode(String value) throws UnsupportedEncodingException {
+        return URLDecoder.decode(value, StandardCharsets.UTF_8.toString());
     }
 
     private void mostrarlistado(HttpServletRequest request) throws JSONException {

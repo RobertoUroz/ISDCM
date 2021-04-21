@@ -21,29 +21,56 @@
 
         <a href="${pageContext.request.contextPath}/servletListadoVid">&laquo; Listado de vídeos</a>
         <h1>Registro de vídeo</h1>
-        <form action="../servletRegistroVid" method="post">  
+        
+        <!-- TODO -->
+        <!-- Form with Servlet -->
+        <!--<form action="../servletRegistroVid" method="post">  
             <div class="container">   
                 <label>Titulo</label>   
                 <input type="text" placeholder="Introduzca Titulo" name="titulo" required>  
                 <label>Autor</label>   
                 <input type="text" placeholder="Introduzca Autor" name="autor" required>  
                 <label>Duracion</label>   
-                <!--<input type="text" placeholder="Introduzca Duracion" name="duracion" required>-->
-                <div class="inputgroup duration"><!--
-                    --><input type="text" placeholder="hh" pattern="[0-9][0-9]?" name="duracionh" id="duracionh" />:<!--
-                    --><input type="text" placeholder="mm" pattern="[0-5]?[0-9]" name="duracionmin" id="duracionmin" />:<!--
-                    --><input type="text" placeholder="ss" pattern="[0-5]?[0-9]" name="duracions" id="duracions" /><!--
-                --></div>
+                <div class="inputgroup duration">
+                    <input type="text" placeholder="hh" pattern="[0-9][0-9]?" name="duracionh" id="duracionh" />:
+                    <input type="text" placeholder="mm" pattern="[0-5]?[0-9]" name="duracionmin" id="duracionmin" />:
+                    <input type="text" placeholder="ss" pattern="[0-5]?[0-9]" name="duracions" id="duracions" />
+                </div>
                 <label>Descripcion</label>   
                 <input type="text" placeholder="Introduzca Descripcion" name="descripcion" required>
                 <label>Formato</label>    <!--pattern="(video|application)/[a-zA-Z0-9.-]+"-->
-                <input type="text" placeholder="Introduzca Formato" maxlength="5" name="formato" required>  
+                <!--<input type="text" placeholder="Introduzca Formato" maxlength="5" name="formato" required>  
+                <label>URL</label>   
+                <input type="text" placeholder="Introduzca URL" name="url" required>    
+                <input type="hidden" name="username" value="<%= usuario %>" />
+                <button type="submit" name="registroVideo" value="registroV">Registrar</button>
+            </div>   
+        </form>-->
+              
+        <!-- Form with REST POST -->
+        <form action="http://localhost:8080/server_rest/resources/video/register" method="post">  
+            <div class="container">   
+                <label>Titulo</label>   
+                <input type="text" placeholder="Introduzca Titulo" name="titulo" required>  
+                <label>Autor</label>   
+                <input type="text" placeholder="Introduzca Autor" name="autor" required>  
+                <label>Duracion</label>   
+                <div class="inputgroup duration">
+                    <input type="text" placeholder="hh" pattern="[0-9][0-9]?" name="duracionh" id="duracionh" />:
+                    <input type="text" placeholder="mm" pattern="[0-5]?[0-9]" name="duracionmin" id="duracionmin" />:
+                    <input type="text" placeholder="ss" pattern="[0-5]?[0-9]" name="duracions" id="duracions" />
+                </div>
+                <label>Descripcion</label>   
+                <input type="text" placeholder="Introduzca Descripcion" name="descripcion" required>
+                <label>Formato</label>    <!--pattern="(video|application)/[a-zA-Z0-9.-]+"-->
+                <input type="text" placeholder="Introduzca Formato" maxlength="5" name="formato" required>
                 <label>URL</label>   
                 <input type="text" placeholder="Introduzca URL" name="url" required>    
                 <input type="hidden" name="username" value="<%= usuario %>" />
                 <button type="submit" name="registroVideo" value="registroV">Registrar</button>
             </div>   
         </form>
+                
         <% if (error) {%>
             <center><p id="errorMessage">Video no ha podido ser insertado, por favor, inténtelo de nuevo</p></center>
             <%request.setAttribute("error_registro_vid", false);%>

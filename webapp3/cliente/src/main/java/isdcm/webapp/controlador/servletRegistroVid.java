@@ -41,7 +41,7 @@ public class servletRegistroVid extends HttpServlet {
                 String url = "";
                 if ((boolean)request.getAttribute("correct")){
                     url = "servletListadoVid";
-                    request.setAttribute("vid_insertado", true);
+                    request.setAttribute("vid_insertado", "true");
                 } else {
                     //Add error message
                     url = "jsp/registroVid.jsp";

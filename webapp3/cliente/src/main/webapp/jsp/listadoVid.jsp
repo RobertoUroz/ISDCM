@@ -8,7 +8,7 @@ and open the template in the editor.
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>	   
-<% Boolean insertado = !Objects.isNull(request.getAttribute("vid_insertado")) && ((Boolean) request.getAttribute("vid_insertado"));%>
+<% Boolean insertado = !Objects.isNull(request.getAttribute("vid_insertado")) && Boolean.parseBoolean((String) request.getAttribute("vid_insertado"));%>
 
 <% if (Objects.isNull(session.getAttribute("user")))
     response.sendRedirect("/cliente/");
