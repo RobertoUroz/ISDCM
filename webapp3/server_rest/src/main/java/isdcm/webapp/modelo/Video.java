@@ -269,6 +269,21 @@ public class Video {
         this.reproducciones = reproducciones;
     }
     
+    public boolean viewOnceMore() {
+        DatabaseService db = DatabaseService.getInstance();
+        int rows = db.insertPSQLQuery("UPDATE VIDEOS SET reproducciones=reproducciones+1 WHERE id=?",this.getId());
+        switch (rows){
+            case 1:
+                ++this.reproducciones;
+                return true;
+            case 0:
+                return false;
+            default:
+                System.out.println("VIDEOS::viewOnceMore()  :  There has been another number instead of 1 or 0 : " + rows);
+                return false;
+        }
+    }
+    
     /**
      *
      * @return
@@ -333,7 +348,7 @@ public class Video {
     public String getURLFromVideo() {
         DatabaseService db = DatabaseService.getInstance();
         JSONObject video_json = db.getPSQLQuery("SELECT URL FROM VIDEOS WHERE ID=?", this.getId());
-        if (video_json.getString("count") != "1")
+        if (video_json.getInt("count") != 1)
             throw new RuntimeException("Error in video::gettingURLFromVideo() : video selected is not unique or does not exist");
         return video_json.getJSONArray("items").getJSONObject(0).getString("URL");
     }

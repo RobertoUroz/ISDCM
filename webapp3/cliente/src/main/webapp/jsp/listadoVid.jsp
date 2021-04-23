@@ -45,7 +45,7 @@ and open the template in the editor.
         <div class="container">
             <table class="datatable">
                 <tr>
-                    <th>&#9654</th>
+                    <th>&#9654;</th>
                     <th>Id</th>
                     <th>T&iacute;tulo</th>
                     <th>Autor</th>
@@ -57,7 +57,7 @@ and open the template in the editor.
                 </tr>
                 <c:forEach var="video" items="${listVideos}">
                     <tr>
-                        <td><a href="jsp/reproduccion.jsp?id=${video.id}">&#9654</a></td>
+                        <td><a href="jsp/reproduccion.jsp?id=${video.id}">&#9654;</a></td>
                         <td>${video.id}</td>
                         <td>${video.titulo}</td>
                         <td>${video.autor}</td>

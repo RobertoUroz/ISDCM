@@ -12,10 +12,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
         <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
-        <title>JSP Page</title>
+        <title>Reproducci&oacute;n de v&iacute;deo</title>
     </head>
     <body>
+        <%
+            String usuario = (String) session.getAttribute("user");
+        %>
+        <div class="user">Usuario: <%= usuario %>. <form action="${pageContext.request.contextPath}/servletUsuarios" method="post"><button type="submit" name="button" value="logout">Cerrar sesi&oacute;n</button></form></div>
+        <a href="${pageContext.request.contextPath}/servletListadoVid">&laquo; Listado de vídeos</a>
+        <h1>Reproducci&oacute;n de v&iacute;deo</h1>
         <video
             id="my-video"
             class="video-js"
@@ -40,7 +47,7 @@
         var url_string = window.location.href;
         var url = new URL(url_string);
         var id = url.searchParams.get("id");
-        var finalUrl = BASE_URL += "/reproductor?id=" + id; 
+        var finalUrl = BASE_URL + "/reproductor?id=" + id; 
         var video = document.getElementById('my-video');
         var source = document.getElementById('sourceVideo');
         $.ajax({
@@ -50,6 +57,14 @@
                 console.log(html);
                 source.setAttribute('src', html);
                 video.load();
+            }
+        });
+        $.ajax({
+            type: "PUT",
+            url: BASE_URL+"/reproductor/viewoncemore?id="+id,
+            cache: false,
+            success: function (html) {
+                console.log(html);
             }
         });
     </script>
