@@ -15,12 +15,6 @@ and open the template in the editor.
     response.sendRedirect("/cliente/");
 %>
 
-<%
-    if (Objects.isNull(request.getAttribute("listVideos"))) {
-        request.getRequestDispatcher("servletListadoVid").forward(request, response);
-    }
-%>
-
 <html>
     <head>
         <title>Preferencias</title>
