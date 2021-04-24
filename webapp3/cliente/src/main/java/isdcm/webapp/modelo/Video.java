@@ -181,29 +181,6 @@ public class Video {
         Time sqlTime = new Time(this.duracionH, this.duracionMin, this.duracionS);
         //Date
         Date sqlDate = new Date(System.currentTimeMillis());
-       /*String sql = "INSERT INTO VIDEOS VALUES("
-                + int_id
-                + ",'"
-                + this.titulo
-                + "','"
-                + this.autor
-                + "','"
-                + sqlDate
-                + "','"
-                + sqlTime
-                + "',"
-                + 0
-                + ",'"
-                + this.descripcion
-                + "','"
-                + this.formato
-                + "','"
-                + this.url
-                + "','"
-        + this.username + "')";
-					   
-        System.out.println(sql);
-        int rows = db.insertSQLQuery(sql);*/
         int rows = db.insertPSQLQuery("INSERT INTO VIDEOS VALUES(?,?,?,?,?,?,?,?,?,?)",
                 int_id,
                 this.titulo,
@@ -234,7 +211,7 @@ public class Video {
         this.username = username;
     }
     
-	/**
+    /**
      *
      * @return
      */
@@ -242,7 +219,7 @@ public class Video {
         if (this.url == null){
             DatabaseService db = DatabaseService.getInstance();
             JSONObject video_json = db.getPSQLQuery("SELECT URL FROM VIDEOS WHERE ID=?",this.id);
-            if (video_json.getString("count") != "1")
+            if (video_json.getInt("count") != 1)
                 throw new RuntimeException("Error in video::gettingURLFromVideo() : video selected is not unique or does not exist");
             return video_json.getJSONArray("items").getJSONObject(0).getString("URL");
         } else {

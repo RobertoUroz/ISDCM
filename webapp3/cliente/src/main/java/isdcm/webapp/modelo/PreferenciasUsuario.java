@@ -18,7 +18,7 @@ public class PreferenciasUsuario {
     static public final int REPRODUCTOR_HTML5 = 2;
     private int listavideos; // 1 Práctica 1, 2 Práctica 2
     static public final int LISTAVIDEOS_BD = 1;
-    static public final int LISTAVIDEOS_SOAP = 2;
+    static public final int LISTAVIDEOS_SOAPREST = 2;
     private int color; // 1 claro, 2 oscuro
     static public final int COLOR_CLARO = 1;
     static public final int COLOR_OSCURO = 2;
@@ -26,8 +26,8 @@ public class PreferenciasUsuario {
     public PreferenciasUsuario(String username) {
         this.username = username;
         this.reproductor = REPRODUCTOR_HTML5;
-        this.listavideos = LISTAVIDEOS_SOAP;
-        this.color = COLOR_CLARO;
+        this.listavideos = LISTAVIDEOS_SOAPREST;
+        this.color = COLOR_OSCURO;
     }
     
     public PreferenciasUsuario(String username, int reproductor, int listavideos, int color) {

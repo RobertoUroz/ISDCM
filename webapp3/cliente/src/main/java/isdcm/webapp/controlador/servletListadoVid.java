@@ -5,6 +5,7 @@
  */
 package isdcm.webapp.controlador;
 
+import isdcm.webapp.modelo.PreferenciasUsuario;
 import isdcm.webapp.soap.Video;
 import isdcm.webapp.soap.BusquedaWS_Service;
 import java.io.IOException;
@@ -104,20 +105,30 @@ public class servletListadoVid extends HttpServlet {
     private void mostrarlistado(HttpServletRequest request) throws JSONException {
         List<Video> listVideos = new ArrayList<>();
         Video v = new Video();
+        boolean ownvideo = false;
         JSONObject jsonVideos;
         if (Objects.isNull(request.getParameter("button"))) {
-            /*jsonVideos = v.getAllVideos();
-            //jsonVideos = port.busquedaVideo(arg0, arg1, arg2, arg3, arg4);
-            for (int i = 0; i < jsonVideos.getJSONArray("items").length(); i++){
-                JSONObject item = jsonVideos.getJSONArray("items").getJSONObject(i);
-                listVideos.add(new Video(item));
-            }   */
-            try { // Call Web Service Operation
-                isdcm.webapp.soap.BusquedaWS port = service.getBusquedaWSPort();
-                listVideos = port.busquedaVideo((String)null,(String)null,(String)null,(String)null,(String)null);
-                // TODO handle custom exceptions here
-            } catch (Exception ex) {
-                // TODO handle custom exceptions here
+            HttpSession session = request.getSession();
+            String username = (String) session.getAttribute("user");
+            if (PreferenciasUsuario.get(username).listavideos() == PreferenciasUsuario.LISTAVIDEOS_BD) {
+                ownvideo = true;
+                List<isdcm.webapp.modelo.Video> listVideos2 = new ArrayList<>();
+                isdcm.webapp.modelo.Video vv = new isdcm.webapp.modelo.Video();
+                jsonVideos = vv.getAllVideos();
+                //jsonVideos = port.busquedaVideo(arg0, arg1, arg2, arg3, arg4);
+                for (int i = 0; i < jsonVideos.getJSONArray("items").length(); i++){
+                    JSONObject item = jsonVideos.getJSONArray("items").getJSONObject(i);
+                    listVideos2.add(new isdcm.webapp.modelo.Video(item));
+                }
+                request.setAttribute("listVideos", listVideos2);
+            } else {
+                try { // Call Web Service Operation
+                    isdcm.webapp.soap.BusquedaWS port = service.getBusquedaWSPort();
+                    listVideos = port.busquedaVideo((String)null,(String)null,(String)null,(String)null,(String)null);
+                    // TODO handle custom exceptions here
+                } catch (Exception ex) {
+                    // TODO handle custom exceptions here
+                }
             }
         }
         else if (request.getParameter("button").equals("myVideos")){
@@ -138,7 +149,9 @@ public class servletListadoVid extends HttpServlet {
                 // TODO handle custom exceptions here
             }
         }
-        request.setAttribute("listVideos", listVideos);
+        if (!ownvideo) {
+            request.setAttribute("listVideos", listVideos);
+        }
     }
 	
 	/**

@@ -296,29 +296,6 @@ public class Video {
         Time sqlTime = new Time(this.getDuracionH(), this.getDuracionMin(), this.getDuracionS());
         //Date
         Date sqlDate = new Date(System.currentTimeMillis());
-       /*String sql = "INSERT INTO VIDEOS VALUES("
-                + int_id
-                + ",'"
-                + this.titulo
-                + "','"
-                + this.autor
-                + "','"
-                + sqlDate
-                + "','"
-                + sqlTime
-                + "',"
-                + 0
-                + ",'"
-                + this.descripcion
-                + "','"
-                + this.formato
-                + "','"
-                + this.url
-                + "','"
-        + this.username + "')";
-					   
-        System.out.println(sql);
-        int rows = db.insertSQLQuery(sql);*/
         int rows = db.insertPSQLQuery("INSERT INTO VIDEOS VALUES(?,?,?,?,?,?,?,?,?,?)",
                 int_id,
                 this.titulo,

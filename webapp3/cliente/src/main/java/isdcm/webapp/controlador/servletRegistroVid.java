@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -80,6 +81,12 @@ public class servletRegistroVid extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if (request.getParameter("registroVideo") != null) {
+            HttpSession session = request.getSession();
+            String username = (String) session.getAttribute("user");
+            if (username == null) {
+                request.getRequestDispatcher("").forward(request, response);
+                return;
+            }
             System.out.println("He venido del registro de video");
             String titulo = request.getParameter("titulo");
             String autor = request.getParameter("autor");
@@ -90,7 +97,6 @@ public class servletRegistroVid extends HttpServlet {
             String descripcion = request.getParameter("descripcion");
             String formato = request.getParameter("formato");
             String url = request.getParameter("url");
-			String username = request.getParameter("username");												   
             Video v = new Video(titulo, autor, duracionH, duracionMin, duracionS, descripcion, formato, url, username);
             request.setAttribute("correct", v.registerVideo());
             processRequest(request, response);

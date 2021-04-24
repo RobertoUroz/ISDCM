@@ -8,10 +8,15 @@ and open the template in the editor.
     Author     : ruroz
 */
 
-Body {  
+body {  
     font-family: Calibri, Helvetica, sans-serif;  
     background-color: #f1f1f1;
-}  
+}
+
+body.dark {
+    background-color: #0e0e0e;
+    color: #ffffff;
+}
 
 .user {
     text-align: right;
@@ -54,8 +59,13 @@ button {
 }   
         
 form {   
-    border: 3px solid #f1f1f1;   
-}   
+    border: 3px solid #f1f1f1;
+}
+
+
+.dark form {
+    border: 3px solid #0e0e0e;
+}
     
 .inputgroup {
     display: block;
@@ -95,6 +105,10 @@ button:hover {
        background-color: lightblue;  
 }
 
+.dark .container {
+    background-color: darkblue;
+}
+
 .notice {
     padding: 3px 5px;
     margin-bottom: 0.5em;
@@ -123,6 +137,16 @@ button:hover {
 
 .datatable th {
     text-align:left;
+}
+
+.dark .datatable {
+    border-bottom-color: #ffffff;
+    border-right-color: #ffffff;
+}
+
+.dark .datatable th, .dark .datatable td {
+    border-top-color: #ffffff;
+    border-left-color: #ffffff;
 }
 
 .hidden {

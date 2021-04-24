@@ -41,20 +41,29 @@ and open the template in the editor.
         <form action="${pageContext.request.contextPath}/servletUsuarios" method="POST">
             <div class="container">
             <label>Reproductor</label>
+            <div class="inputgroup">
             <input type="radio" name="pu_reproductor" value="1" id="pu_reproductor_1"<% if (pu.reproductor()==pu.REPRODUCTOR_VIDEOJS) { %> checked="checked"<% } %> />
             <label for="pu_reproductor_1">VideoJS</label>
             <input type="radio" name="pu_reproductor" value="2" id="pu_reproductor_2"<% if (pu.reproductor()==pu.REPRODUCTOR_HTML5) { %> checked="checked"<% } %> />
             <label for="pu_reproductor_2">HTML5</label>
+            </div>
+            
             <label>Lista de v&iacute;deos</label>
+            <div class="inputgroup">
             <input type="radio" name="pu_listavideos" value="1" id="pu_listavideos_1"<% if (pu.listavideos()==pu.LISTAVIDEOS_BD) { %> checked="checked"<% } %> />
             <label for="pu_listavideos_1">Base de datos</label>
-            <input type="radio" name="pu_listavideos" value="2" id="pu_listavideos_2"<% if (pu.listavideos()==pu.LISTAVIDEOS_SOAP) { %> checked="checked"<% } %> />
-            <label for="pu_listavideos_2">Servicio SOAP</label>
+            <input type="radio" name="pu_listavideos" value="2" id="pu_listavideos_2"<% if (pu.listavideos()==pu.LISTAVIDEOS_SOAPREST) { %> checked="checked"<% } %> />
+            <label for="pu_listavideos_2">Servicios SOAP y REST</label>
+            </div>
+            
             <label>Color de la interfaz</label>
+            <div class="inputgroup">
             <input type="radio" name="pu_color" value="1" id="pu_color_1"<% if (pu.color()==pu.COLOR_CLARO) { %> checked="checked"<% } %> />
             <label for="pu_color_1">Claro</label>
             <input type="radio" name="pu_color" value="2" id="pu_color_2"<% if (pu.color()==pu.COLOR_OSCURO) { %> checked="checked"<% } %> />
             <label for="pu_color_2">Oscuro</label>
+            </div>
+            
             <input type="hidden" name="username" value="<%= usuario %>" />
             <button type="submit" name="button" value="savepreferencias">Guardar</button>
             </div>

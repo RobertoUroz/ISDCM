@@ -46,7 +46,6 @@ public class servletUsuarios extends HttpServlet {
                         break;
                     case "login":
                         if (correct) {
-                            
                             url = "servletListadoVid";	
                         } else {
                             request.setAttribute("error_login", true);
@@ -153,13 +152,18 @@ public class servletUsuarios extends HttpServlet {
                 processRequest(request, response);
                 break;
             case "savepreferencias":
-                {
+                {   
+                    HttpSession session = request.getSession();
+                    String username = (String) session.getAttribute("user");
+                    if (username == null) {
+                        request.getRequestDispatcher("").forward(request, response);
+                        return;
+                    }
                     System.out.println("He venido de las preferencias");
-                    String pu_reproductor, pu_listavideos, pu_color, username;
+                    String pu_reproductor, pu_listavideos, pu_color;
                     pu_reproductor = request.getParameter("pu_reproductor");
                     pu_listavideos = request.getParameter("pu_listavideos");
                     pu_color = request.getParameter("pu_color");
-                    username = request.getParameter("username");
                     
                     boolean vsp = true;
                     int reproductor=2, listavideos=2, color=1;

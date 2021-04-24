@@ -63,9 +63,6 @@ public class servletBusqueda extends HttpServlet {
         switch (request.getParameter("button")){
             case "busquedaVideo":
                 //list videos
-                //TODO: Crear WSDL para conectarse con el server
-                //call to web service busquedaVideo (se necesita WSDL con conexión al server IMPORTANTE)
-                
                 try { // Call Web Service Operation
                     isdcm.webapp.soap.BusquedaWS port = service.getBusquedaWSPort();
                     java.lang.String arg0 = request.getParameter("titulo");
