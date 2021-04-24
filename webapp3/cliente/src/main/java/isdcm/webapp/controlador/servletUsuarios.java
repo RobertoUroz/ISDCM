@@ -5,6 +5,7 @@
  */
 package isdcm.webapp.controlador;
 
+import isdcm.webapp.modelo.PreferenciasUsuario;
 import isdcm.webapp.modelo.Usuario;
 import java.io.File;
 import java.io.IOException;
@@ -45,8 +46,7 @@ public class servletUsuarios extends HttpServlet {
                         break;
                     case "login":
                         if (correct) {
-                            HttpSession session = request.getSession();
-                            session.setAttribute("user",request.getParameter("username"));
+                            
                             url = "servletListadoVid";	
                         } else {
                             request.setAttribute("error_login", true);
@@ -110,30 +110,78 @@ public class servletUsuarios extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (request.getParameter("button").equals("registro")) {
-            System.out.println("He venido del registro");
-            String nombre = request.getParameter("nombre");
-            String apellidos = request.getParameter("apellidos");
-            String email = request.getParameter("email");
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-            Usuario u = new Usuario(nombre, apellidos, email, username, password);
-            request.setAttribute("correct", u.registerUser());
-            processRequest(request, response);
-        } else if (request.getParameter("button").equals("login")) {
-            System.out.println("He venido del login");
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-            Usuario u = new Usuario(username, password);
-            request.setAttribute("correct", u.loginUser());
-            //identity REST call
-            processRequest(request, response);
-	} else if (request.getParameter("button").equals("logout")) {
-            System.out.println("He venido del logout button");
-            request.setAttribute("correct", true);
-            processRequest(request, response);
-        } else {
-            System.out.println("Caso no comprobado");
+        switch (request.getParameter("button")) {
+            case "registro":
+                {
+                    System.out.println("He venido del registro");
+                    String nombre = request.getParameter("nombre");
+                    String apellidos = request.getParameter("apellidos");
+                    String email = request.getParameter("email");
+                    String username = request.getParameter("username");
+                    String password = request.getParameter("password");
+                    Usuario u = new Usuario(nombre, apellidos, email, username, password);
+                    boolean vru = u.registerUser();
+                    if (vru) {
+                        PreferenciasUsuario pu = new PreferenciasUsuario(username);
+                        vru = pu.save();
+                    }
+                    request.setAttribute("correct", vru);
+                    processRequest(request, response);
+                    break;
+                }
+            case "login":
+                {
+                    System.out.println("He venido del login");
+                    String username = request.getParameter("username");
+                    String password = request.getParameter("password");
+                    Usuario u = new Usuario(username, password);
+                    boolean vlu = u.loginUser();
+                    if (vlu) {
+                        PreferenciasUsuario pu = PreferenciasUsuario.get(username);
+                        HttpSession session = request.getSession();
+                        session.setAttribute("user",request.getParameter("username"));
+                        session.setAttribute("preferencias",pu);
+                    }
+                    request.setAttribute("correct", vlu);
+                    //identity REST call
+                    processRequest(request, response);
+                    break;
+                }
+            case "logout":
+                System.out.println("He venido del logout button");
+                request.setAttribute("correct", true);
+                processRequest(request, response);
+                break;
+            case "savepreferencias":
+                {
+                    System.out.println("He venido de las preferencias");
+                    String pu_reproductor, pu_listavideos, pu_color, username;
+                    pu_reproductor = request.getParameter("pu_reproductor");
+                    pu_listavideos = request.getParameter("pu_listavideos");
+                    pu_color = request.getParameter("pu_color");
+                    username = request.getParameter("username");
+                    
+                    boolean vsp = true;
+                    int reproductor=2, listavideos=2, color=1;
+                    try {
+                        reproductor = Integer.parseInt(pu_reproductor,10);
+                        listavideos = Integer.parseInt(pu_listavideos,10);
+                        color = Integer.parseInt(pu_color,10);
+                    } catch (Exception e) {
+                        vsp = false;
+                    }
+                    if (vsp) {
+                        PreferenciasUsuario pu = new PreferenciasUsuario(username,reproductor,listavideos,color);
+                        vsp = pu.save();
+                    }
+                    request.setAttribute("correct", vsp);
+                    processRequest(request, response);
+                    break;
+                }
+
+            default:
+                System.out.println("Caso no comprobado");
+                break;
         }
     }
 

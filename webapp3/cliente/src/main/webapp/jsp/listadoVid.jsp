@@ -14,7 +14,7 @@ and open the template in the editor.
     response.sendRedirect("/cliente/");
 %>
 
-<% 
+<%
     if (Objects.isNull(request.getAttribute("listVideos"))) {
         request.getRequestDispatcher("servletListadoVid").forward(request, response);
     }
@@ -31,7 +31,7 @@ and open the template in the editor.
         <%
             String usuario = (String) session.getAttribute("user");
         %>
-        <div class="user">Usuario: <%= usuario %>. <form action="${pageContext.request.contextPath}/servletUsuarios" method="post"><button type="submit" name="button" value="logout">Cerrar sesi&oacute;n</button></form></div>
+        <div class="user">Usuario: <%= usuario %>. <a href="${pageContext.request.contextPath}/jsp/preferencias.jsp">Preferencias</a>. <form action="${pageContext.request.contextPath}/servletUsuarios" method="post"><button type="submit" name="button" value="logout">Cerrar sesi&oacute;n</button></form></div>
         <% if (!Objects.isNull(request.getParameter("button"))) { %>
         <a href="${pageContext.request.contextPath}/servletListadoVid">&laquo; Listado de vídeos</a>
         <% } %>

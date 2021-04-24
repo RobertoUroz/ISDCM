@@ -50,11 +50,11 @@
         <!-- Form with REST POST -->
         <form action="http://localhost:8080/server_rest/resources/video/register" method="post">  
             <div class="container">   
-                <label>Titulo</label>   
+                <label>T&iacute;tulo</label>   
                 <input type="text" placeholder="Introduzca Titulo" name="titulo" required>  
                 <label>Autor</label>   
                 <input type="text" placeholder="Introduzca Autor" name="autor" required>  
-                <label>Duracion</label>   
+                <label>Duraci&oacute;n</label>
                 <div class="inputgroup duration">
                     <input type="text" placeholder="hh" pattern="[0-9][0-9]?" name="duracionh" id="duracionh" />:
                     <input type="text" placeholder="mm" pattern="[0-5]?[0-9]" name="duracionmin" id="duracionmin" />:
