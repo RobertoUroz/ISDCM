@@ -27,9 +27,7 @@ and open the template in the editor.
             String usuario = (String) session.getAttribute("user");
         %>
         <div class="user">Usuario: <%= usuario %>. <form action="${pageContext.request.contextPath}/servletUsuarios" method="post"><button type="submit" name="button" value="logout">Cerrar sesi&oacute;n</button></form></div>
-        <% if (!Objects.isNull(request.getParameter("button"))) { %>
         <a href="${pageContext.request.contextPath}/servletListadoVid">&laquo; Listado de vídeos</a>
-        <% } %>
         <h1>Preferencias</h1>
         <% if (guardadas) {%>
             <div class="notice goodnotice">¡Preferencias guardadas con éxito!</div>

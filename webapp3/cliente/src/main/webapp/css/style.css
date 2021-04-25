@@ -18,11 +18,19 @@ body.dark {
     color: #ffffff;
 }
 
+.dark a {
+    color: #4caf50;
+}
+
 .user {
     text-align: right;
     border-bottom: 1px #000000 solid;
     padding-bottom: 0.5em;
     margin-bottom: 0.5em;
+}
+
+.dark .user {
+    border-bottom-color: #ffffff;
 }
 
 .user form {
@@ -41,6 +49,11 @@ body.dark {
     color: #4CAF50;
 }
 
+/*.dark .user button {
+    background: none;
+    color: #b350af;
+}*/
+
 h1 {
     text-align: center;
 }
@@ -56,12 +69,15 @@ button {
     border: none;   
     cursor: pointer;
     font-size: 120%;
-}   
+}
+
+/*.dark button {
+    background-color: #b350af;
+}*/
         
 form {   
     border: 3px solid #f1f1f1;
 }
-
 
 .dark form {
     border: 3px solid #0e0e0e;
