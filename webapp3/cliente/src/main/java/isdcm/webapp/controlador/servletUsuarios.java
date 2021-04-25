@@ -64,7 +64,15 @@ public class servletUsuarios extends HttpServlet {
                         } else {
                             url = "servletListadoVid";
                         }
-                        break;											   
+                        break;
+                        case "savepreferencias":
+                        if (correct) {
+                            url = "jsp/preferencias.jsp";	
+                        } else {
+                            request.setAttribute("error_savepreferencias", true);
+                            url = "";
+                        }
+                        break;
                     default:
                         System.out.println("Case not handled");
                 }

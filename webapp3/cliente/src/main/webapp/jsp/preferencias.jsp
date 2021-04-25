@@ -46,7 +46,7 @@ and open the template in the editor.
             <label for="pu_reproductor_2">HTML5</label>
             </div>
             
-            <label>Lista de v&iacute;deos</label>
+            <label>Lista y b&uacute;squeda de v&iacute;deos</label>
             <div class="inputgroup">
             <input type="radio" name="pu_listavideos" value="1" id="pu_listavideos_1"<% if (pu.listavideos()==pu.LISTAVIDEOS_BD) { %> checked="checked"<% } %> />
             <label for="pu_listavideos_1">Base de datos</label>
