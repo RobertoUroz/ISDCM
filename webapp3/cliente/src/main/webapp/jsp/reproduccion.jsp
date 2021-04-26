@@ -70,7 +70,7 @@
                     url: BASE_URL+"/reproductor/viewoncemore",
                     cache: false,
                     contentType: "application/json",
-                    data: dataJSON,
+                    data: JSON.stringify(dataJSON),
                     success: function (html) {
                         console.log("View counter +1");
                     }

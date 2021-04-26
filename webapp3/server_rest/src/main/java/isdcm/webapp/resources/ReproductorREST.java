@@ -50,15 +50,14 @@ public class ReproductorREST {
         String result = "BAD REQUEST";
         System.out.println(body);
         int status = 400;
-        String body_fixed = ("{" + body + "}").replace("=", ":");
-        JSONObject body_json = new JSONObject(body_fixed);
-        Object id;
+        JSONObject body_json = new JSONObject(body);
+        int id;
         try {
-            id = body_json.get("id");
-        } catch (JSONException e){
-            id = null;
+            id = Integer.parseInt(body_json.getString("id"));
+        } catch (Exception e){
+            id = -1;
         }
-        if (id != null){
+        if (id != -1){
             int id_int = (int)id;
             Video v = new Video(id_int);
             boolean vom = v.viewOnceMore();
