@@ -31,8 +31,6 @@
             preload="auto"
             width="640"
             height="264"
-            poster="https://kinsta.com/es/wp-content/uploads/sites/8/2019/09/jpg-vs-jpeg.jpg"
-            data-setup="{}"
         >
         <source id="sourceVideo" src="" type="video/mp4" />
         <p class="vjs-no-js">
@@ -51,6 +49,7 @@
         var finalUrl = BASE_URL + "/reproductor?id=" + id; 
         var video = document.getElementById('my-video');
         var source = document.getElementById('sourceVideo');
+        var firstTime = true;
         $.ajax({
             url: finalUrl,
             cache: false,
@@ -58,17 +57,28 @@
                 console.log(html);
                 source.setAttribute('src', html);
                 video.load();
+                document.body.innerHTML += '<scr'+'ipt src=\"https://vjs.zencdn.net/7.11.4/video.min.js\"> </scr'+'ipt>';
+                document.getElementById('my-video').addEventListener("playing", addView, false);
             }
         });
-        $.ajax({
-            type: "PUT",
-            url: BASE_URL+"/reproductor/viewoncemore?id="+id,
-            cache: false,
-            success: function (html) {
-                console.log(html);
+        function addView() {
+            if (firstTime){
+                var dataJSON = {
+                    "id": id
+                };
+                $.ajax({
+                    type: "PUT",
+                    url: BASE_URL+"/reproductor/viewoncemore",
+                    cache: false,
+                    contentType: "application/json",
+                    data: dataJSON,
+                    success: function (html) {
+                        console.log("View counter +1");
+                    }
+                });
             }
-        });
+            firstTime = false;
+        }
     </script>
-    <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
     </body>
 </html>

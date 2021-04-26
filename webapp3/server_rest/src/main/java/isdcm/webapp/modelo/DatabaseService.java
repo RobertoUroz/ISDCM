@@ -46,7 +46,7 @@ public class DatabaseService {
         try {
             Statement statement = connection.createStatement();
             ResultSet rows = statement.executeQuery(sql);
-            JSONArray rows_array = convertToJSONArray(rows);
+            JSONArray rows_array = convertToJSONArray(rows, 0);
             result.put("items", rows_array);
             result.put("count", rows_array.length());
         } catch (SQLException ex) {
@@ -66,7 +66,7 @@ public class DatabaseService {
             PreparedStatement statement = connection.prepareStatement(sql);
             parametros_en_sentencia(params, statement);
             ResultSet rows = statement.executeQuery();
-            JSONArray rows_array = convertToJSONArray(rows);
+            JSONArray rows_array = convertToJSONArray(rows, 0);
             result.put("items", rows_array);
             result.put("count", rows_array.length());
         } catch (SQLException ex) {
@@ -124,17 +124,17 @@ public class DatabaseService {
         return rows;
     }
     
-    private JSONArray convertToJSONArray(ResultSet resultSet) throws Exception {
+    private JSONArray convertToJSONArray(ResultSet resultSet, int count) throws Exception {
         JSONArray jsonArray = new JSONArray();
         while (resultSet.next()) {
             JSONObject obj = new JSONObject();
             int total_rows = resultSet.getMetaData().getColumnCount();
             for (int i = 0; i < total_rows; i++) {
                 Object value = resultSet.getObject(i + 1);
-                if (value.getClass().getName().equals("org.apache.derby.client.am.ClientClob")){
+                /*if (value.getClass().getName().equals("org.apache.derby.client.am.ClientClob")){
                     Clob value_clob = (Clob)value;
                     value = value_clob.getSubString(1, (int) value_clob.length());
-                }
+                }*/
                 String label = resultSet.getMetaData().getColumnLabel(i + 1).toLowerCase();
                 obj.put(label, value);
             }

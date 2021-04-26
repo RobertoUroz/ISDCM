@@ -131,10 +131,10 @@ public class DatabaseService {
             int total_rows = resultSet.getMetaData().getColumnCount();
             for (int i = 0; i < total_rows; i++) {
                 Object value = resultSet.getObject(i + 1);
-                if (value.getClass().getName().equals("org.apache.derby.client.am.ClientClob")){
+                /*if (value.getClass().getName().equals("org.apache.derby.client.am.ClientClob")){
                     Clob value_clob = (Clob)value;
                     value = value_clob.getSubString(1, (int) value_clob.length());
-                }
+                }*/
                 String label = resultSet.getMetaData().getColumnLabel(i + 1).toLowerCase();
                 obj.put(label, value);
             }
