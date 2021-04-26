@@ -14,12 +14,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" >
     </head>
-    <body>
-        <%
-            String usuario = (String) session.getAttribute("user");
-        %>
-        <div class="user">Usuario: <%= usuario %>. <form action="../servletUsuarios" method="post"><button type="submit" name="button" value="logout">Cerrar sesi&oacute;n</button></form></div>
-
+    <%
+        String usuario = (String) session.getAttribute("user");
+    %>
+    <body<% if (PreferenciasUsuario.get(usuario).color() == PreferenciasUsuario.COLOR_OSCURO) { %> class="dark"<% } %>>
+        <div class="user">Usuario: <%= usuario %>. <a href="${pageContext.request.contextPath}/jsp/preferencias.jsp">Preferencias</a>. <form action="${pageContext.request.contextPath}/servletUsuarios" method="post"><button type="submit" name="button" value="logout">Cerrar sesi&oacute;n</button></form></div>
         <a href="${pageContext.request.contextPath}/servletListadoVid">&laquo; Listado de vídeos</a>
         <h1>Registro de vídeo</h1>
         

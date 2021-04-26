@@ -22,11 +22,11 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" >
     </head>
-    <body>
-        <%
-            String usuario = (String) session.getAttribute("user");
-        %>
-        <div class="user">Usuario: <%= usuario %>. <form action="${pageContext.request.contextPath}/servletUsuarios" method="post"><button type="submit" name="button" value="logout">Cerrar sesi&oacute;n</button></form></div>
+    <%
+        String usuario = (String) session.getAttribute("user");
+    %>
+    <body<% if (PreferenciasUsuario.get(usuario).color() == PreferenciasUsuario.COLOR_OSCURO) { %> class="dark"<% } %>>
+        <div class="user">Usuario: <%= usuario %>. <a href="${pageContext.request.contextPath}/jsp/preferencias.jsp">Preferencias</a>. <form action="${pageContext.request.contextPath}/servletUsuarios" method="post"><button type="submit" name="button" value="logout">Cerrar sesi&oacute;n</button></form></div>
         <a href="${pageContext.request.contextPath}/servletListadoVid">&laquo; Listado de vídeos</a>
         <h1>Preferencias</h1>
         <% if (guardadas) {%>
@@ -46,7 +46,7 @@ and open the template in the editor.
             <label for="pu_reproductor_2">HTML5</label>
             </div>
             
-            <label>Lista y b&uacute;squeda de v&iacute;deos</label>
+            <label>Lista y registro de v&iacute;deos</label>
             <div class="inputgroup">
             <input type="radio" name="pu_listavideos" value="1" id="pu_listavideos_1"<% if (pu.listavideos()==pu.LISTAVIDEOS_BD) { %> checked="checked"<% } %> />
             <label for="pu_listavideos_1">Base de datos</label>

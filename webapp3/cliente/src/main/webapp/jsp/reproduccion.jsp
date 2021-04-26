@@ -3,6 +3,7 @@
     Created on : Mar 6, 2021, 6:35:04 PM
     Author     : ruroz
 --%>
+<%@page import="isdcm.webapp.modelo.PreferenciasUsuario"%>
 <%@page import="java.util.Objects"%>
 <% if (Objects.isNull(session.getAttribute("user")))
     response.sendRedirect("/cliente/");
@@ -16,11 +17,11 @@
         <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
         <title>Reproducci&oacute;n de v&iacute;deo</title>
     </head>
-    <body>
-        <%
-            String usuario = (String) session.getAttribute("user");
-        %>
-        <div class="user">Usuario: <%= usuario %>. <form action="${pageContext.request.contextPath}/servletUsuarios" method="post"><button type="submit" name="button" value="logout">Cerrar sesi&oacute;n</button></form></div>
+    <%
+        String usuario = (String) session.getAttribute("user");
+    %>
+    <body<% if (PreferenciasUsuario.get(usuario).color() == PreferenciasUsuario.COLOR_OSCURO) { %> class="dark"<% } %>>
+        <div class="user">Usuario: <%= usuario %>. <a href="${pageContext.request.contextPath}/jsp/preferencias.jsp">Preferencias</a>. <form action="${pageContext.request.contextPath}/servletUsuarios" method="post"><button type="submit" name="button" value="logout">Cerrar sesi&oacute;n</button></form></div>
         <a href="${pageContext.request.contextPath}/servletListadoVid">&laquo; Listado de vídeos</a>
         <h1>Reproducci&oacute;n de v&iacute;deo</h1>
         <video
