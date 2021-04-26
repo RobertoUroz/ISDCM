@@ -12,14 +12,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
-        <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
-        <title>Reproducci&oacute;n de v&iacute;deo</title>
-    </head>
     <%
         String usuario = (String) session.getAttribute("user");
     %>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+        <% if (PreferenciasUsuario.get(usuario).reproductor() == PreferenciasUsuario.REPRODUCTOR_VIDEOJS) { %>
+        <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
+        <% } %>
+        <title>Reproducci&oacute;n de v&iacute;deo</title>
+    </head>
     <body<% if (PreferenciasUsuario.get(usuario).color() == PreferenciasUsuario.COLOR_OSCURO) { %> class="dark"<% } %>>
         <div class="user">Usuario: <%= usuario %>. <a href="${pageContext.request.contextPath}/jsp/preferencias.jsp">Preferencias</a>. <form action="${pageContext.request.contextPath}/servletUsuarios" method="post"><button type="submit" name="button" value="logout">Cerrar sesi&oacute;n</button></form></div>
         <a href="${pageContext.request.contextPath}/servletListadoVid">&laquo; Listado de vídeos</a>
@@ -57,7 +59,9 @@
                 console.log(html);
                 source.setAttribute('src', html);
                 video.load();
+                <% if (PreferenciasUsuario.get(usuario).reproductor() == PreferenciasUsuario.REPRODUCTOR_VIDEOJS) { %>
                 document.body.innerHTML += '<scr'+'ipt src=\"https://vjs.zencdn.net/7.11.4/video.min.js\"> </scr'+'ipt>';
+                <% } %>
                 document.getElementById('my-video').addEventListener("playing", addView, false);
             }
         });
