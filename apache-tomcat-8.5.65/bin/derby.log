@@ -1,0 +1,10 @@
+----------------------------------------------------------------
+Thu Apr 29 18:21:39 CEST 2021:
+ Arrancando Derby versión The Apache Software Foundation - Apache Derby - 10.9.1.0 - (1344872): instancia a816c00e-0179-1e6f-9392-0000141ca748 
+en el directorio de base de datos C:\Users\Resis\Documents\NetBeansProjects\ISDCM\tomcat_db_2  con el cargador de clases java.net.URLClassLoader@13221655
+
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_281-b09
+user.dir=C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\bin
+derby.system.home=null
+Cargador de clases de base de datos iniciado - derby.database.classpath=''
