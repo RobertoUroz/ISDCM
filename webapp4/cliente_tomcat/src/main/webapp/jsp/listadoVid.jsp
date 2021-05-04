@@ -29,6 +29,7 @@ and open the template in the editor.
         <div class="user">Usuario: <%= usuario %>. <form action="/servletUsuarios" method="post"><button type="submit" name="button" value="logout">Cerrar sesi&oacute;n</button></form></div>
         <h1> Listado Videos </h1>
         <center> <a href="/jsp/registroVid.jsp"><button type="button">Registrar Video</button></a> </center>    
+        <center> <a href="/jsp/cifrado.jsp"><button type="button">Cifrar / descifrar XML</button></a> </center>    
         
         <% if (insertado) {%>
             <div class="notice goodnotice">¡Vídeo insertado con éxito!</div>
