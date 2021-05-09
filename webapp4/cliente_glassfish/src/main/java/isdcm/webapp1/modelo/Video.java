@@ -3,13 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package isdcm.cliente_tomcat.modelo;
+package isdcm.webapp1.modelo;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Base64;
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 import org.json.JSONObject;
 
 /**
@@ -31,6 +35,7 @@ public class Video {
     private String duracionString;
     private int id;
     private int reproducciones;
+    private byte[] file;
     
     public Video() {
         
@@ -134,7 +139,7 @@ public class Video {
     
     public JSONObject getAllVideos() {
         DatabaseService db = DatabaseService.getInstance();
-        return db.getSQLQuery("SELECT * FROM app.VIDEOS");
+        return db.getSQLQuery("SELECT * FROM VIDEOS");
     }
     
     public boolean registerVideo() {
@@ -167,39 +172,15 @@ public class Video {
         }
     }
     
-    private SecretKey createkey() {
-        KeyGenerator kg = KeyGenerator.getInstance("AES/CBC/PKCS5Padding");
-        return kg.generateKey();
-    }
-    
-    private byte[] encryptfile(byte[] file, SecretKey sk) {
+    public boolean addfile(byte[] file) {
         try {
-            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-            cipher.init(Cipher.ENCRYPT_MODE,sk);
-            return cipher.doFinal(file);
-        } catch (Exception e) {
-            System.out.println(e);
-            return "".getBytes();
-        }
-    }
-    
-    private byte[] decryptfile(byte[] file, SecretKey sk) {
-        try {
-            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-            cipher.init(Cipher.DECRYPT_MODE,sk);
-            return cipher.doFinal(file);
-        } catch (Exception e) {
-            System.out.println(e);
-            return "".getBytes();
-        }
-    }
-    
-    public boolean uploadfile(byte[] file) {
-        try {
+            /*
             SecretKey sk = this.createkey();
-            byte[] fc = this.encryptfile(file, sk);
-            
-            // incluir en BD
+            if (sk == null) return false;
+            this.ef_key = this.encodekey(sk);
+            this.ef_file = this.encryptfile(file, sk);
+            */
+            this.file = file;
         } catch (Exception e) {
             System.out.println(e);
             return false;

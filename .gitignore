@@ -15,3 +15,5 @@ webapp2/cliente/target/
 /webapp4/cliente/target/
 /webapp4/server_rest/target/
 /webapp4/cliente_tomcat/target/
+/webapp4/cliente_glassfish/target/
+apache-tomcat-8.5.65_alejandro/logs/
