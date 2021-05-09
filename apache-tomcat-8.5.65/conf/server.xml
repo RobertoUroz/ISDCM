@@ -103,7 +103,7 @@
            protocol="org.apache.coyote.http11.Http11NioProtocol"
            port="8443" maxThreads="200"
            scheme="https" secure="true" SSLEnabled="true"
-           keystoreFile="conf/.keystore" keystorePass="asdf1234"
+           keystoreFile="conf/keys/.keystore" keystorePass="asdf1234"
            clientAuth="false" sslProtocol="TLS"/>
     <!--
     <Connector port="8443" protocol="org.apache.coyote.http11.Http11AprProtocol"
