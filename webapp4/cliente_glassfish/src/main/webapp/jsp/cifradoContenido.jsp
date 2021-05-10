@@ -18,15 +18,15 @@
 
         <a href="/cliente_glassfish/jsp/listadoVid.jsp">&laquo; Listado de vídeos</a>
         <h1>Cifrado de contenido</h1>
-        <form action="/cliente_glassfish/servletCifradoContenido" enctype="multipart/form-data" method="post">  
-            <div class="container">
+        <form action="/cliente_glassfish/servletCifradoContenido" enctype="multipart/form-data" method="post">
+            <div class="container" id="container">
                 <label>Fichero</label>
                 <input type="file" name="fichero" />
-                <input type="hidden" name="username" value="<%= usuario %>" />
-                <button type="submit" name="accioncifrado" value="cifrar">Cifrar</button>
-                <button type="submit" name="accioncifrado" value="descifrar">Descifrar</button>
+                <input type="hidden" name="username" id="username" value="<%= usuario %>" />
+                <button type="submit" name="accioncifrado" id="bcifrar" value="cifrar">Cifrar</button>
+                <button type="submit" name="accioncifrado" id="bdescifrar" value="descifrar">Descifrar</button>
             </div>
         </form>
-        <script src="/cliente_glassfish/js/entradatiempo.js"></script>
+        <script src="/cliente_glassfish/js/draganddrop.js"></script>
     </body>
 </html>

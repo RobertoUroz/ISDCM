@@ -51,7 +51,13 @@ button {
     border: none;   
     cursor: pointer;
     font-size: 120%;
-}   
+}
+
+button.grande {
+    padding: 70px 100px;
+    border-color: #000000;
+    border-style: dashed;
+}
         
 form {   
     border: 3px solid #f1f1f1;   
