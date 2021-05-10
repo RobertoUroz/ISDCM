@@ -21,6 +21,7 @@ import javax.crypto.spec.SecretKeySpec;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.xml.security.encryption.XMLCipher;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 /**
  *
@@ -56,7 +57,7 @@ public class Cifrado {
         }
     }
     
-    public Document encrypt(Document doc, Boolean encryptContentsOnly){
+    public Document encrypt(Document doc, Element el, Boolean encryptContentsOnly){
         Document document = null;
         try {
             XMLCipher keyCipher = XMLCipher.getInstance(XMLCipher.AES_128);

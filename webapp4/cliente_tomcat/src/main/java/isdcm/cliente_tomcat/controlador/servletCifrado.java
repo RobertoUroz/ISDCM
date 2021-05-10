@@ -158,7 +158,11 @@ public class servletCifrado extends HttpServlet {
         System.out.println("Length: " + root.getChildNodes().getLength());
         //Logger.getLogger(servletCifrado.class.getName()).log(Level.SEVERE, document_encrypted.toString());
         Cifrado cifrado = new Cifrado();
-        return cifrado.encrypt(doc, false);
+        Boolean only_content = Boolean.getBoolean(request.getParameter("only_content"));
+        //System.out.println(root.getChildNodes().item(0).getNodeName());
+        if (request.getParameter("elements") == "")
+            return cifrado.encrypt(doc, doc.getDocumentElement(), only_content);
+        return recursiveCifrado(request.getParameter("elements").split("\\,"), doc, root, cifrado, only_content);
     }
     
     private Document decryptXML(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -238,6 +242,24 @@ public class servletCifrado extends HttpServlet {
             close(output);
             close(input);
         }
+    }
+
+    private Document recursiveCifrado(String[] names, Document doc, Element el, Cifrado cifrado, Boolean only_content) {
+        if (!el.hasChildNodes()){
+            for (String name : names){
+                if (name == el.getNodeName())
+                    return cifrado.encrypt(doc, el, only_content);
+            }
+        }
+        for (int i = 0; i < el.getChildNodes().getLength(); i++){
+            try {
+                Element e = (Element)el.getChildNodes().item(i);
+                doc = recursiveCifrado(names, doc, e, cifrado, only_content);
+            } catch (Exception e) {
+                
+            }
+        }
+        return doc;
     }
     
 }
