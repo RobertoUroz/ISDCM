@@ -61,7 +61,7 @@ form {
     display: block;
 }
 
-input[type=text], input[type=password], input[type=email] {   
+input[type=text], input[type=password], input[type=email], input[type=file] {   
     width: 100%;   
     margin: 8px 0;
     padding: 5px 3px;
