@@ -35,7 +35,6 @@ public class Video {
     private String duracionString;
     private int id;
     private int reproducciones;
-    private byte[] file;
     
     public Video() {
         
@@ -170,22 +169,6 @@ public class Video {
                 System.out.println("VIDEOS::registerVideo()  :  There has been another number instead of 1 or 0 : " + rows);
                 return false;
         }
-    }
-    
-    public boolean addfile(byte[] file) {
-        try {
-            /*
-            SecretKey sk = this.createkey();
-            if (sk == null) return false;
-            this.ef_key = this.encodekey(sk);
-            this.ef_file = this.encryptfile(file, sk);
-            */
-            this.file = file;
-        } catch (Exception e) {
-            System.out.println(e);
-            return false;
-        }
-        return true;
     }
     
     public String getUsuario() {

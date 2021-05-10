@@ -5,12 +5,16 @@
  */
 package isdcm.webapp1.controlador;
 
+import com.sun.xml.internal.messaging.saaj.util.Base64;
+import isdcm.webapp1.modelo.CifradoContenido;
 import isdcm.webapp1.modelo.Video;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import javax.crypto.SecretKey;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,13 +22,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import sun.misc.IOUtils;
 
 /**
  *
  * @author ruroz
  */
-@WebServlet(name = "servletRegistroVid", urlPatterns = {"/servletRegistroVid"})
-public class servletRegistroVid extends HttpServlet {
+@WebServlet(name = "servletCifradoContenido", urlPatterns = {"/servletCifradoContenido"})
+@MultipartConfig()
+public class servletCifradoContenido extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,12 +50,12 @@ public class servletRegistroVid extends HttpServlet {
             case "POST":
                 String url = "";
                 if ((boolean)request.getAttribute("correct")){
-                    url = "servletListadoVid";
-                    request.setAttribute("vid_insertado", true);
+                    url = "jsp/cifradoContenido.jsp";
+                    request.setAttribute("acierto_opcifrado", true);
                 } else {
                     //Add error message
-                    url = "jsp/registroVid.jsp";
-                    request.setAttribute("error_registro_vid", true);
+                    url = "jsp/cifradoContenido.jsp";
+                    request.setAttribute("error_opcifrado", true);
                 }
                 request.getRequestDispatcher(url).forward(request, response);
                 break;
@@ -57,7 +63,6 @@ public class servletRegistroVid extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -83,20 +88,27 @@ public class servletRegistroVid extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (request.getParameter("registroVideo") != null) {
-            System.out.println("He venido del registro de video");
-            String titulo = request.getParameter("titulo");
-            String autor = request.getParameter("autor");
-            int duracionH = Integer.parseInt(request.getParameter("duracionh"));
-            int duracionMin = Integer.parseInt(request.getParameter("duracionmin"));
-            int duracionS = Integer.parseInt(request.getParameter("duracions"));
-            String duracion = duracionH + ":" + duracionMin + ":" + duracionS;
-            String descripcion = request.getParameter("descripcion");
-            String formato = request.getParameter("formato");
-            String url = request.getParameter("url");
-            String username = request.getParameter("username");
-            Video v = new Video(titulo, autor, duracionH, duracionMin, duracionS, descripcion, formato, url, username);
-            request.setAttribute("correct", v.registerVideo());
+        if (request.getParameter("accioncifrado").equals("cifrar")) {
+            System.out.println("He venido del cifrado de contenido");
+            Part filepart = request.getPart("fichero");
+            if (filepart == null) {
+                request.setAttribute("correct",false);
+                processRequest(request,response);
+                return;
+            }
+            InputStream is = filepart.getInputStream();
+            byte[] file = new byte[(int)filepart.getSize()];
+            is.read(file, 0, file.length);
+            is.close();
+            /*byte[] codif = Base64.encode(file);*/
+            CifradoContenido cc = new CifradoContenido();
+            String usuario = (String) request.getParameter("username");
+            System.out.println("usuario: "+usuario);
+            byte[] skc = cc.getuserkey(usuario);
+            SecretKey sk = cc.decodekey(skc);
+            byte[] ef = cc.encryptfile(file, sk);
+            request.setAttribute("correct", true);
+            request.setAttribute("dlfile", ef);
             processRequest(request, response);
         } else {
             System.out.println("El button no ha llegado");
@@ -112,6 +124,6 @@ public class servletRegistroVid extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }

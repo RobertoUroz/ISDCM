@@ -18,12 +18,12 @@ and open the template in the editor.
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name='viewport' content='width=device-width, initial-scale=1.0'>
         <title>Login Page</title>
-        <link rel="stylesheet" href="/webapp1/css/style.css" >
+        <link rel="stylesheet" href="/cliente_glassfish/css/style.css" >
     </head>
     <body>
         <h1>Login</h1>
-        <p><a href="/webapp1/jsp/registroUsu.jsp">Registro</a></p>
-        <form action="/webapp1/servletUsuarios" method="post">  
+        <p><a href="/cliente_glassfish/jsp/registroUsu.jsp">Registro</a></p>
+        <form action="/cliente_glassfish/servletUsuarios" method="post">  
             <div class="container">
                 <label>Nombre de usuario:</label>   
                 <input type="text" placeholder="Introduzca Usuario" name="username" required>  

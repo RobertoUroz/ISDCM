@@ -167,46 +167,6 @@ public class Video {
         }
     }
     
-    private SecretKey createkey() {
-        KeyGenerator kg = KeyGenerator.getInstance("AES/CBC/PKCS5Padding");
-        return kg.generateKey();
-    }
-    
-    private byte[] encryptfile(byte[] file, SecretKey sk) {
-        try {
-            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-            cipher.init(Cipher.ENCRYPT_MODE,sk);
-            return cipher.doFinal(file);
-        } catch (Exception e) {
-            System.out.println(e);
-            return "".getBytes();
-        }
-    }
-    
-    private byte[] decryptfile(byte[] file, SecretKey sk) {
-        try {
-            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-            cipher.init(Cipher.DECRYPT_MODE,sk);
-            return cipher.doFinal(file);
-        } catch (Exception e) {
-            System.out.println(e);
-            return "".getBytes();
-        }
-    }
-    
-    public boolean uploadfile(byte[] file) {
-        try {
-            SecretKey sk = this.createkey();
-            byte[] fc = this.encryptfile(file, sk);
-            
-            // incluir en BD
-        } catch (Exception e) {
-            System.out.println(e);
-            return false;
-        }
-        return true;
-    }
-    
     public String getUsuario() {
         return username;
     }

@@ -20,15 +20,18 @@ and open the template in the editor.
         <title>Listado Videos</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/webapp1/css/style.css" >
+        <link rel="stylesheet" href="/cliente_glassfish/css/style.css" >
     </head>
     <body>
         <%
             String usuario = (String) session.getAttribute("user");
         %>
-        <div class="user">Usuario: <%= usuario %>. <form action="/webapp1/servletUsuarios" method="post"><button type="submit" name="button" value="logout">Cerrar sesi&oacute;n</button></form></div>
+        <div class="user">Usuario: <%= usuario %>. <form action="/cliente_glassfish/servletUsuarios" method="post"><button type="submit" name="button" value="logout">Cerrar sesi&oacute;n</button></form></div>
         <h1> Listado Videos </h1>
-        <center> <a href="/webapp1/jsp/registroVid.jsp"><button type="button">Registrar Video</button></a> </center>    
+        <center>
+            <a href="/cliente_glassfish/jsp/registroVid.jsp"><button type="button">Registrar Video</button></a>
+            <a href="/cliente_glassfish/jsp/cifradoContenido.jsp"><button type="button">Cifrar o descifrar v&iacute;deo</button></a>
+        </center>    
         
         <% if (insertado) {%>
             <div class="notice goodnotice">¡Vídeo insertado con éxito!</div>
@@ -58,6 +61,6 @@ and open the template in the editor.
                 </c:forEach>
             </table>
         </div>   
-        <!--<center> <button type="button" action="/webapp1/servletListadoVid" method="get">Mis videos</button></a> </center>    -->
+        <!--<center> <button type="button" action="/cliente_glassfish/servletListadoVid" method="get">Mis videos</button></a> </center>    -->
     </body>
 </html>

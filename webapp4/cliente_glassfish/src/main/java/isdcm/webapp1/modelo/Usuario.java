@@ -5,6 +5,7 @@
  */
 package isdcm.webapp1.modelo;
 
+import javax.crypto.SecretKey;
 import org.json.JSONObject;
 
 /**
@@ -103,11 +104,9 @@ public class Usuario {
     }
     
     public boolean loginUser() {
-        
         JSONObject user_json = null;
         DatabaseService db = DatabaseService.getInstance();
         user_json = db.getPSQLQuery("SELECT * FROM USUARIOS WHERE USERNAME=?",this.getUsername());
-        //user_json = db.getSQLQuery("SELECT * FROM USUARIOS WHERE USERNAME='"+this.getUsername()+"'");
         String password_tmp = "null";
         System.out.print("-->"+user_json.toString());
         if (user_json.getInt("count") > 0){
@@ -115,28 +114,15 @@ public class Usuario {
             password_tmp = user_json.getJSONArray("items").getJSONObject(0).getString("password");
         }
         return this.getPassword().equals(password_tmp);
-        
     }
     
     public boolean registerUser(){
         JSONObject user_json = null;
         DatabaseService db = DatabaseService.getInstance();
         user_json = db.getPSQLQuery("SELECT * FROM USUARIOS WHERE USERNAME=?",this.getUsername());
-        //user_json = db.getSQLQuery("SELECT * FROM USUARIOS WHERE USERNAME='" + this.getUsername() + "'");
         if (user_json.getInt("count") > 0) {
             return false;
         }
-        /*int rows = db.insertSQLQuery("INSERT INTO USUARIOS VALUES('"
-                + this.nombre 
-                + "','"
-                + this.apellidos
-                + "','"
-                + this.email
-                + "','"
-                + this.username
-                + "','"
-                + this.password
-                + "')");*/
         int rows = db.insertPSQLQuery("INSERT INTO USUARIOS VALUES(?,?,?,?,?)",
                 this.nombre,
                 this.apellidos,
@@ -144,6 +130,24 @@ public class Usuario {
                 this.username,
                 this.password);
         switch (rows){
+            case 1:
+                // return true;
+                break;
+            case 0:
+                return false;
+            default:
+                System.out.println("USUARIO::registerUser()  :  There has been another number instead of 1 or 0 : " + rows);
+                return false;
+        }
+        CifradoContenido cc = new CifradoContenido();
+        SecretKey sk = cc.createkey();
+        byte[] skc = cc.encodekey(sk);
+        String sks = String.valueOf(skc);
+        int rows2 = db.insertPSQLQuery("INSERT INTO CLAVESUSUARIO VALUES(?,?)",
+                this.username,
+                sks);
+        
+        switch (rows2){
             case 1:
                 return true;
             case 0:
