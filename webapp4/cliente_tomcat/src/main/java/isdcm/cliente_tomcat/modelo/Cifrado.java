@@ -22,6 +22,7 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.xml.security.encryption.XMLCipher;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 /**
  *
@@ -62,19 +63,19 @@ public class Cifrado {
         try {
             XMLCipher keyCipher = XMLCipher.getInstance(XMLCipher.AES_128);
             keyCipher.init(XMLCipher.ENCRYPT_MODE, key);
-            document = keyCipher.doFinal(doc, doc.getDocumentElement(), encryptContentsOnly);
+            document = keyCipher.doFinal(doc, el, encryptContentsOnly);
         } catch (Exception ex) {
             Logger.getLogger(Cifrado.class.getName()).log(Level.SEVERE, null, ex);
         }
         return document;
   }
 
-    public Document decrypt(Document doc) {
+    public Document decrypt(Document doc, Element el) {
         Document document = null;
         try {
             XMLCipher keyCipher = XMLCipher.getInstance(XMLCipher.AES_128);
             keyCipher.init(XMLCipher.DECRYPT_MODE, key);
-            document = keyCipher.doFinal(doc, doc.getDocumentElement());
+            document = keyCipher.doFinal(doc, el);
         }   catch (Exception ex) {
             Logger.getLogger(Cifrado.class.getName()).log(Level.SEVERE, null, ex);
         }

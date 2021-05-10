@@ -16,8 +16,6 @@ import java.io.InputStream;
 import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -35,11 +33,10 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import org.apache.xml.security.encryption.XMLCipher;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
-import org.apache.xml.security.Init;
 import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
 /**
  *
@@ -155,14 +152,18 @@ public class servletCifrado extends HttpServlet {
             Logger.getLogger(servletCifrado.class.getName()).log(Level.SEVERE, null, ex);
         }
         Element root = doc.getDocumentElement();
-        System.out.println("Length: " + root.getChildNodes().getLength());
         //Logger.getLogger(servletCifrado.class.getName()).log(Level.SEVERE, document_encrypted.toString());
         Cifrado cifrado = new Cifrado();
-        Boolean only_content = Boolean.getBoolean(request.getParameter("only_content"));
+        Boolean only_content = false;
+        if (request.getParameter("only_content") != null)
+            only_content = true;
         //System.out.println(root.getChildNodes().item(0).getNodeName());
-        if (request.getParameter("elements") == "")
+        if (request.getParameter("names").toString().length() == 0){
+            System.out.println("HELLO");
             return cifrado.encrypt(doc, doc.getDocumentElement(), only_content);
-        return recursiveCifrado(request.getParameter("elements").split("\\,"), doc, root, cifrado, only_content);
+        }
+        return cifradoElements(request.getParameter("names").split("\\,"), doc, root, cifrado, only_content);
+        //return recursiveCifrado(request.getParameter("names").split("\\,"), doc, root, cifrado, only_content);
     }
     
     private Document decryptXML(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -170,8 +171,6 @@ public class servletCifrado extends HttpServlet {
         Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
         String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
         InputStream fileContent = filePart.getInputStream();
-        //write(fileContent);
-        // ... (do your job here)
         
         //cifrar
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -190,7 +189,7 @@ public class servletCifrado extends HttpServlet {
         System.out.println("Length: " + root.getChildNodes().getLength());
         //Logger.getLogger(servletCifrado.class.getName()).log(Level.SEVERE, document_encrypted.toString());
         Cifrado cifrado = new Cifrado();
-        return cifrado.decrypt(doc);
+        return descifradoElements(doc, cifrado);
     }
     
     private void serveFile(HttpServletRequest request, HttpServletResponse response, Document document_encrypted, String sufix) throws IOException, ServletException {
@@ -211,7 +210,14 @@ public class servletCifrado extends HttpServlet {
         response.setContentType(contentType);
         String[] fileNameSplitted = fileName.split("\\.");
         System.out.println(fileNameSplitted[0]);
-        response.setHeader("Content-Disposition", "attachment; filename=\"" + fileNameSplitted[0] + sufix + "." + fileNameSplitted[1] + "\"");
+        if (fileNameSplitted.length > 1){
+            String sAfterDot = "";
+            for (int i = 1; i < fileNameSplitted.length; i++)
+                sAfterDot += "." + fileNameSplitted[i];
+            response.setHeader("Content-Disposition", "attachment; filename=\"" + fileNameSplitted[0] + sufix + sAfterDot + "\"");
+        } else {
+            response.setHeader("Content-Disposition", "attachment; filename=\"" + fileNameSplitted[0] + sufix + "\"");
+        }
 
         // Prepare streams.
         BufferedInputStream input = null;
@@ -243,20 +249,49 @@ public class servletCifrado extends HttpServlet {
             close(input);
         }
     }
+    
+    private Document cifradoElements(String[] names, Document doc, Element el, Cifrado cifrado, Boolean only_content) {
+        System.out.println(names);
+        for (String name : names){
+            System.out.println(name);
+            NodeList els = el.getElementsByTagName(name);
+            for (int i = 0; i < els.getLength(); i++){
+                try {
+                    doc = cifrado.encrypt(doc, (Element)els.item(i), only_content);
+                } catch (Exception ex) {
+                    Logger.getLogger(servletCifrado.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return doc;
+    }
 
-    private Document recursiveCifrado(String[] names, Document doc, Element el, Cifrado cifrado, Boolean only_content) {
+    /*private Document recursiveCifrado(String[] names, Document doc, Element el, Cifrado cifrado, Boolean only_content) {
         if (!el.hasChildNodes()){
             for (String name : names){
-                if (name == el.getNodeName())
+                if (el.getAttribute("name").toLowerCase().toString().equals(name.toLowerCase().toString())){
+                    System.out.println("About to encrypt recursiveCifrado : " + el.getAttribute("name"));
                     return cifrado.encrypt(doc, el, only_content);
+                }
             }
         }
         for (int i = 0; i < el.getChildNodes().getLength(); i++){
             try {
                 Element e = (Element)el.getChildNodes().item(i);
                 doc = recursiveCifrado(names, doc, e, cifrado, only_content);
-            } catch (Exception e) {
-                
+            } catch (ClassCastException ex) {
+            }
+        }
+        return doc;
+    }*/
+
+    private Document descifradoElements(Document doc, Cifrado cifrado) {
+        NodeList els = doc.getElementsByTagName("xenc:EncryptedData");
+        for (int i = 0; i < els.getLength(); i++){
+            try {
+                doc = cifrado.decrypt(doc, (Element)els.item(i));
+            } catch (Exception ex) {
+                Logger.getLogger(servletCifrado.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return doc;
