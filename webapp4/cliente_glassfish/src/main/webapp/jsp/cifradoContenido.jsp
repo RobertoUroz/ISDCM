@@ -18,7 +18,7 @@
 
         <a href="/cliente_glassfish/jsp/listadoVid.jsp">&laquo; Listado de vídeos</a>
         <h1>Cifrado de contenido</h1>
-        <form action="/cliente_glassfish/servletCifrado" enctype="multipart/form-data" method="post">  
+        <form action="/cliente_glassfish/servletCifradoContenido" enctype="multipart/form-data" method="post">  
             <div class="container">
                 <label>Fichero</label>
                 <input type="file" name="fichero" />

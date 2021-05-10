@@ -5,86 +5,71 @@
  */
 package isdcm.webapp1.modelo;
 
-import java.security.InvalidKeyException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-import java.util.Base64;
-import javax.crypto.BadPaddingException;
+import java.security.UnrecoverableKeyException;
+import java.security.cert.CertificateException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.KeyGenerator;
-import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-import org.json.JSONObject;
 
-/**
- *
- * @author cubometa
- */
 public class CifradoContenido {
-    public SecretKey createkey() {
-        try {
-            KeyGenerator kg = KeyGenerator.getInstance("AES");
-            return kg.generateKey();
-        } catch (NoSuchAlgorithmException e) {
-            return null;
+    
+    static private SecretKey key;
+    
+    public CifradoContenido() {
+        if (key == null){
+            try {
+                KeyStore ks = KeyStore.getInstance("JCEKS");
+                ks.load(new FileInputStream(new File(CifradoContenido.class.getProtectionDomain().getCodeSource().getLocation().getPath().replaceAll("/([^/]+)$","/") + "../../../../../res/aes.keystore")), "asdf1234".toCharArray());
+                
+                key = (SecretKeySpec) ks.getKey("aes128", "asdf1234".toCharArray());
+                
+            } catch (KeyStoreException ex) {
+                Logger.getLogger(CifradoContenido.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(CifradoContenido.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(CifradoContenido.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(CifradoContenido.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (CertificateException ex) {
+                Logger.getLogger(CifradoContenido.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnrecoverableKeyException ex) {
+                Logger.getLogger(CifradoContenido.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
     
-    public byte[] encryptfile(byte[] file, SecretKey sk) {
+    public byte[] encrypt(byte[] file){
+        byte[] efile = new byte[0];
         try {
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-            cipher.init(Cipher.ENCRYPT_MODE,sk);
-            return cipher.doFinal(file);
-        } catch (InvalidKeyException | NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException | NoSuchPaddingException e) {
-            System.out.println(e);
-            return "".getBytes();
+            cipher.init(Cipher.ENCRYPT_MODE,key,new IvParameterSpec(new byte[16]));
+            efile = cipher.doFinal(file);
+        } catch (Exception ex) {
+            Logger.getLogger(CifradoContenido.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    
-    public byte[] decryptfile(byte[] file, SecretKey sk) {
+        return efile;
+  }
+
+    public byte[] decrypt(byte[] file) {
+        byte[] dfile = new byte[0];
         try {
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-            cipher.init(Cipher.DECRYPT_MODE,sk);
-            return cipher.doFinal(file);
-        } catch (InvalidKeyException | NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException | NoSuchPaddingException e) {
-            System.out.println(e);
-            return "".getBytes();
+            cipher.init(Cipher.DECRYPT_MODE,key,new IvParameterSpec(new byte[16]));
+            dfile = cipher.doFinal(file);
+        }   catch (Exception ex) {
+            Logger.getLogger(CifradoContenido.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    
-    public byte[] encodekey(SecretKey sk) {
-        try {
-        SecretKeyFactory aesFactory = SecretKeyFactory.getInstance("AES");
-        SecretKeySpec aesSpec = (SecretKeySpec)
-                aesFactory.getKeySpec(sk, javax.crypto.spec.SecretKeySpec.class);
-        byte[] rawAesKey = aesSpec.getEncoded();
-        return Base64.getEncoder().encode(rawAesKey);
-        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-            System.out.println(e);
-            return "".getBytes();
-        }
-        //return Base64.getEncoder().encode(sk.getEncoded());
-        // return Base64.getEncoder().encodeToString(sk.getEncoded());
-    }
-    
-    public SecretKey decodekey(byte[] s) {
-        byte[] dk = Base64.getDecoder().decode(s);
-        return new SecretKeySpec(dk, 0, dk.length, "AES");
-    }
-    
-    public byte[] getuserkey(String usuario) {
-        JSONObject user_json = null;
-        DatabaseService db = DatabaseService.getInstance();
-        user_json = db.getPSQLQuery("SELECT * FROM CLAVESUSUARIO WHERE USERNAME=?",usuario);
-        byte[] key = new byte[0];
-        System.out.print("-->"+user_json.toString());
-        if (user_json.getInt("count") > 0){
-            System.out.println(user_json.toString());
-            key = (byte[]) user_json.getJSONArray("items").getJSONObject(0).get("clave");
-        }
-        return key;
+        return dfile;
     }
 }
