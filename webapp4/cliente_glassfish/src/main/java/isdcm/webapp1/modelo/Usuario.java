@@ -5,7 +5,6 @@
  */
 package isdcm.webapp1.modelo;
 
-import javax.crypto.SecretKey;
 import org.json.JSONObject;
 
 /**
@@ -130,24 +129,6 @@ public class Usuario {
                 this.username,
                 this.password);
         switch (rows){
-            case 1:
-                // return true;
-                break;
-            case 0:
-                return false;
-            default:
-                System.out.println("USUARIO::registerUser()  :  There has been another number instead of 1 or 0 : " + rows);
-                return false;
-        }
-        CifradoContenido cc = new CifradoContenido();
-        SecretKey sk = cc.createkey();
-        byte[] skc = cc.encodekey(sk);
-        String sks = String.valueOf(skc);
-        int rows2 = db.insertPSQLQuery("INSERT INTO CLAVESUSUARIO VALUES(?,?)",
-                this.username,
-                sks);
-        
-        switch (rows2){
             case 1:
                 return true;
             case 0:
