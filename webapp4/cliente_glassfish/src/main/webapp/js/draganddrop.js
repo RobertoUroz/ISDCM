@@ -38,24 +38,32 @@ function dropf(e) {
     if (files.length > 0) {
         var file = files[0];
         var url = "/cliente_glassfish/servletCifradoContenido";
+        var req = new XMLHttpRequest();
+        req.open("POST",url,true);
+        req.responseType="blob";
         var fd = new FormData();
-        fd.append("accioncifrado","cifrar");
+        fd.append("accioncifrado",e.target.id.substring(1));
         fd.append("username",document.getElementById('username').value);
         fd.append("fichero",file);
-        fetch(url, {method:"POST",body:fd}).then( response => {
-            var ct = response.headers.get("Content-Type");
-            var cd = response.headers.get("Content-Disposition");
+        req.onload = function() {
+        //var ef = fetch(url, {method:"POST",body:fd});
+            //var eblob;
+            if (req.status !== 200) return;
+            
+            var ct = req.getResponseHeader("Content-Type");
+            var cd = req.getResponseHeader("Content-Disposition");
             var mcd = /"([^"]*)"/.exec(cd);
             var fn = (mcd !== null && mcd[1])?mcd[1]:null;
+            var blob = new Blob([req.response], { type: ct });
             document.body.innerHTML = document.body.innerHTML + "<a href='"+
-            URL.createObjectURL(response.blob())+"'"+
+            URL.createObjectURL(blob)+"'"+
             (fn!==null?(" download='"+fn+"'"):"")+
             " id='enlace'></a>";
             document.getElementById('enlace').click();
-            document.getElementById('enlace').parent.
+            document.getElementById('enlace').parentNode.
                     removeChild(document.getElementById('enlace'));
-        }
-           );
+        };
+        req.send(fd);
     }
     
     e.preventDefault();
