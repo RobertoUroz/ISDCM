@@ -5,6 +5,7 @@
  */
 package isdcm.cliente_tomcat.modelo;
 
+import java.io.File;
 import java.sql.Clob;
 import java.sql.Date;
 import java.sql.Time;
@@ -47,7 +48,9 @@ public class DatabaseService {
     };
     
     private DatabaseService() {
-        this.db_URL = "jdbc:derby:C:\\Users\\Resis\\Documents\\NetBeansProjects\\ISDCM\\tomcat_db;create=true;";
+        String filePath = new File("").getAbsolutePath();
+        System.out.println(filePath);
+        this.db_URL = "jdbc:derby:" + filePath + "..\\..\\tomcat_db;create=true;";
         try {
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
         } catch (ClassNotFoundException ex) {

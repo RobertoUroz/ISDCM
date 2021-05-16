@@ -15,4 +15,9 @@ webapp2/cliente/target/
 /webapp4/cliente/target/
 /webapp4/server_rest/target/
 /webapp4/cliente_tomcat/target/
+<<<<<<< HEAD
 /entrega5/app5/target/
+=======
+/webapp4/cliente_glassfish/target/
+apache-tomcat-8.5.65_alejandro/logs/
+>>>>>>> b9c2d40bd480fa816e0cac8daab3c81e27dc7e38
