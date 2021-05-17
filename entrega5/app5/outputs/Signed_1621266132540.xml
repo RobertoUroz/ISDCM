@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><Policy PolicyId="ExamplePolicy1" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:permit-overrides"> 
+	<Description> Politica reproduccion video Mavericksv </Description> 
+	<Target/> 
+	<Rule Effect="Permit" RuleId="urn:oasis:names:tc:xacml:2.0:ejemplo:RuleMavericksv"> 
+		<Description> Cualquier usuario puede reproducir la película urn:mvideo: Mavericksv.mp4 antes de final de año </Description>
+		<Target>
+			<Subjects>
+		        <AnySubject/>
+		    </Subjects>
+			<Resources> 
+				<Resource> 
+					<ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:regexp-string-match"> 
+						<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">urn:mvideo:Mavericksv.mp4</AttributeValue> 
+						<ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string"/> 
+					</ResourceMatch> 
+				</Resource> 
+			</Resources> 
+			<Actions> 
+				<Action> 
+					<ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal"> 
+						<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">play</AttributeValue> 
+						<ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string"/> 
+					</ActionMatch> 
+				</Action> 
+			</Actions> 
+		</Target> 
+		<Condition FunctionId="urn:oasis:names:tc:xacml:1.0:function:date-less-than-or-equal">
+			<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:date-one-and-only">
+				<SubjectAttributeDesignator AttributeId="pruebaId" DataType="http://www.w3.org/2001/XMLSchema#date"/>
+			</Apply>
+			<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#date">2015-01-01</AttributeValue>
+		</Condition> 
+	</Rule> 
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>7OaaUooFlJ54AeqTfnWfbc65a4U=</DigestValue></Reference></SignedInfo><SignatureValue>mT9Qp6f09nTBgJ7yaco+qYhgmYhoAmMnNbqqKHX6WWV/tu/g7/CaOLlOtbEMCSHyhRNbw6z5Y3/n&#13;
+B4Jk1/n2r0eButrletnYDOgvNduuBp58vI/qQ9JXQchtLRwWhu6AUsu9rL7+N5v9cGuAE7H4McGS&#13;
+Y0nS0uNOkBH3iXM1KHazE4oFCjanD5gW36408ZdIdX4B+kuLREklXt8Jplg7FNtjjx0YumB2ittp&#13;
+N/BOVIzrqw9DI+s9f25/3IB6rvY0FJ9xf+n3IvCPaRrXObvx7Y7WBPx4bVwWRvCC/O2LICLxMPrs&#13;
+StdFqnOS3Qk+E1tnbX0bUYCsyBaN14BOcD2yDw==</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>wnCwHMxC6r4Ywa44FHys+zElj8zitmyJfja2zJEwIk5bPQoOYKXlJEIGgz7yNGMFpDnDjnKQgS10&#13;
+cdeOAO5rwQonpbwNwU4AzhuGLGgYQpR0JQFL18KtpJiYUw4N9wnjY1UioltCan9s0oE+AYK4ogjk&#13;
+OOMsqgaoxuhICDXv7t130V+miLqoavhsVhAxmGwjO8uCMVOETHeQD2wo886mAZGTXRCmpWf6ALm5&#13;
+WwkRrNiqP1YBT436CMu1egngnpgbSOTCkU4B0hItGSbjRpZBDqdj7hgNPdwA8ok8aS6UdxCb8J/S&#13;
+tgPdSP0voH1pZcjoCSNdmkbE6DD6TIaj0+q6gw==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue></KeyInfo></Signature></Policy>

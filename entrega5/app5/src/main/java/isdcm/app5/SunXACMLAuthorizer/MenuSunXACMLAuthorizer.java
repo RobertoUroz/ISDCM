@@ -7,6 +7,7 @@ package isdcm.app5.SunXACMLAuthorizer;
 
 import com.sun.xacml.PDP;
 import com.sun.xacml.PDPConfig;
+import isdcm.app5.Menu;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -22,12 +23,15 @@ public class MenuSunXACMLAuthorizer {
     private final String[] options = {
         "[1] xACML con versión de prueba 1",
         "[2] xACML con versión de prueba 2",
-        "[3] xACML de un archivo del disco duro"
+        "[3] xACML de un archivo del disco duro",
+        "[4] Volver a la página principal"
     };
     private String[][] paths;
     private final int nbOfTests = 2;
+    private Menu m;
 
-    public MenuSunXACMLAuthorizer(BufferedReader reader) {
+    public MenuSunXACMLAuthorizer(Menu m, BufferedReader reader) {
+        this.m = m;
         this.reader = reader;
         String baseDir = System.getProperty("user.dir");
         paths = new String[nbOfTests][3];
@@ -51,24 +55,28 @@ public class MenuSunXACMLAuthorizer {
     }
     
      private void optionsPaginaPrincipal() {
-        SunXACMLAuthorizer authorizer;
         try {
-            for (String s : options)
+            while (true) {
+                for (String s : options)
                 System.out.println(s);
-            String option = reader.readLine();
-            switch (option){
-                case "1":
-                    optionsConfigFile(0, false);
-                    break;
-                case "2":
-                    optionsConfigFile(1, false);
-                    break;
-                case "3":
-                    optionsConfigFile(0, true);
-                    break;
-                default:
-                    System.out.println("No se ha entendido la opción, ¿Podría volver a escribirla?");
-                    optionsPaginaPrincipal();
+                String option = reader.readLine();
+                switch (option){
+                    case "1":
+                        optionsConfigFile(0, false);
+                        break;
+                    case "2":
+                        optionsConfigFile(1, false);
+                        break;
+                    case "3":
+                        optionsConfigFile(0, true);
+                        break;
+                    case "4":
+                        m.paginaPrincipal();
+                        break;
+                    default:
+                        System.out.println("No se ha entendido la opción, ¿Podría volver a escribirla?");
+                        optionsPaginaPrincipal();
+                }
             }
         } catch (IOException ex) {
             System.out.println("Ha habido un error al leer la opción indicada, por favor, vuélvala a introducir");

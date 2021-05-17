@@ -11,6 +11,20 @@
             <artifactId>xacml</artifactId>
             <version>1.2</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.santuario/xmlsec -->
+        <dependency>
+            <groupId>org.apache.santuario</groupId>
+            <artifactId>xmlsec</artifactId>
+            <version>2.2.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.bouncycastle/bcprov-ext-jdk16 -->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-ext-jdk16</artifactId>
+            <version>1.46</version>
+        </dependency>
+
+
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
