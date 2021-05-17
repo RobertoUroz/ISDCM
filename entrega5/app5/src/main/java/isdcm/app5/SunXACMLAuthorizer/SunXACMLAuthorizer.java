@@ -39,11 +39,15 @@ class SunXACMLAuthorizer {
     private String pathRequest;
     private String pathPolicy;
     private String pathConfig;
+    private String[] requestsPath;
+    private String[] policiesPath;
     
     protected SunXACMLAuthorizer(String pathRequest, String pathPolicy) {
         this.pathRequest = pathRequest;
         this.pathPolicy = pathPolicy;
         System.out.println(pathRequest);
+        this.requestsPath = getAllXMLFilesPath(this.pathRequest);
+        this.policiesPath = getAllXMLFilesPath(this.pathPolicy);
     }
     
     protected SunXACMLAuthorizer(String pathRequest, String pathConfig, Boolean dummy) {
@@ -52,25 +56,25 @@ class SunXACMLAuthorizer {
         System.out.println(pathRequest);
     }
     
-    protected void execute() {
+    protected void execute(int i) {
         try {
-            String[] requestsPath = getAllXMLFilesPath(this.pathRequest);
-            String[] policiesPath = getAllXMLFilesPath(this.pathPolicy);
+            if (i == requestsPath.length)
+                return;
             if (policiesPath.length == 0){
-                throw new Exception("No se ha podido encontrar ninguna policy, abortando proceso Authorizer");
+                System.out.println("No se ha podido encontrar ninguna policy, abortando proceso Authorizer");
+                return;
             }
             PDPBasic pdp = new PDPBasic(policiesPath, requestsPath, null);
-            for (String requestPath : requestsPath) {
-                if (policiesPath.length > 1)
-                    System.out.println("Verificando request con las policies seleccionadas " + requestPath);
-                else if (policiesPath.length == 1)
-                    System.out.println("Verificando request con la policy seleccionada " + requestPath);
-                ResponseCtx response = pdp.evaluateRequest(requestPath);
-                writeResult(response, policiesPath, requestPath, true);
-                //ResponseCtx response = pdp.evaluate(RequestCtx.getInstance(new FileInputStream(requestPath)));
-            }
+            if (policiesPath.length > 1)
+                System.out.println("Verificando request con las policies seleccionadas " + requestsPath[i]);
+            else if (policiesPath.length == 1)
+                System.out.println("Verificando request con la policy seleccionada " + requestsPath[i]);
+            ResponseCtx response = pdp.evaluateRequest(requestsPath[i]);
+            writeResult(response, policiesPath, requestsPath[i], true);
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("La request seleccionada no ha podido ser procesada, saltando request...");
+            System.out.println(i);
+            execute(++i);
         }
     }
     
@@ -111,33 +115,11 @@ class SunXACMLAuthorizer {
             return name.endsWith(".xml");
         }
     };
-    
-    private PDP setupPDP(String configPath) {
-        /*ResourceFinder resourceFinder = new ResourceFinder();
-        List resourcesModules = new ArrayList();
-        policyModules.add(filePolicyModule);
-        policyFinder.setModules(policyModules);
-        AttributeFinder attrFinder = new AttributeFinder();
-        SelectorModule selectorAttributeModule = new SelectorModule();
-        attrModules.add(selectorAttributeModule);
-        CurrentEnvModule envAttributeModule = new CurrentEnvModule();
-        attrModules.add(envAttributeModule);
-        attrFinder.setModules(attrModules);
-        return new PDP(new PDPConfig(attrFinder, null, configFinder));*/
-        return null;
-    }
 
     private void printResult(OutputStream response, Indenter indenter, Set results) {
-        // Make a PrintStream for a nicer printing interface
         PrintStream out = new PrintStream(response);
-
-        // Prepare the indentation string
         String indent = indenter.makeString();
-
-        // Now write the XML...
         out.println(indent + "<Response>");
-
-        // Go through all results
         Iterator it = results.iterator();
         indenter.in();
         while (it.hasNext()) {
@@ -145,16 +127,16 @@ class SunXACMLAuthorizer {
             result.encode(out, indenter);
         }
         indenter.out();
-
-        // Finish the XML for a response
         out.println(indent + "</Response>");
     }
 
     private void writeResult(ResponseCtx response, String[] paths, String requestPath, boolean policy) throws FileNotFoundException {
         String baseDir = System.getProperty("user.dir");
         String pathString = "";
-        for (String s : paths)
-            pathString += new File(s).getName() + "_";
+        for (String s : paths){
+            String fileName = new File(s).getName().split("\\.")[0];
+            pathString += fileName + "_";
+        }
         String pathResponse;
         String typeResult;
         if (policy)

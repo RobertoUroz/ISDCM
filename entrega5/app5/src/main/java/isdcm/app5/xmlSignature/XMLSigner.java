@@ -78,25 +78,14 @@ class XMLSigner {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         dbf.setNamespaceAware(true); 
         DocumentBuilder builder = dbf.newDocumentBuilder();  
-        Document doc = builder.parse(new FileInputStream(getAllXMLFilesPath(pathPolicy)[0]));
+        Document doc = builder.parse(new FileInputStream(new File(pathPolicy)));
         KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA");
         kpg.initialize(2048);
         KeyPair kp = kpg.generateKeyPair();
-        DOMSignContext dsc = new DOMSignContext
-          (kp.getPrivate(), doc.getDocumentElement());
-        XMLSignatureFactory fac =
-          XMLSignatureFactory.getInstance("DOM");
-        Reference ref = fac.newReference
-          ("", fac.newDigestMethod(DigestMethod.SHA1, null),
-            Collections.singletonList
-              (fac.newTransform(Transform.ENVELOPED,
-                (TransformParameterSpec) null)), null, null); 
-        SignedInfo si = fac.newSignedInfo
-        (fac.newCanonicalizationMethod
-          (CanonicalizationMethod.INCLUSIVE_WITH_COMMENTS,
-            (C14NMethodParameterSpec) null),
-          fac.newSignatureMethod(SignatureMethod.RSA_SHA1, null),
-          Collections.singletonList(ref)); 
+        DOMSignContext dsc = new DOMSignContext(kp.getPrivate(), doc.getDocumentElement());
+        XMLSignatureFactory fac = XMLSignatureFactory.getInstance("DOM");
+        Reference ref = fac.newReference("", fac.newDigestMethod(DigestMethod.SHA1, null), Collections.singletonList(fac.newTransform(Transform.ENVELOPED,(TransformParameterSpec) null)), null, null);
+        SignedInfo si = fac.newSignedInfo(fac.newCanonicalizationMethod(CanonicalizationMethod.INCLUSIVE_WITH_COMMENTS,(C14NMethodParameterSpec) null),fac.newSignatureMethod(SignatureMethod.RSA_SHA1, null),Collections.singletonList(ref));
         KeyInfoFactory kif = fac.getKeyInfoFactory();
         KeyValue kv = kif.newKeyValue(kp.getPublic());
         KeyInfo ki = kif.newKeyInfo(Collections.singletonList(kv));
@@ -107,34 +96,25 @@ class XMLSigner {
         TransformerFactory tf = TransformerFactory.newInstance();
         Transformer trans = tf.newTransformer();
         trans.transform(new DOMSource(doc), new StreamResult(os));
+        System.out.println("Archivo XML firmado en : " + outputPath);
         storePublicKey(kp.getPublic());
     }
     
     void verifyXML() throws ParserConfigurationException, FileNotFoundException, SAXException, IOException, Exception {
-        // Instantiate the document to be validated
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         dbf.setNamespaceAware(true);
-        Document doc =
-            dbf.newDocumentBuilder().parse(new FileInputStream(this.pathPolicy));
-
-        // Find Signature element
+        Document doc = dbf.newDocumentBuilder().parse(new FileInputStream(this.pathPolicy));
         NodeList nl =
             doc.getElementsByTagNameNS(XMLSignature.XMLNS, "Signature");
         if (nl.getLength() == 0) {
-            throw new Exception("Cannot find Signature element");
+            System.out.println("No se ha podido encontrar ningún elemento Signature");
+            return;
         }
-
-        // Create a DOM XMLSignatureFactory that will be used to unmarshal the
-        // document containing the XMLSignature
         XMLSignatureFactory fac = XMLSignatureFactory.getInstance("DOM");
-
-        
-        // Create a DOMValidateContext and specify a KeyValue KeySelector
-        // and document context
-        String[] keyPaths = retrieveAllKeyFiles(this.publicKeysPath);
+        String[] keyPaths = retrieveAllFiles(this.publicKeysPath);
         for (int i = 0; i < nl.getLength(); i++){
             if (verifyWithKeys(keyPaths, 0, fac, nl.item(i))){
-                System.out.println("Signature passed core validation");
+                System.out.println("Firma validada correctamente");
                 return;
             }
         }
@@ -143,29 +123,16 @@ class XMLSigner {
     
     private boolean verifyWithKeys(String[] keyPaths, int i, XMLSignatureFactory fac, Node n) {
         try {
-            
             RSAPublicKey pKey = readPublicKey(keyPaths[i]);
-            
-            DOMValidateContext valContext = new DOMValidateContext
-                (pKey, n);
-
-            // unmarshal the XMLSignature
+            DOMValidateContext valContext = new DOMValidateContext(pKey, n);
             XMLSignature signature = fac.unmarshalXMLSignature(valContext);
-
-            // Validate the XMLSignature (generated above)
             boolean coreValidity = signature.validate(valContext);
-
-            // Check core validation status
             if (coreValidity == false) {
-                System.err.println("Signature failed core validation");
                 boolean sv = signature.getSignatureValue().validate(valContext);
-                System.out.println("signature validation status: " + sv);
-                // check the validation status of each Reference
                 Iterator it = signature.getSignedInfo().getReferences().iterator();
                 for (int j=0; it.hasNext(); j++) {
                     boolean refValid =
                             ((Reference) it.next()).validate(valContext);
-                    System.out.println("ref["+j+"] validity status: " + refValid);
                     if (refValid)
                         return true;
                 }
@@ -182,34 +149,16 @@ class XMLSigner {
         }
     }
     
-    private String[] getAllXMLFilesPath(String path) {
+    private String[] retrieveAllFiles(String path) {
         File f = new File(path);
-        for (String s : f.list())
-            System.out.println(s);
-        File[] files = f.listFiles(filter);
+        File[] files = f.listFiles(filterTrue);
         String[] result = new String[files.length];
         for (int i = 0; i < files.length; i++)
             result[i] = files[i].getAbsolutePath();
         return result;
     }
     
-    FilenameFilter filter = new FilenameFilter() {
-        @Override
-        public boolean accept(File dir, String name) {
-            return name.endsWith(".xml");
-        }
-    };
-    
-    private String[] retrieveAllKeyFiles(String path) {
-        File f = new File(path);
-        File[] files = f.listFiles(filterKeys);
-        String[] result = new String[files.length];
-        for (int i = 0; i < files.length; i++)
-            result[i] = files[i].getAbsolutePath();
-        return result;
-    }
-    
-    FilenameFilter filterKeys = new FilenameFilter() {
+    FilenameFilter filterTrue = new FilenameFilter() {
         @Override
         public boolean accept(File dir, String name) {
             return true;

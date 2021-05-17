@@ -57,6 +57,7 @@ public class Menu {
                         break;
                     case "4":
                         exit(0);
+                        break;
                     default:
                         System.out.println("No se ha entendido la opción, ¿Podría volver a escribirla?");
                         optionsPaginaPrincipal();

@@ -47,10 +47,10 @@ public class MenuXMLSignature {
         String baseDir = System.getProperty("user.dir");
         if (System.getProperty("os.name").toLowerCase().indexOf("win") >= 0){
             this.signaturePath  = baseDir + "\\src\\main\\java\\res\\xmlSignature";
-            this.policyPath = baseDir + "\\src\\main\\java\\res\\xACML" + 1 + "\\support" + "\\policy";
+            this.policyPath = baseDir + "\\src\\main\\java\\res\\xACML" + 1 + "\\support" + "\\policy\\XACMLPolicy1.xml";
         } else {
             this.signaturePath  = baseDir + "/src/main/java/res/xmlSignature";
-            this.policyPath = baseDir + "/src/main/java/res/xACML" + 1 + "/support" + "/policy";
+            this.policyPath = baseDir + "/src/main/java/res/xACML" + 1 + "/support" + "/policy/XACMLPolicy1.xml";
         }
     }
 
@@ -119,7 +119,6 @@ public class MenuXMLSignature {
                     optionsPaginaPrincipal();
             }
         } catch (IOException ex) {
-            ex.printStackTrace();
             System.out.println("Ha habido un error al leer la opción indicada, por favor, vuélvala a introducir");
             optionsPaginaPrincipal();
         } catch (NoSuchAlgorithmException ex) {
