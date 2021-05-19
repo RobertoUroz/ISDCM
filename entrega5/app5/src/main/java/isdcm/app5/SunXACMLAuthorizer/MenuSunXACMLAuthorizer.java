@@ -40,11 +40,11 @@ public class MenuSunXACMLAuthorizer {
             if (System.getProperty("os.name").toLowerCase().indexOf("win") >= 0){
                 paths[i][0] = baseDir + "\\src\\main\\java\\res\\xACML" + (i+1) + "\\support" + "\\requests";
                 paths[i][1] = baseDir + "\\src\\main\\java\\res\\xACML" + (i+1) + "\\support" + "\\policy";
-                paths[i][2] = baseDir + "\\src\\main\\java\\res\\xACML" + (i+1) + "\\support" + "\\config";
+                paths[i][2] = baseDir + "\\src\\main\\java\\res\\xACML" + (i+1) + "\\support" + "\\config\\config_rbac.xml";
             } else {
                 paths[i][0] = baseDir + "/src/main/java/res/xACML" + (i+1) + "/support" + "/requests";
                 paths[i][1] = baseDir + "/src/main/java/res/xACML" + (i+1) + "/support" + "/policy";
-                paths[i][2] = baseDir + "/src/main/java/res/xACML" + (i+1) + "/support" + "/config";
+                paths[i][2] = baseDir + "/src/main/java/res/xACML" + (i+1) + "/support" + "/config/config_rbac.xml";
             }
         }
         System.out.println(paths[0]);
@@ -88,8 +88,8 @@ public class MenuSunXACMLAuthorizer {
     private void optionsConfigFile(int i, boolean extra) {
         SunXACMLAuthorizer authorizer;
         String[][] local_paths;
-        //try {
-            /*System.out.println("¿Quiere utilizar el config file?");
+        try {
+            System.out.println("¿Quiere utilizar el config file?");
             System.out.println("[1] Sí");
             System.out.println("[2] No");
             String optionConfigFile = reader.readLine();
@@ -102,24 +102,23 @@ public class MenuSunXACMLAuthorizer {
                     authorizer = new SunXACMLAuthorizer(local_paths[i][0], local_paths[i][2], false);
                     authorizer.executeWithConfigFile();
                     break;
-                case "2":*/
+                case "2":
                     if (!extra)
                         local_paths = paths;
                     else
-                        local_paths = retrievePaths("1");
+                        local_paths = retrievePaths(optionConfigFile);
                     if (local_paths == null)
                         return;
-                        //local_paths = retrievePaths(optionConfigFile);
                     authorizer = new SunXACMLAuthorizer(local_paths[i][0], local_paths[i][1]);
                     authorizer.execute(0);
-                    /*break;
+                    break;
                 default:
                     System.out.println("No se ha entendido la opción");
-            }*/
-        /*} catch (IOException ex) {
+            }
+        } catch (IOException ex) {
             System.out.println("Ha habido un error al leer la opción indicada, por favor, vuélvala a introducir");
             optionsConfigFile(i, extra);
-        }*/
+        }
     }
 
     private String[][] retrievePaths(String optionConfigFile) {
@@ -128,7 +127,7 @@ public class MenuSunXACMLAuthorizer {
         File f;
         try {
             System.out.println("Recuerde que los archivos deben de estar aislados en su carpeta contenedora, por lo tanto, las policies, requests y config deben de estar aislados en sus carpetas correspondientes");
-            if (optionConfigFile.equals("1")){
+            if (optionConfigFile.equals("2")){
                 System.out.println("Por favor, especifique ruta de la carpeta contenedora de las policies");
                 path = reader.readLine();
                 f = new File(path);
@@ -142,8 +141,8 @@ public class MenuSunXACMLAuthorizer {
             if (!f.exists())
                     throw new IOException("");
             paths[0][0] = path;
-            if (optionConfigFile.equals("2")){
-                System.out.println("Por favor, especifique ruta de la carpeta contenedora del archivo config");
+            if (optionConfigFile.equals("1")){
+                System.out.println("Por favor, especifique ruta del archivo config");
                 path = reader.readLine();
                 f = new File(path);
                 if (!f.exists())

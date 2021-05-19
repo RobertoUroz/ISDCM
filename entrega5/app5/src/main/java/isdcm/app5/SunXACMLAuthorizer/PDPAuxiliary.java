@@ -5,9 +5,11 @@
  */
 package isdcm.app5.SunXACMLAuthorizer;
 
+import com.sun.xacml.ConfigurationStore;
 import com.sun.xacml.PDP;
 import com.sun.xacml.PDPConfig;
 import com.sun.xacml.ParsingException;
+import com.sun.xacml.UnknownIdentifierException;
 import com.sun.xacml.ctx.RequestCtx;
 import com.sun.xacml.ctx.ResponseCtx;
 import com.sun.xacml.finder.AttributeFinder;
@@ -15,37 +17,50 @@ import com.sun.xacml.finder.PolicyFinder;
 import com.sun.xacml.finder.impl.CurrentEnvModule;
 import com.sun.xacml.finder.impl.FilePolicyModule;
 import com.sun.xacml.finder.impl.SelectorModule;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Resis
  */
-public class PDPBasic {
+public class PDPAuxiliary {
     
     PDP pdp;
     
-    PDPBasic(String[] policiesPath, String[] requestsPath, String configPath) {
-        if (policiesPath == null)
-            this.pdp = setupWithConfigFile(requestsPath, configPath);
-        else if (configPath == null)
-            this.pdp = setupWithPolicies(policiesPath, requestsPath);
+    PDPAuxiliary(String[] policiesPath) {
+        this.pdp = setupWithPolicies(policiesPath);
+    }
+    
+    PDPAuxiliary (String configPath) {
+        this.pdp = setupWithConfigFile(configPath);
     }
 
     ResponseCtx evaluateRequest(String request) throws FileNotFoundException, ParsingException {
         return pdp.evaluate(RequestCtx.getInstance(new FileInputStream(request)));
     }
 
-    private PDP setupWithConfigFile(String[] requestsPath, String configPath) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private PDP setupWithConfigFile(String configPath) {
+        PDP pdp = null;
+        try {
+            ConfigurationStore cnfStore = new ConfigurationStore(new File(configPath));
+            pdp = new PDP(cnfStore.getDefaultPDPConfig());
+        } catch (ParsingException ex) {
+            Logger.getLogger(PDPAuxiliary.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnknownIdentifierException ex) {
+            Logger.getLogger(PDPAuxiliary.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return pdp;
     }
 
-    private PDP setupWithPolicies(String[] policiesPath, String[] requestsPath) {
+    private PDP setupWithPolicies(String[] policiesPath) {
         FilePolicyModule filePolicyModule = new FilePolicyModule();
         List attrModules = new ArrayList();
         for (int i = 0; i < policiesPath.length; i++)

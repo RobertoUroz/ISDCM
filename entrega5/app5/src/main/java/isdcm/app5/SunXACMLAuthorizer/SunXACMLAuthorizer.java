@@ -5,6 +5,7 @@
  */
 package isdcm.app5.SunXACMLAuthorizer;
 
+import com.sun.xacml.ConfigurationStore;
 import com.sun.xacml.Indenter;
 import com.sun.xacml.PDP;
 import com.sun.xacml.PDPConfig;
@@ -64,7 +65,11 @@ class SunXACMLAuthorizer {
                 System.out.println("No se ha podido encontrar ninguna policy, abortando proceso Authorizer");
                 return;
             }
-            PDPBasic pdp = new PDPBasic(policiesPath, requestsPath, null);
+            PDPAuxiliary pdp = new PDPAuxiliary(policiesPath);
+            if (pdp == null){
+                System.out.println("Ha habido un error al inicializar el PDP, compruebe la ruta de la carpeta contenedora de Policies");
+                return;
+            }
             if (policiesPath.length > 1)
                 System.out.println("Verificando request con las policies seleccionadas " + requestsPath[i]);
             else if (policiesPath.length == 1)
@@ -81,13 +86,14 @@ class SunXACMLAuthorizer {
     protected void executeWithConfigFile() {
         try {
             String[] requestsPath = getAllXMLFilesPath(this.pathRequest);
-            String[] configsPath = getAllXMLFilesPath(this.pathConfig);
-            if (configsPath.length == 0)
-                throw new Exception("No se ha podido encontrar ningun archivo de configuración, abortando proceso Authorizer");
-            else if (configsPath.length > 1)
-                throw new Exception("Demasiados archivos de configuración, únicamente se requiere uno");
-            String configPath = configsPath[0];
-            PDPBasic pdp = new PDPBasic(null, requestsPath, configPath);
+            PDPAuxiliary pdp = new PDPAuxiliary(this.pathConfig);
+            if (pdp == null){
+                System.out.println("Ha habido un error al inicializar el PDP, compruebe la ruta del archivo config");
+                return;
+            }
+            String[] configsPath = {
+                this.pathConfig
+            };
             for (String requestPath : requestsPath) {
                 ResponseCtx response = pdp.evaluateRequest(requestPath);
                 writeResult(response, configsPath, requestPath, false);
