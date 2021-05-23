@@ -1,5 +1,6 @@
 *.class
 *.war
+.DS_Store
 webapp1/target/*
 webapp2/target/*
 webappWSApplication/target/*
@@ -17,3 +18,5 @@ webapp2/cliente/target/
 /webapp4/cliente_tomcat/target/
 /webapp4/cliente_glassfish/target/
 apache-tomcat-8.5.65_alejandro/logs/
+balana
+!balana/modules/balana-samples/filtrado-balana/
