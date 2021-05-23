@@ -1,5 +1,6 @@
 *.class
 *.war
+*.zip
 .DS_Store
 webapp1/target/*
 webapp2/target/*
