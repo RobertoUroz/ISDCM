@@ -19,5 +19,6 @@ webapp2/cliente/target/
 /webapp4/cliente_tomcat/target/
 /webapp4/cliente_glassfish/target/
 apache-tomcat-8.5.65_alejandro/logs/
+/entrega5/app5/target/
 balana
 !balana/modules/balana-samples/filtrado-balana/

@@ -24,7 +24,7 @@
         <a href="/jsp/listadoVid.jsp">&laquo; Listado de vídeos</a>
         <h1>Cifrado de XML</h1>
         <form action="/servletCifrado" enctype="multipart/form-data" method="post">  
-            <div class="container">
+            <div class="container" id="container">
                 <label>Fichero</label>
                 <input type="file" name="file" />
                 <input type="checkbox" id="only_content" name="only_content" value="selected">
@@ -32,8 +32,8 @@
                 <label for="names"> Nombre elementos que se quieren cifrar (separados por comas)</label>
                 <input type="text" id="names" name="names">
                 <input type="hidden" name="username" value="<%= usuario %>" />
-                <button type="submit" name="button" value="encryptXML">Cifrar</button>
-                <button type="submit" name="button" value="decryptXML">Descifrar</button>
+                <button type="submit" name="button" id="bcifrar" value="encryptXML">Cifrar</button>
+                <button type="submit" name="button" id="bdescifrar" value="decryptXML">Descifrar</button>
             </div>
         </form>
         <script src="/js/entradatiempo.js"></script>

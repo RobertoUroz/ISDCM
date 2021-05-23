@@ -3918,3 +3918,489 @@ Original Exception was java.security.InvalidKeyException: No installed provider 
 04-May-2021 20:11:25.718 INFORMACIÓN [http-nio-8080-exec-2] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
 04-May-2021 20:11:25.785 INFORMACIÓN [http-nio-8080-exec-2] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml] has finished in [789] ms
 04-May-2021 20:11:25.788 INFORMACIÓN [http-nio-8080-exec-8] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[]] after start() had already been called. The second call will be ignored.
+04-May-2021 20:14:08.753 INFORMACIÓN [http-nio-8080-exec-6] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto []
+04-May-2021 20:14:08.782 INFORMACIÓN [http-nio-8080-exec-1] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml]
+04-May-2021 20:14:08.821 ADVERTENCIA [http-nio-8080-exec-1] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:14:09.451 INFORMACIÓN [http-nio-8080-exec-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:14:09.464 INFORMACIÓN [http-nio-8080-exec-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml] has finished in [682] ms
+04-May-2021 20:14:09.467 INFORMACIÓN [http-nio-8080-exec-9] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[]] after start() had already been called. The second call will be ignored.
+04-May-2021 20:14:13.524 INFORMACIÓN [http-nio-8080-exec-10] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:14:13.589 ADVERTENCIA [http-nio-8080-exec-10] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:14:14.162 INFORMACIÓN [http-nio-8080-exec-10] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:14:14.172 INFORMACIÓN [http-nio-8080-exec-10] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:14:17.523 INFORMACIÓN [http-nio-8080-exec-13] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:14:17.555 ADVERTENCIA [http-nio-8080-exec-13] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:14:18.142 INFORMACIÓN [http-nio-8080-exec-13] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:14:18.152 INFORMACIÓN [http-nio-8080-exec-13] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:14:18.923 INFORMACIÓN [http-nio-8080-exec-12] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto []
+04-May-2021 20:14:18.967 INFORMACIÓN [http-nio-8080-exec-2] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml]
+04-May-2021 20:14:19.014 ADVERTENCIA [http-nio-8080-exec-2] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:14:19.634 INFORMACIÓN [http-nio-8080-exec-2] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:14:19.644 INFORMACIÓN [http-nio-8080-exec-2] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml] has finished in [678] ms
+04-May-2021 20:14:19.647 INFORMACIÓN [http-nio-8080-exec-5] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[]] after start() had already been called. The second call will be ignored.
+04-May-2021 20:14:56.288 INFORMACIÓN [http-nio-8080-exec-20] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:14:56.348 ADVERTENCIA [http-nio-8080-exec-20] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:14:56.953 INFORMACIÓN [http-nio-8080-exec-20] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:14:56.966 INFORMACIÓN [http-nio-8080-exec-20] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:15:02.795 INFORMACIÓN [http-nio-8080-exec-21] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:15:02.826 ADVERTENCIA [http-nio-8080-exec-21] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:15:03.384 INFORMACIÓN [http-nio-8080-exec-21] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:15:03.393 INFORMACIÓN [http-nio-8080-exec-21] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:15:57.492 INFORMACIÓN [http-nio-8080-exec-20] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:15:57.538 ADVERTENCIA [http-nio-8080-exec-20] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:15:58.110 INFORMACIÓN [http-nio-8080-exec-20] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:15:58.121 INFORMACIÓN [http-nio-8080-exec-20] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:17:02.766 INFORMACIÓN [http-nio-8080-exec-22] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:17:02.812 ADVERTENCIA [http-nio-8080-exec-22] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:17:03.434 INFORMACIÓN [http-nio-8080-exec-22] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:17:03.443 INFORMACIÓN [http-nio-8080-exec-22] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:17:52.506 INFORMACIÓN [http-nio-8080-exec-5] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:17:52.552 ADVERTENCIA [http-nio-8080-exec-5] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:17:53.111 INFORMACIÓN [http-nio-8080-exec-5] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:17:53.120 INFORMACIÓN [http-nio-8080-exec-5] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:18:06.840 INFORMACIÓN [http-nio-8080-exec-15] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:18:06.871 ADVERTENCIA [http-nio-8080-exec-15] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:18:07.446 INFORMACIÓN [http-nio-8080-exec-15] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:18:07.456 INFORMACIÓN [http-nio-8080-exec-15] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:18:16.414 INFORMACIÓN [http-nio-8080-exec-25] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:18:16.446 ADVERTENCIA [http-nio-8080-exec-25] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:18:17.105 INFORMACIÓN [http-nio-8080-exec-25] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:18:17.116 INFORMACIÓN [http-nio-8080-exec-25] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:18:21.092 INFORMACIÓN [http-nio-8080-exec-28] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:18:21.118 ADVERTENCIA [http-nio-8080-exec-28] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:18:21.685 INFORMACIÓN [http-nio-8080-exec-28] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:18:21.695 INFORMACIÓN [http-nio-8080-exec-28] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:18:33.744 INFORMACIÓN [http-nio-8080-exec-29] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:18:33.769 ADVERTENCIA [http-nio-8080-exec-29] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:18:34.305 INFORMACIÓN [http-nio-8080-exec-29] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:18:34.314 INFORMACIÓN [http-nio-8080-exec-29] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:18:35.046 INFORMACIÓN [http-nio-8080-exec-26] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto []
+04-May-2021 20:18:44.524 INFORMACIÓN [http-nio-8080-exec-19] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml]
+04-May-2021 20:18:44.543 ADVERTENCIA [http-nio-8080-exec-19] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:18:45.070 INFORMACIÓN [http-nio-8080-exec-19] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:18:45.079 INFORMACIÓN [http-nio-8080-exec-19] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml] has finished in [556] ms
+04-May-2021 20:18:45.081 INFORMACIÓN [http-nio-8080-exec-15] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[]] after start() had already been called. The second call will be ignored.
+04-May-2021 20:19:49.515 INFORMACIÓN [http-nio-8080-exec-35] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:19:49.542 ADVERTENCIA [http-nio-8080-exec-35] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:19:50.149 INFORMACIÓN [http-nio-8080-exec-35] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:19:50.159 INFORMACIÓN [http-nio-8080-exec-35] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:20:51.209 INFORMACIÓN [http-nio-8080-exec-29] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto []
+04-May-2021 20:26:16.790 INFORMACIÓN [http-nio-8080-exec-41] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml]
+04-May-2021 20:26:16.813 ADVERTENCIA [http-nio-8080-exec-41] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:26:17.594 INFORMACIÓN [http-nio-8080-exec-41] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:26:17.603 INFORMACIÓN [http-nio-8080-exec-41] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml] has finished in [813] ms
+04-May-2021 20:26:17.604 INFORMACIÓN [http-nio-8080-exec-46] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:26:17.628 ADVERTENCIA [http-nio-8080-exec-46] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:26:18.188 INFORMACIÓN [http-nio-8080-exec-46] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:26:18.197 INFORMACIÓN [http-nio-8080-exec-46] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:26:18.199 INFORMACIÓN [http-nio-8080-exec-39] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[]] after start() had already been called. The second call will be ignored.
+04-May-2021 20:26:57.552 INFORMACIÓN [http-nio-8080-exec-44] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:26:57.593 ADVERTENCIA [http-nio-8080-exec-44] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:26:58.152 INFORMACIÓN [http-nio-8080-exec-44] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:26:58.162 INFORMACIÓN [http-nio-8080-exec-44] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:26:58.974 INFORMACIÓN [http-nio-8080-exec-51] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto []
+04-May-2021 20:26:59.035 INFORMACIÓN [http-nio-8080-exec-48] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml]
+04-May-2021 20:26:59.081 ADVERTENCIA [http-nio-8080-exec-48] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:26:59.609 INFORMACIÓN [http-nio-8080-exec-48] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:26:59.619 INFORMACIÓN [http-nio-8080-exec-48] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml] has finished in [583] ms
+04-May-2021 20:26:59.621 INFORMACIÓN [http-nio-8080-exec-45] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[]] after start() had already been called. The second call will be ignored.
+04-May-2021 20:27:11.158 INFORMACIÓN [http-nio-8080-exec-50] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:27:11.192 ADVERTENCIA [http-nio-8080-exec-50] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:27:11.802 INFORMACIÓN [http-nio-8080-exec-50] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:27:11.811 INFORMACIÓN [http-nio-8080-exec-50] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:27:18.173 INFORMACIÓN [http-nio-8080-exec-44] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:27:18.198 ADVERTENCIA [http-nio-8080-exec-44] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:27:18.809 INFORMACIÓN [http-nio-8080-exec-44] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:27:18.817 INFORMACIÓN [http-nio-8080-exec-44] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:27:21.370 INFORMACIÓN [http-nio-8080-exec-56] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:27:21.403 ADVERTENCIA [http-nio-8080-exec-56] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:27:21.937 INFORMACIÓN [http-nio-8080-exec-56] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:27:21.945 INFORMACIÓN [http-nio-8080-exec-56] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:27:25.743 INFORMACIÓN [http-nio-8080-exec-59] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:27:25.775 ADVERTENCIA [http-nio-8080-exec-59] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:27:26.322 INFORMACIÓN [http-nio-8080-exec-59] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:27:26.331 INFORMACIÓN [http-nio-8080-exec-59] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:27:31.137 INFORMACIÓN [http-nio-8080-exec-54] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:27:31.162 ADVERTENCIA [http-nio-8080-exec-54] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:27:31.713 INFORMACIÓN [http-nio-8080-exec-54] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:27:31.723 INFORMACIÓN [http-nio-8080-exec-54] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:27:36.516 INFORMACIÓN [http-nio-8080-exec-49] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto []
+04-May-2021 20:28:13.644 INFORMACIÓN [http-nio-8080-exec-65] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml]
+04-May-2021 20:28:13.668 ADVERTENCIA [http-nio-8080-exec-65] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:28:14.273 INFORMACIÓN [http-nio-8080-exec-65] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:28:14.283 INFORMACIÓN [http-nio-8080-exec-65] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml] has finished in [639] ms
+04-May-2021 20:28:14.285 INFORMACIÓN [http-nio-8080-exec-63] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:28:14.314 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:28:14.856 INFORMACIÓN [http-nio-8080-exec-63] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:28:14.864 INFORMACIÓN [http-nio-8080-exec-63] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:28:14.867 INFORMACIÓN [http-nio-8080-exec-40] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[]] after start() had already been called. The second call will be ignored.
+04-May-2021 20:28:18.561 INFORMACIÓN [http-nio-8080-exec-54] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto []
+04-May-2021 20:28:18.577 INFORMACIÓN [http-nio-8080-exec-67] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml]
+04-May-2021 20:28:18.600 ADVERTENCIA [http-nio-8080-exec-67] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:28:19.163 INFORMACIÓN [http-nio-8080-exec-67] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:28:19.173 INFORMACIÓN [http-nio-8080-exec-67] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml] has finished in [596] ms
+04-May-2021 20:28:19.175 INFORMACIÓN [http-nio-8080-exec-64] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[]] after start() had already been called. The second call will be ignored.
+04-May-2021 20:28:31.691 INFORMACIÓN [http-nio-8080-exec-66] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:28:31.759 ADVERTENCIA [http-nio-8080-exec-66] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:28:32.328 INFORMACIÓN [http-nio-8080-exec-66] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:28:32.339 INFORMACIÓN [http-nio-8080-exec-66] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:28:42.281 INFORMACIÓN [http-nio-8080-exec-69] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:28:42.307 ADVERTENCIA [http-nio-8080-exec-69] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:28:42.865 INFORMACIÓN [http-nio-8080-exec-69] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:28:42.874 INFORMACIÓN [http-nio-8080-exec-69] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:28:49.620 INFORMACIÓN [http-nio-8080-exec-61] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:28:49.649 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:28:50.244 INFORMACIÓN [http-nio-8080-exec-61] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:28:50.252 INFORMACIÓN [http-nio-8080-exec-61] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:29:00.084 INFORMACIÓN [http-nio-8080-exec-65] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:29:00.106 ADVERTENCIA [http-nio-8080-exec-65] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:29:00.728 INFORMACIÓN [http-nio-8080-exec-65] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:29:00.738 INFORMACIÓN [http-nio-8080-exec-65] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:29:09.686 INFORMACIÓN [http-nio-8080-exec-68] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:29:09.717 ADVERTENCIA [http-nio-8080-exec-68] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:29:10.276 INFORMACIÓN [http-nio-8080-exec-68] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:29:10.285 INFORMACIÓN [http-nio-8080-exec-68] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:29:26.858 INFORMACIÓN [http-nio-8080-exec-61] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:29:26.888 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:29:27.451 INFORMACIÓN [http-nio-8080-exec-61] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:29:27.459 INFORMACIÓN [http-nio-8080-exec-61] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:29:30.442 INFORMACIÓN [http-nio-8080-exec-77] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:29:30.474 ADVERTENCIA [http-nio-8080-exec-77] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:29:31.076 INFORMACIÓN [http-nio-8080-exec-77] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:29:31.086 INFORMACIÓN [http-nio-8080-exec-77] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:29:34.794 INFORMACIÓN [http-nio-8080-exec-71] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:29:34.816 ADVERTENCIA [http-nio-8080-exec-71] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:29:35.360 INFORMACIÓN [http-nio-8080-exec-71] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:29:35.370 INFORMACIÓN [http-nio-8080-exec-71] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:29:54.935 INFORMACIÓN [http-nio-8080-exec-68] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:29:54.968 ADVERTENCIA [http-nio-8080-exec-68] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:29:55.522 INFORMACIÓN [http-nio-8080-exec-68] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:29:55.531 INFORMACIÓN [http-nio-8080-exec-68] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:29:59.081 INFORMACIÓN [http-nio-8080-exec-71] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:29:59.108 ADVERTENCIA [http-nio-8080-exec-71] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:29:59.666 INFORMACIÓN [http-nio-8080-exec-71] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:29:59.674 INFORMACIÓN [http-nio-8080-exec-71] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:30:17.802 INFORMACIÓN [http-nio-8080-exec-76] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto []
+04-May-2021 20:30:17.850 INFORMACIÓN [http-nio-8080-exec-75] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml]
+04-May-2021 20:30:17.895 ADVERTENCIA [http-nio-8080-exec-75] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:30:18.538 INFORMACIÓN [http-nio-8080-exec-75] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:30:18.548 INFORMACIÓN [http-nio-8080-exec-75] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml] has finished in [698] ms
+04-May-2021 20:30:18.550 INFORMACIÓN [http-nio-8080-exec-64] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[]] after start() had already been called. The second call will be ignored.
+04-May-2021 20:30:34.472 INFORMACIÓN [http-nio-8080-exec-74] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto []
+04-May-2021 20:30:34.515 INFORMACIÓN [http-nio-8080-exec-81] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml]
+04-May-2021 20:30:34.564 ADVERTENCIA [http-nio-8080-exec-81] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:30:35.086 INFORMACIÓN [http-nio-8080-exec-81] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:30:35.094 INFORMACIÓN [http-nio-8080-exec-81] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml] has finished in [580] ms
+04-May-2021 20:30:35.097 INFORMACIÓN [http-nio-8080-exec-64] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[]] after start() had already been called. The second call will be ignored.
+04-May-2021 20:30:49.992 GRAVE [http-nio-8080-exec-84] isdcm.cliente_tomcat.modelo.Cifrado.decrypt null
+	java.lang.ArrayIndexOutOfBoundsException: -1
+		at java.util.ArrayList.elementData(ArrayList.java:424)
+		at java.util.ArrayList.get(ArrayList.java:437)
+		at com.sun.org.apache.xerces.internal.dom.DeepNodeListImpl.item(DeepNodeListImpl.java:133)
+		at org.apache.xml.security.encryption.XMLCipher$Factory.newEncryptedData(XMLCipher.java:2212)
+		at org.apache.xml.security.encryption.XMLCipher.decryptToByteArray(XMLCipher.java:1725)
+		at org.apache.xml.security.encryption.XMLCipher.decryptElement(XMLCipher.java:1662)
+		at org.apache.xml.security.encryption.XMLCipher.doFinal(XMLCipher.java:946)
+		at isdcm.cliente_tomcat.modelo.Cifrado.decrypt(Cifrado.java:76)
+		at isdcm.cliente_tomcat.controlador.servletCifrado.decryptXML(servletCifrado.java:239)
+		at isdcm.cliente_tomcat.controlador.servletCifrado.doPost(servletCifrado.java:94)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:201)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:544)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:698)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:364)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:616)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:831)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1629)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+		at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+		at java.lang.Thread.run(Thread.java:748)
+04-May-2021 20:30:56.622 GRAVE [http-nio-8080-exec-85] isdcm.cliente_tomcat.modelo.Cifrado.decrypt null
+	java.lang.ArrayIndexOutOfBoundsException: -1
+		at java.util.ArrayList.elementData(ArrayList.java:424)
+		at java.util.ArrayList.get(ArrayList.java:437)
+		at com.sun.org.apache.xerces.internal.dom.DeepNodeListImpl.item(DeepNodeListImpl.java:133)
+		at org.apache.xml.security.encryption.XMLCipher$Factory.newEncryptedData(XMLCipher.java:2212)
+		at org.apache.xml.security.encryption.XMLCipher.decryptToByteArray(XMLCipher.java:1725)
+		at org.apache.xml.security.encryption.XMLCipher.decryptElement(XMLCipher.java:1662)
+		at org.apache.xml.security.encryption.XMLCipher.doFinal(XMLCipher.java:946)
+		at isdcm.cliente_tomcat.modelo.Cifrado.decrypt(Cifrado.java:76)
+		at isdcm.cliente_tomcat.controlador.servletCifrado.decryptXML(servletCifrado.java:239)
+		at isdcm.cliente_tomcat.controlador.servletCifrado.doPost(servletCifrado.java:94)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:201)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:544)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:698)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:364)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:616)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:831)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1629)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+		at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+		at java.lang.Thread.run(Thread.java:748)
+04-May-2021 20:31:28.211 INFORMACIÓN [http-nio-8080-exec-82] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:31:28.236 ADVERTENCIA [http-nio-8080-exec-82] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:31:28.805 INFORMACIÓN [http-nio-8080-exec-82] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:31:28.814 INFORMACIÓN [http-nio-8080-exec-82] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:31:36.839 INFORMACIÓN [http-nio-8080-exec-87] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:31:36.867 ADVERTENCIA [http-nio-8080-exec-87] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:31:37.414 INFORMACIÓN [http-nio-8080-exec-87] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:31:37.423 INFORMACIÓN [http-nio-8080-exec-87] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:31:52.211 INFORMACIÓN [http-nio-8080-exec-92] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:31:52.256 ADVERTENCIA [http-nio-8080-exec-92] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:31:52.882 INFORMACIÓN [http-nio-8080-exec-92] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:31:52.891 INFORMACIÓN [http-nio-8080-exec-92] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:31:54.703 INFORMACIÓN [http-nio-8080-exec-87] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto []
+04-May-2021 20:31:54.756 INFORMACIÓN [http-nio-8080-exec-94] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml]
+04-May-2021 20:31:54.795 ADVERTENCIA [http-nio-8080-exec-94] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:31:55.337 INFORMACIÓN [http-nio-8080-exec-94] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:31:55.345 INFORMACIÓN [http-nio-8080-exec-94] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml] has finished in [589] ms
+04-May-2021 20:31:55.347 INFORMACIÓN [http-nio-8080-exec-86] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[]] after start() had already been called. The second call will be ignored.
+04-May-2021 20:32:04.152 GRAVE [http-nio-8080-exec-82] isdcm.cliente_tomcat.controlador.servletCifrado.encryptXML null
+	org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; El contenido no está permitido en el prólogo.
+		at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:262)
+		at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:339)
+		at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:121)
+		at isdcm.cliente_tomcat.controlador.servletCifrado.encryptXML(servletCifrado.java:151)
+		at isdcm.cliente_tomcat.controlador.servletCifrado.doPost(servletCifrado.java:90)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:201)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:544)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:698)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:364)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:616)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:831)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1629)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+		at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+		at java.lang.Thread.run(Thread.java:748)
+04-May-2021 20:32:17.820 GRAVE [http-nio-8080-exec-93] isdcm.cliente_tomcat.modelo.Cifrado.decrypt null
+	java.lang.ArrayIndexOutOfBoundsException
+04-May-2021 20:36:52.451 INFORMACIÓN [http-nio-8080-exec-97] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:36:52.479 ADVERTENCIA [http-nio-8080-exec-97] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:36:53.025 INFORMACIÓN [http-nio-8080-exec-97] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:36:53.033 INFORMACIÓN [http-nio-8080-exec-97] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:36:59.229 INFORMACIÓN [http-nio-8080-exec-100] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:36:59.261 ADVERTENCIA [http-nio-8080-exec-100] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:36:59.881 INFORMACIÓN [http-nio-8080-exec-100] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:36:59.889 INFORMACIÓN [http-nio-8080-exec-100] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:37:00.857 INFORMACIÓN [http-nio-8080-exec-105] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto []
+04-May-2021 20:37:00.906 INFORMACIÓN [http-nio-8080-exec-101] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml]
+04-May-2021 20:37:00.961 ADVERTENCIA [http-nio-8080-exec-101] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:37:01.591 INFORMACIÓN [http-nio-8080-exec-101] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:37:01.600 INFORMACIÓN [http-nio-8080-exec-101] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml] has finished in [694] ms
+04-May-2021 20:37:01.602 INFORMACIÓN [http-nio-8080-exec-100] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[]] after start() had already been called. The second call will be ignored.
+04-May-2021 20:37:14.793 GRAVE [http-nio-8080-exec-104] isdcm.cliente_tomcat.modelo.Cifrado.decrypt null
+	java.lang.ArrayIndexOutOfBoundsException
+04-May-2021 20:37:37.660 GRAVE [http-nio-8080-exec-108] isdcm.cliente_tomcat.modelo.Cifrado.decrypt null
+	java.lang.ArrayIndexOutOfBoundsException
+04-May-2021 20:38:32.599 INFORMACIÓN [http-nio-8080-exec-111] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:38:32.624 ADVERTENCIA [http-nio-8080-exec-111] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:38:33.207 INFORMACIÓN [http-nio-8080-exec-111] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:38:33.217 INFORMACIÓN [http-nio-8080-exec-111] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:38:44.339 INFORMACIÓN [http-nio-8080-exec-111] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto []
+04-May-2021 20:38:44.357 GRAVE [http-nio-8080-exec-111] org.apache.catalina.startup.ExpandWar.deleteDir [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\work\Catalina\localhost\ROOT] no pudo ser completamente borrado. La presencia de los ficheros restantes puede causar problemas
+04-May-2021 20:38:44.358 GRAVE [http-nio-8080-exec-111] org.apache.catalina.startup.ExpandWar.delete [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\work\Catalina\localhost\ROOT] no pudo ser completamente borrado. La presencia de los ficheros restantes puede causar problemas
+04-May-2021 20:38:44.383 INFORMACIÓN [http-nio-8080-exec-109] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml]
+04-May-2021 20:38:44.423 ADVERTENCIA [http-nio-8080-exec-109] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:38:44.960 INFORMACIÓN [http-nio-8080-exec-109] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:38:44.976 INFORMACIÓN [http-nio-8080-exec-109] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml] has finished in [593] ms
+04-May-2021 20:38:44.979 INFORMACIÓN [http-nio-8080-exec-117] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[]] after start() had already been called. The second call will be ignored.
+04-May-2021 20:38:52.418 GRAVE [http-nio-8080-exec-115] isdcm.cliente_tomcat.modelo.Cifrado.decrypt null
+	java.lang.ArrayIndexOutOfBoundsException
+04-May-2021 20:39:46.000 INFORMACIÓN [http-nio-8080-exec-122] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:39:46.066 ADVERTENCIA [http-nio-8080-exec-122] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:39:46.634 INFORMACIÓN [http-nio-8080-exec-122] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:39:46.643 INFORMACIÓN [http-nio-8080-exec-122] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:39:48.548 INFORMACIÓN [http-nio-8080-exec-111] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:39:48.591 ADVERTENCIA [http-nio-8080-exec-111] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:39:49.170 INFORMACIÓN [http-nio-8080-exec-111] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:39:49.178 INFORMACIÓN [http-nio-8080-exec-111] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:39:54.713 INFORMACIÓN [http-nio-8080-exec-126] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:39:54.736 ADVERTENCIA [http-nio-8080-exec-126] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:39:55.362 INFORMACIÓN [http-nio-8080-exec-126] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:39:55.371 INFORMACIÓN [http-nio-8080-exec-126] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:39:56.348 INFORMACIÓN [http-nio-8080-exec-118] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto []
+04-May-2021 20:39:56.392 INFORMACIÓN [http-nio-8080-exec-119] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml]
+04-May-2021 20:39:56.436 ADVERTENCIA [http-nio-8080-exec-119] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:39:57.004 INFORMACIÓN [http-nio-8080-exec-119] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:39:57.013 INFORMACIÓN [http-nio-8080-exec-119] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml] has finished in [621] ms
+04-May-2021 20:39:57.015 INFORMACIÓN [http-nio-8080-exec-127] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[]] after start() had already been called. The second call will be ignored.
+04-May-2021 20:40:02.699 GRAVE [http-nio-8080-exec-129] isdcm.cliente_tomcat.controlador.servletCifrado.decryptXML null
+	org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; Final de archivo prematuro.
+		at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:262)
+		at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:339)
+		at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:121)
+		at isdcm.cliente_tomcat.controlador.servletCifrado.decryptXML(servletCifrado.java:179)
+		at isdcm.cliente_tomcat.controlador.servletCifrado.doPost(servletCifrado.java:94)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:201)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:544)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:698)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:364)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:616)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:831)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1629)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+		at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+		at java.lang.Thread.run(Thread.java:748)
+04-May-2021 20:44:28.627 INFORMACIÓN [http-nio-8080-exec-132] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:44:28.669 ADVERTENCIA [http-nio-8080-exec-132] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:44:29.209 INFORMACIÓN [http-nio-8080-exec-132] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:44:29.218 INFORMACIÓN [http-nio-8080-exec-132] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:44:30.478 INFORMACIÓN [http-nio-8080-exec-133] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:44:30.507 ADVERTENCIA [http-nio-8080-exec-133] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:44:31.142 INFORMACIÓN [http-nio-8080-exec-133] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:44:31.151 INFORMACIÓN [http-nio-8080-exec-133] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:44:34.704 INFORMACIÓN [http-nio-8080-exec-140] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:44:34.739 ADVERTENCIA [http-nio-8080-exec-140] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:44:35.357 INFORMACIÓN [http-nio-8080-exec-140] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:44:35.366 INFORMACIÓN [http-nio-8080-exec-140] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:44:40.974 INFORMACIÓN [http-nio-8080-exec-133] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto []
+04-May-2021 20:44:41.034 INFORMACIÓN [http-nio-8080-exec-141] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml]
+04-May-2021 20:44:41.100 ADVERTENCIA [http-nio-8080-exec-141] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:44:41.681 INFORMACIÓN [http-nio-8080-exec-141] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:44:41.690 INFORMACIÓN [http-nio-8080-exec-141] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml] has finished in [656] ms
+04-May-2021 20:44:41.692 INFORMACIÓN [http-nio-8080-exec-137] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[]] after start() had already been called. The second call will be ignored.
+04-May-2021 20:44:47.231 GRAVE [http-nio-8080-exec-130] isdcm.cliente_tomcat.controlador.servletCifrado.decryptXML null
+	org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; Final de archivo prematuro.
+		at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:262)
+		at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:339)
+		at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:121)
+		at isdcm.cliente_tomcat.controlador.servletCifrado.decryptXML(servletCifrado.java:180)
+		at isdcm.cliente_tomcat.controlador.servletCifrado.doPost(servletCifrado.java:94)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:201)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:544)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:698)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:364)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:616)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:831)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1629)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+		at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+		at java.lang.Thread.run(Thread.java:748)
+04-May-2021 20:44:58.871 INFORMACIÓN [http-nio-8080-exec-133] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:44:58.908 ADVERTENCIA [http-nio-8080-exec-133] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:44:59.519 INFORMACIÓN [http-nio-8080-exec-133] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:44:59.529 INFORMACIÓN [http-nio-8080-exec-133] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:45:00.118 INFORMACIÓN [http-nio-8080-exec-145] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto []
+04-May-2021 20:45:00.168 INFORMACIÓN [http-nio-8080-exec-147] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml]
+04-May-2021 20:45:00.231 ADVERTENCIA [http-nio-8080-exec-147] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:45:00.813 INFORMACIÓN [http-nio-8080-exec-147] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:45:00.823 INFORMACIÓN [http-nio-8080-exec-147] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml] has finished in [655] ms
+04-May-2021 20:45:00.825 INFORMACIÓN [http-nio-8080-exec-134] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[]] after start() had already been called. The second call will be ignored.
+04-May-2021 20:45:07.543 GRAVE [http-nio-8080-exec-137] isdcm.cliente_tomcat.controlador.servletCifrado.decryptXML null
+	org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; Final de archivo prematuro.
+		at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:262)
+		at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:339)
+		at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:121)
+		at isdcm.cliente_tomcat.controlador.servletCifrado.decryptXML(servletCifrado.java:179)
+		at isdcm.cliente_tomcat.controlador.servletCifrado.doPost(servletCifrado.java:94)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:201)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:544)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:698)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:364)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:616)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:831)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1629)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+		at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+		at java.lang.Thread.run(Thread.java:748)
+04-May-2021 20:45:30.000 INFORMACIÓN [http-nio-8080-exec-143] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto []
+04-May-2021 20:45:30.030 ADVERTENCIA [http-nio-8080-exec-143] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:45:30.653 INFORMACIÓN [http-nio-8080-exec-143] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:45:30.661 INFORMACIÓN [http-nio-8080-exec-143] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-May-2021 20:45:31.302 INFORMACIÓN [http-nio-8080-exec-152] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto []
+04-May-2021 20:45:31.338 INFORMACIÓN [http-nio-8080-exec-147] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml]
+04-May-2021 20:45:31.379 ADVERTENCIA [http-nio-8080-exec-147] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+04-May-2021 20:45:31.926 INFORMACIÓN [http-nio-8080-exec-147] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-May-2021 20:45:31.935 INFORMACIÓN [http-nio-8080-exec-147] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\Resis\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml] has finished in [596] ms
+04-May-2021 20:45:31.937 INFORMACIÓN [http-nio-8080-exec-134] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[]] after start() had already been called. The second call will be ignored.
+04-May-2021 20:47:14.910 INFORMACIÓN [main] org.apache.catalina.core.StandardServer.await Se ha recibido un comando de apagado a través del puerto de apagado. Parando la instancia del Servidor.
+04-May-2021 20:47:14.910 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+04-May-2021 20:47:14.968 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["https-openssl-nio-8443"]
+04-May-2021 20:47:14.968 INFORMACIÓN [main] org.apache.catalina.core.StandardService.stopInternal Parando servicio [Catalina]
+04-May-2021 20:47:14.983 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+04-May-2021 20:47:14.986 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+04-May-2021 20:47:14.986 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["https-openssl-nio-8443"]
+04-May-2021 20:47:14.987 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["https-openssl-nio-8443"]
