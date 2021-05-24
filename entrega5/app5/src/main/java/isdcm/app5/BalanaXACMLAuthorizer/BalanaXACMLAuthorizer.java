@@ -34,7 +34,6 @@ class BalanaXACMLAuthorizer {
 
     private String pathRequest;
     private String pathPolicy;
-    private String pathConfig;
     private String[] requestsPath;
     private String[] policiesPath;
     
@@ -44,12 +43,6 @@ class BalanaXACMLAuthorizer {
         System.out.println(pathRequest);
         this.requestsPath = getAllXMLFilesPath(this.pathRequest);
         this.policiesPath = getAllXMLFilesPath(this.pathPolicy);
-    }
-    
-    protected BalanaXACMLAuthorizer(String pathRequest, String pathConfig, Boolean dummy) {
-        this.pathRequest = pathRequest;
-        this.pathConfig = pathConfig;
-        System.out.println(pathRequest);
     }
     
     protected void execute(int i) {
@@ -78,27 +71,6 @@ class BalanaXACMLAuthorizer {
         }
     }
     
-    protected void executeWithConfigFile() {
-        try {
-            String[] requestsPath = getAllXMLFilesPath(this.pathRequest);
-            PDPAuxiliary pdp = new PDPAuxiliary(this.pathConfig);
-            if (pdp == null){
-                System.out.println("Ha habido un error al inicializar el PDP, compruebe la ruta del archivo config");
-                return;
-            }
-            String[] configsPath = {
-                this.pathConfig
-            };
-            for (String requestPath : requestsPath) {
-                ResponseCtx response = pdp.evaluateRequest(requestPath);
-                writeResult(response, configsPath, requestPath, false);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
-
     private String[] getAllXMLFilesPath(String path) {
         File f = new File(path);
         for (String s : f.list())

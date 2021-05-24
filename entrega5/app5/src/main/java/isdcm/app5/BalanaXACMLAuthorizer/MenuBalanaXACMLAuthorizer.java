@@ -83,42 +83,6 @@ public class MenuBalanaXACMLAuthorizer {
             optionsPaginaPrincipal();
         }
     }
-     
-    private void optionsConfigFile(int i, boolean extra) {
-        BalanaXACMLAuthorizer authorizer;
-        String[][] local_paths;
-        try {
-            System.out.println("¿Quiere utilizar el config file?");
-            System.out.println("[1] Sí");
-            System.out.println("[2] No");
-            String optionConfigFile = reader.readLine();
-            switch (optionConfigFile) {
-                case "1":
-                    if (!extra)
-                        local_paths = paths;
-                    else
-                        local_paths = retrievePaths(optionConfigFile);
-                    authorizer = new BalanaXACMLAuthorizer(local_paths[i][0], local_paths[i][2], false);
-                    authorizer.executeWithConfigFile();
-                    break;
-                case "2":
-                    if (!extra)
-                        local_paths = paths;
-                    else
-                        local_paths = retrievePaths(optionConfigFile);
-                    if (local_paths == null)
-                        return;
-                    authorizer = new BalanaXACMLAuthorizer(local_paths[i][0], local_paths[i][1]);
-                    authorizer.execute(0);
-                    break;
-                default:
-                    System.out.println("No se ha entendido la opción");
-            }
-        } catch (IOException ex) {
-            System.out.println("Ha habido un error al leer la opción indicada; por favor, vuélvala a introducir");
-            optionsConfigFile(i, extra);
-        }
-    }
 
     private String[][] retrievePaths(String optionConfigFile) {
         String[][] paths = new String[1][3];
