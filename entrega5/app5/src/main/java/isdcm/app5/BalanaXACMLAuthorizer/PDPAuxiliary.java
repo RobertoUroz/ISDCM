@@ -46,11 +46,6 @@ public class PDPAuxiliary {
     PDP pdp;
     Balana balana;
     
-    PDPAuxiliary (String configPath) {
-        this.balana = Balana.getInstance();
-        this.pdp = setupWithConfigFile(configPath);
-    }
-    
     PDPAuxiliary(String[] policyPath) {
         this.balana = Balana.getInstance();
         this.pdp = setupWithPolicies(policyPath);
@@ -92,19 +87,6 @@ public class PDPAuxiliary {
             }
         }
         return doc.getDocumentElement();
-    }
-
-    private PDP setupWithConfigFile(String configPath) {
-        PDP pdp = null;
-        try {
-            ConfigurationStore cnfStore = new ConfigurationStore(new File(configPath));
-            pdp = new PDP(cnfStore.getDefaultPDPConfig());
-        } catch (ParsingException ex) {
-            Logger.getLogger(PDPAuxiliary.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UnknownIdentifierException ex) {
-            Logger.getLogger(PDPAuxiliary.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return pdp;
     }
 
     private PDP setupWithPolicies(String[] policyPath) {        
