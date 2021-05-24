@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><DIDL xmlns="urn:mpeg:mpeg21:2002:02-DIDL-NS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mpeg:mpeg21:2002:02-DIDL-NS didl.xsd">
+	<Item>
+		<Component>
+			<Descriptor>
+				<Statement mimeType="text/xml">
+					<metadata>
+						<id>1</id>
+						<xenc:EncryptedData xmlns:xenc="http://www.w3.org/2001/04/xmlenc#" Type="http://www.w3.org/2001/04/xmlenc#Element"><xenc:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes128-cbc"/><xenc:CipherData><xenc:CipherValue>yA4VxSUhg48PrH8Vk52NeTsKV29KagQ/uV7McBzAu7i2Ll2DCIg17lbRxjZjYxxl</xenc:CipherValue></xenc:CipherData></xenc:EncryptedData>
+						<xenc:EncryptedData xmlns:xenc="http://www.w3.org/2001/04/xmlenc#" Type="http://www.w3.org/2001/04/xmlenc#Element"><xenc:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes128-cbc"/><xenc:CipherData><xenc:CipherValue>yLmC5aw2M7HOQJdj+Ld3dY0WVg5SchonsgeNXWRog3Du0k+/xQiQvzaS0h05IXPK3/zYyw5XTx1r&#13;
+FI2c+Y4Xxg==</xenc:CipherValue></xenc:CipherData></xenc:EncryptedData>
+						<anyo>2012</anyo>
+						<duracion>107</duracion>
+						<reproducciones>2388</reproducciones>
+					</metadata>
+				</Statement>
+			</Descriptor>
+			<Resource mimeType="video/mp4" ref="film1li.mp4"/>
+		</Component>
+	</Item>
+</DIDL>

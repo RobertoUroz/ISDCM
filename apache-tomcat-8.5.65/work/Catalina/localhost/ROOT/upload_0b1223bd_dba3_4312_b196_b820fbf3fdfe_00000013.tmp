@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><DIDL xmlns="urn:mpeg:mpeg21:2002:02-DIDL-NS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mpeg:mpeg21:2002:02-DIDL-NS didl.xsd">
+	<Item>
+		<Component>
+			<Descriptor>
+				<Statement mimeType="text/xml">
+					<metadata>
+						<id>1</id>
+						<titulo><xenc:EncryptedData xmlns:xenc="http://www.w3.org/2001/04/xmlenc#" Type="http://www.w3.org/2001/04/xmlenc#Content"><xenc:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes128-cbc"/><xenc:CipherData><xenc:CipherValue>MYgU+N3wQOSMIJP52nrLI9kspsUljjjw9EYq88xd+Bc=</xenc:CipherValue></xenc:CipherData></xenc:EncryptedData></titulo>
+						<autor><xenc:EncryptedData xmlns:xenc="http://www.w3.org/2001/04/xmlenc#" Type="http://www.w3.org/2001/04/xmlenc#Content"><xenc:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes128-cbc"/><xenc:CipherData><xenc:CipherValue>YTvP85X/5KhTIDNEd9MQyJGy7UytgBQaHygv+Kmre3wwNIA344qzf2Evon/ArHv4</xenc:CipherValue></xenc:CipherData></xenc:EncryptedData></autor>
+						<anyo>2012</anyo>
+						<duracion>107</duracion>
+						<reproducciones>2388</reproducciones>
+					</metadata>
+				</Statement>
+			</Descriptor>
+			<Resource mimeType="video/mp4" ref="film1li.mp4"/>
+		</Component>
+	</Item>
+</DIDL>
