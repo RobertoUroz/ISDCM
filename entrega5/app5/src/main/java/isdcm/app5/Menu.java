@@ -51,8 +51,8 @@ public class Menu {
                         menu1.paginaPrincipal();
                         break;
                     case "2":
-                        MenuBalanaXACMLAuthorizer menu1 = new MenuBalanaXACMLAuthorizer(this, reader);
-                        menu1.paginaPrincipal();
+                        MenuBalanaXACMLAuthorizer menu2 = new MenuBalanaXACMLAuthorizer(this, reader);
+                        menu2.paginaPrincipal();
                         break;
                     case "3":
                         MenuXMLSignature menu3 = new MenuXMLSignature(this, reader);
