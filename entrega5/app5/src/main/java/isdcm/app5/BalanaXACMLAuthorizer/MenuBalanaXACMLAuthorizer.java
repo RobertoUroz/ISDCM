@@ -6,10 +6,6 @@
 package isdcm.app5.BalanaXACMLAuthorizer;
 
 import org.wso2.balana.*;
-/*
-import com.sun.xacml.PDP;
-import com.sun.xacml.PDPConfig;
-*/
 import isdcm.app5.Menu;
 import java.io.BufferedReader;
 import java.io.File;

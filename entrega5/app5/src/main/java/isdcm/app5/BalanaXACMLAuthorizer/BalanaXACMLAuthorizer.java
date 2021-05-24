@@ -5,21 +5,6 @@
  */
 package isdcm.app5.BalanaXACMLAuthorizer;
 
-/*
-import com.sun.xacml.ConfigurationStore;
-import com.sun.xacml.Indenter;
-import com.sun.xacml.PDP;
-import com.sun.xacml.PDPConfig;
-import com.sun.xacml.ctx.RequestCtx;
-import com.sun.xacml.ctx.ResponseCtx;
-import com.sun.xacml.ctx.Result;
-import com.sun.xacml.finder.AttributeFinder;
-import com.sun.xacml.finder.PolicyFinder;
-import com.sun.xacml.finder.ResourceFinder;
-import com.sun.xacml.finder.impl.CurrentEnvModule;
-import com.sun.xacml.finder.impl.FilePolicyModule;
-import com.sun.xacml.finder.impl.SelectorModule;
-*/
 import org.wso2.balana.*;
 import org.wso2.balana.ctx.AbstractResult;
 import org.wso2.balana.ctx.Attribute;
