@@ -1,0 +1,49 @@
+12-May-2021 13:58:53.751 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Nombre de la versión del servidor: Apache Tomcat/8.5.65
+12-May-2021 13:58:53.751 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:                      Mar 30 2021 12:28:40 UTC
+12-May-2021 13:58:53.751 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Número de versión de servidor:     8.5.65.0
+12-May-2021 13:58:53.751 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:                           Windows 10
+12-May-2021 13:58:53.751 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Versión de Systema Operativo:      10.0
+12-May-2021 13:58:53.751 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Arquitectura:                      amd64
+12-May-2021 13:58:53.751 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:                         C:\Program Files\Java\jdk1.8.0_291\jre
+12-May-2021 13:58:53.766 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:                       1.8.0_291-b10
+12-May-2021 13:58:53.766 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Vededor JVM:                       Oracle Corporation
+12-May-2021 13:58:53.766 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:                     C:\Users\oracle\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65
+12-May-2021 13:58:53.766 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:                     C:\Users\oracle\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65
+12-May-2021 13:58:53.766 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djava.util.logging.config.file=C:\Users\oracle\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\logging.properties
+12-May-2021 13:58:53.766 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+12-May-2021 13:58:53.766 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dhttp.nonProxyHosts=localhost|127.0.0.1|DESKTOP-61NHK73
+12-May-2021 13:58:53.766 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djdk.tls.ephemeralDHKeySize=2048
+12-May-2021 13:58:53.766 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+12-May-2021 13:58:53.766 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dignore.endorsed.dirs=
+12-May-2021 13:58:53.766 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dcatalina.base=C:\Users\oracle\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65
+12-May-2021 13:58:53.766 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dcatalina.home=C:\Users\oracle\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65
+12-May-2021 13:58:53.766 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djava.io.tmpdir=C:\Users\oracle\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\temp
+12-May-2021 13:58:53.766 INFORMACIÓN [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Cargada la biblioteca nativa APR de Apache Tomcat [1.2.27] con la versión APR [1.7.0].
+12-May-2021 13:58:53.766 INFORMACIÓN [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Capacidades APR: IPv6 [true], enviar fichero [true], aceptar filtros [false], aleatorio [true].
+12-May-2021 13:58:53.766 INFORMACIÓN [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+12-May-2021 13:58:53.813 INFORMACIÓN [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL inicializado correctamente [OpenSSL 1.1.1k  25 Mar 2021]
+12-May-2021 13:58:54.048 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Inicializando el manejador de protocolo ["http-nio-8080"]
+
+12-May-2021 13:58:54.298 INFORMACIÓN [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+12-May-2021 13:58:54.313 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Inicializando el manejador de protocolo ["https-openssl-nio-8443"]
+
+12-May-2021 13:58:54.360 INFORMACIÓN [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+12-May-2021 13:58:54.360 INFORMACIÓN [main] org.apache.catalina.startup.Catalina.load Initialization processed in 1159 ms
+12-May-2021 13:58:54.469 INFORMACIÓN [main] org.apache.catalina.core.StandardService.startInternal Arrancando servicio [Catalina]
+12-May-2021 13:58:54.469 INFORMACIÓN [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/8.5.65]
+12-May-2021 13:58:54.485 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\oracle\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml]
+12-May-2021 13:58:54.719 ADVERTENCIA [localhost-startStop-1] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+12-May-2021 13:58:55.813 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-May-2021 13:58:55.891 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\oracle\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml] has finished in [1.390] ms
+12-May-2021 13:58:55.891 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [C:\Users\oracle\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\webapps\manager] de la aplicación web
+12-May-2021 13:58:56.541 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-May-2021 13:58:56.556 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\oracle\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\webapps\manager] has finished in [665] ms
+12-May-2021 13:58:56.556 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+12-May-2021 13:58:56.584 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["https-openssl-nio-8443"]
+12-May-2021 13:58:56.584 INFORMACIÓN [main] org.apache.catalina.startup.Catalina.start Server startup in 2221 ms
+12-May-2021 13:58:58.820 INFORMACIÓN [http-nio-8080-exec-8] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto []
+12-May-2021 13:58:58.847 INFORMACIÓN [http-nio-8080-exec-7] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\Users\oracle\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml]
+12-May-2021 13:58:58.862 ADVERTENCIA [http-nio-8080-exec-7] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+12-May-2021 13:58:59.617 INFORMACIÓN [http-nio-8080-exec-7] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-May-2021 13:58:59.633 INFORMACIÓN [http-nio-8080-exec-7] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\oracle\Documents\NetBeansProjects\ISDCM\apache-tomcat-8.5.65\conf\Catalina\localhost\ROOT.xml] has finished in [786] ms
+12-May-2021 13:58:59.633 INFORMACIÓN [http-nio-8080-exec-3] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[]] after start() had already been called. The second call will be ignored.
