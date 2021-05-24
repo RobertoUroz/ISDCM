@@ -140,7 +140,7 @@ class BalanaXACMLAuthorizer {
         indenter.in();
         while (it.hasNext()) {
             Result result = (Result)(it.next());
-            result.encode(out, indenter);
+            out.print(result.encode());
         }
         indenter.out();
         out.println(indent + "</Response>");
@@ -150,6 +150,7 @@ class BalanaXACMLAuthorizer {
         String baseDir = System.getProperty("user.dir");
         String pathString = "";
         for (String s : paths){
+            //String s = paths;
             String fileName = new File(s).getName().split("\\.")[0];
             pathString += fileName + "_";
         }

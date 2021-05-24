@@ -54,7 +54,7 @@ public class MenuBalanaXACMLAuthorizer {
     }
 
     public void paginaPrincipal() {
-        System.out.println("Bienvenido a SunXACMLAuthorizer, ¿qué desea hacer?");
+        System.out.println("Bienvenido a BalanaXACMLAuthorizer, ¿qué desea hacer?");
         optionsPaginaPrincipal();
     }
     
@@ -119,7 +119,7 @@ public class MenuBalanaXACMLAuthorizer {
                     System.out.println("No se ha entendido la opción");
             }
         } catch (IOException ex) {
-            System.out.println("Ha habido un error al leer la opción indicada, por favor, vuélvala a introducir");
+            System.out.println("Ha habido un error al leer la opción indicada; por favor, vuélvala a introducir");
             optionsConfigFile(i, extra);
         }
     }
@@ -129,7 +129,7 @@ public class MenuBalanaXACMLAuthorizer {
         String path;
         File f;
         try {
-            System.out.println("Recuerde que los archivos deben de estar aislados en su carpeta contenedora, por lo tanto, las policies, requests y config deben de estar aislados en sus carpetas correspondientes");
+            System.out.println("Recuerde que los archivos deben estar aislados en su carpeta contenedora, por lo tanto, las policies, requests y config deben estar aislados en sus carpetas correspondientes");
             if (optionConfigFile.equals("2")){
                 System.out.println("Por favor, especifique ruta de la carpeta contenedora de las policies");
                 path = reader.readLine();

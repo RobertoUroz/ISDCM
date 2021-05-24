@@ -1,0 +1,6 @@
+<Response>
+<Result><Decision>Deny</Decision><Status><StatusCode Value="urn:oasis:names:tc:xacml:1.0:status:ok"/></Status><PolicyIdentifierList><PolicyIdReference>urn:isdcm:policyid:1</PolicyIdReference><PolicyIdReference>urn:isdcm:policyid:2</PolicyIdReference><PolicyIdReference>urn:isdcm:policyid:3</PolicyIdReference></PolicyIdentifierList><Attributes Category="urn:oasis:names:tc:xacml:3.0:role"><Attribute AttributeId="role" IncludeInResult="true">
+<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">premium</AttributeValue></Attribute>
+</Attributes><Attributes Category="urn:oasis:names:tc:xacml:3.0:count"><Attribute AttributeId="countCopy" IncludeInResult="true">
+<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">1</AttributeValue></Attribute>
+</Attributes></Result></Response>

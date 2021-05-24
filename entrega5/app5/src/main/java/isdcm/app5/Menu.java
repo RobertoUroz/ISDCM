@@ -6,6 +6,7 @@
 package isdcm.app5;
 
 import isdcm.app5.SunXACMLAuthorizer.MenuSunXACMLAuthorizer;
+import isdcm.app5.BalanaXACMLAuthorizer.MenuBalanaXACMLAuthorizer;
 import isdcm.app5.xmlSignature.MenuXMLSignature;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,7 +24,7 @@ public class Menu {
     private BufferedReader reader;
     private static String[] options = {
         "[1] Uso de la herramienta de Autorización de Sun",
-        "[2] [Alejandro]",
+        "[2] Uso de la herramienta de autorización Balana",
         "[3] XML Signature",
         "[4] Salir"
     };
@@ -50,6 +51,8 @@ public class Menu {
                         menu1.paginaPrincipal();
                         break;
                     case "2":
+                        MenuBalanaXACMLAuthorizer menu1 = new MenuBalanaXACMLAuthorizer(this, reader);
+                        menu1.paginaPrincipal();
                         break;
                     case "3":
                         MenuXMLSignature menu3 = new MenuXMLSignature(this, reader);
