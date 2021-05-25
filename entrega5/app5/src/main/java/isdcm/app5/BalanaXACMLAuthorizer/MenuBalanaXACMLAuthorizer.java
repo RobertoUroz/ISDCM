@@ -83,6 +83,19 @@ public class MenuBalanaXACMLAuthorizer {
             optionsPaginaPrincipal();
         }
     }
+     
+     private void optionsConfigFile(int i, boolean extra) {
+        BalanaXACMLAuthorizer authorizer;
+        String[][] local_paths;
+        if (!extra)
+            local_paths = paths;
+        else
+            local_paths = retrievePaths("2");
+        if (local_paths == null)
+            return;
+        authorizer = new BalanaXACMLAuthorizer(local_paths[i][0], local_paths[i][1]);
+        authorizer.execute(0);
+    }
 
     private String[][] retrievePaths(String optionConfigFile) {
         String[][] paths = new String[1][3];
@@ -104,14 +117,6 @@ public class MenuBalanaXACMLAuthorizer {
             if (!f.exists())
                     throw new IOException("");
             paths[0][0] = path;
-            if (optionConfigFile.equals("1")){
-                System.out.println("Por favor, especifique ruta del archivo config");
-                path = reader.readLine();
-                f = new File(path);
-                if (!f.exists())
-                    throw new IOException("");
-                paths[0][2] = path;
-            }
             return paths;
         } catch (IOException ex) {
             System.out.println("Ha habido un problema mientras insertaba las rutas de las carpetas contenedoras, por favor, inténtelo de nuevo");
